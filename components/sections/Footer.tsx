@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
 
         {/* ===== Address ===== */}
-        <p className="text-sm leading-relaxed max-w-xl text-gray-400">
+        <p className="text-sm leading-relaxed max-w-xl text-white/60">
           Ground Floor, Door No 4-1-143 A1, Vertex Workspace, Gateway Building, MG Road, Ballalbagh, Mangaluru, Dakshina Kannada, Karnataka, 575003
         </p>
 

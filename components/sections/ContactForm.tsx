@@ -32,14 +32,19 @@ interface ContactFormProps {
   buttonClassName?: string;
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose,buttonClassName="bg-[#0097DC] hover:bg-[#007bb5] text-white" }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({
+  className,
+  showModal = false,
+  onClose,
+  buttonClassName = "bg-[#0097DC] hover:bg-[#007bb5] text-white",
+}) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted");
   };
 
   const formContent = (
-    <form className={cn("space-y-5 bg-transparent p-6 rounded-lg", className)} onSubmit={handleSubmit}>
+    <form className={cn("space-y-5 bg-transparent p-6 lg:p-0 rounded-lg", className)} onSubmit={handleSubmit}>
       {/* Row 1 */}
       <FormRow>
         <FormField id="name" label="">
@@ -90,7 +95,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           placeholder="Description (Optional)"
           className={cn(
             "flex w-full rounded-md border border-gray-300 bg-none px-3 py-2 text-sm",
-            "placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2"
+            "placeholder:text-gray-500 "
           )}
         />
         <p className="text-xs text-right text-gray-400">0/125</p>
@@ -100,7 +105,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
       <div className="space-y-4 pt-2">
         <div className="flex w-full justify-between items-center flex-col md:flex-row gap-3">
           <div className="flex items-center">
-            <input id="consent" name="consent" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-blue-600" defaultChecked />
+            <input id="consent" name="consent" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-[#0097DC]" defaultChecked />
             <label htmlFor="consent" className="ml-3 block text-sm text-gray-700">
               Consent to contact me via Call, SMS, Email, or WhatsApp
             </label>
@@ -131,7 +136,19 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             />
           </svg>
         </button>
-        <div className="bg-white p-6 rounded-lg">{formContent}</div>
+        <div className="bg-white p-10  rounded-lg">
+          <div className="">
+            <h1 className="text-3xl  lg:text-[36px] font-semibold leading-tight text-primary">
+              Private Offices <br />
+              That Mean Business
+            </h1>
+            <p className="mt-3 text-base sm:text-lg lg:text-[20px] text-primary">
+              Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
+            </p>
+          </div>
+
+          {formContent}
+        </div>
       </div>
     </div>
   );

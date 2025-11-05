@@ -12,8 +12,8 @@ import "swiper/css";
 export default function HeroSection() {
   return (
     <section className="relative px-4 sm:px-6 lg:px-20 mx-auto py-12 sm:py-16 lg:py-24 items-center">
-      <svg
-        className="absolute left-0 top-0 h-full w-auto text-blue-100 pointer-events-none opacity-40"
+      {/* <svg
+      className="absolute top-0"
         width="996"
         height="1117"
         viewBox="0 0 996 1117"
@@ -24,7 +24,7 @@ export default function HeroSection() {
           d="M994.492 -30.0756L474.003 732.561L473.819 732.832L473.994 733.109L757.234 1184.27H502.326L326.723 876.953L326.289 876.193L325.854 876.953L150.251 1184.27H-104.652L181.08 733.111L181.249 732.841L181.078 732.573L-92.1119 306.538H164.012L329.576 592.506L329.979 593.203L330.424 592.533L744.648 -30.0756H994.492Z"
           stroke="#0097DC"
         />
-      </svg>
+      </svg> */}
       <div className="grid grid-cols-1 lg:grid-cols-12 ">
         <div className="col-span-1 lg:col-span-4">
           <div className="">
@@ -67,7 +67,7 @@ export default function HeroSection() {
             {[heroImageUrl, heroImageUrl, heroImageUrl].map((src, idx) => (
               <SwiperSlide key={idx}>
                 {/* Wrapper with fixed height */}
-                <div className="relative w-full h-[260px] sm:h-[360px] md:h-[480px] lg:h-[730px]">
+                <div className="relative w-full h-[260px] sm:h-[360px] md:h-[480px] lg:h-[750px]">
                   <Image src={src} alt={`Office slide ${idx + 1}`} fill sizes="100vw" className="object-cover" priority />
                 </div>
               </SwiperSlide>
