@@ -30,8 +30,8 @@ export default function PrivateOffices() {
   ];
 
   return (
-    <section className="bg-[#f7f7f7] py-16 px-4 lg:px-12">
-      <div className="max-w-7xl mx-auto ">
+    <section className="bg-[#f7f7f7] py-16 px-6 lg:px-12">
+      <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-[40px] text-start font-semibold text-primary leading-snug">
           Our Private Offices

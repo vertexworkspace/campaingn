@@ -51,8 +51,8 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="bg-white overflow-hidden py-12 md:py-16 lg:py-20 relative">
-      <div className="relative max-w-7xl xl:max-w-[65%] mx-auto flex flex-col lg:flex-row items-center justify-between px-6 lg:px-0 gap-10">
+    <section className="bg-white overflow-hidden py-12  md:py-16 lg:py-20 relative">
+      <div className="relative px-12 sm:px-6 lg:px-32 mx-autoflex flex-col lg:flex-row items-center justify-between  gap-10">
         <div className="w-full relative">
           <AnimatePresence mode="wait">
             {testimonials.map(
@@ -122,7 +122,7 @@ export default function TestimonialSection() {
       {/* DARK BAR BELOW */}
       <div className="relative z-0 mt-[-60px] sm:mt-[-80px] md:mt-[-150px]">
         <div className="bg-[#12181C] text-white">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between px-6 lg:px-0 py-5 sm:py-6 gap-4">
+          <div className="sm:px-6 lg:px-32 mx-auto flex flex-col sm:flex-row items-center justify-between  py-5 sm:py-6 gap-4">
             <div className="flex justify-between w-full sm:w-[50%] text-center sm:text-left">
               <div className="flex flex-col">
                 <h4 className="text-base sm:text-3xl font-semibold text-white">{testimonials[current].name}</h4>

@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function QuoteBanner() {
   const [open, setOpen] = useState(false);
   return (
-    <section className="relative overflow-hidden bg-[#0096E6] text-white py-20 sm:py-24 lg:py-10">
+    <section className="relative overflow-hidden bg-[#0096E6] text-white px-6 lg:px-12 py-20 sm:py-24 lg:py-10">
       {/* Optional Background Pattern (you can replace this image later) */}
       <div className="absolute right-0 inset-0 z-0 opacity-10">
         <Image
@@ -21,7 +21,7 @@ export default function QuoteBanner() {
       </div>
 
       {/* CONTENT WRAPPER */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-0 flex flex-col sm:flex-row items-center justify-between gap-8">
+      <div className="relative z-10 mpx-4 sm:px-6 lg:px-20 mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
         {/* LEFT TEXT */}
         <div className="text-center sm:text-left max-w-lg">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-snug">

@@ -27,7 +27,7 @@ export default function HeroSection() {
       </svg> */}
       <div className="grid grid-cols-1 lg:grid-cols-12 ">
         <div className="col-span-1 lg:col-span-4">
-          <div className="">
+          <div className="hidden lg:block">
             {/* LEFT CONTENT */}
             <div className="mt-0 lg:absolute">
               <div className=" bg-white w-full lg:w-[70%] h-auto lg:h-[700px] text-primary   p-6 sm:p-8 lg:p-10 relative z-10">

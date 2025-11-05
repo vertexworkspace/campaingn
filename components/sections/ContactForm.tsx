@@ -44,7 +44,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   };
 
   const formContent = (
-    <form className={cn("space-y-5 bg-transparent p-6 lg:p-0 rounded-lg", className)} onSubmit={handleSubmit}>
+    <form className={cn("space-y-5 bg-transparent  rounded-lg", className)} onSubmit={handleSubmit}>
       {/* Row 1 */}
       <FormRow>
         <FormField id="name" label="">

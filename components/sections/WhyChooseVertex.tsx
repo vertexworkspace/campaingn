@@ -38,7 +38,7 @@ export default function WhyChooseVertex() {
   const [isOpen, setIsOpen]=useState(false)
   return (
     <section className="bg-gray-50 py-16 lg:py-24 px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>

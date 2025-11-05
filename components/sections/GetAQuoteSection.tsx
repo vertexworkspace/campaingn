@@ -11,8 +11,8 @@ export default function GetAQuoteSection({
   FormComponent = <ContactForm buttonClassName="!bg-white !text-[#0097DC] !hover:bg-[#007bb5] !text-white" />,
 }: GetAQuoteSectionProps) {
   return (
-    <section className="relative bg-[#0097dc] text-white py-16 px-6 md:px-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 ">
+    <section className="relative bg-[#0097dc] text-white py-16 px-6 lg:px-12  overflow-hidden">
+      <div className="px-4 sm:px-6 lg:px-20 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 ">
         {/* LEFT CONTENT */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
