@@ -10,15 +10,16 @@ export default function QuoteBanner() {
   return (
     <section className="relative overflow-hidden bg-[#0096E6] text-white px-6 lg:px-12 py-20 sm:py-24 lg:py-10">
       {/* Optional Background Pattern (you can replace this image later) */}
-      <div className="absolute right-0 inset-0 z-0 opacity-10">
-        <Image
-          src="/images/quote-banner/bg.png" // Replace with your background lines image
-          alt=""
-          width={1000}
-          height={1000}
-          className="object-cover"
-        />
-      </div>
+      <div className="absolute inset-0 z-0 opacity-10">
+  <Image
+    src="/images/quote-banner/bg.png"
+    alt=""
+    width={1000}
+    height={1000}
+    className="object-cover absolute left-[70%] top-0 transform -translate-x-1/2 w-[1000px] h-full"
+  />
+</div>
+
 
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 mpx-4 sm:px-6 lg:px-20 mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
@@ -32,7 +33,7 @@ export default function QuoteBanner() {
 
         {/* RIGHT BUTTON */}
         <div className="flex justify-center sm:justify-end w-full sm:w-auto">
-          <Button onClick={() => setOpen(true)} className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3 rounded-md shadow-sm hover:bg-blue-50 transition">
+          <Button onClick={() => setOpen(true)} className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  hover:bg-blue-50 transition">
             Get a Quote
           </Button>
         </div>

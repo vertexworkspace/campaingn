@@ -14,10 +14,10 @@ import { AmenitiesModal } from "@/components/sections/AmenitiesModal";
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-white dark:bg-black">
-      {/* ✅ Navigation Bar */}
+   
       <Navbar />
 
-      {/* ✅ Hero Section */}
+     
       <HeroSection />
 
       <PrivateOfficeFeatures />
@@ -26,7 +26,7 @@ export default function Home() {
       <TestimonialSection />
       <QuoteBanner />
       <PrivateOffices />
-      <GetAQuoteSection FormComponent={<ContactForm />} />
+      <GetAQuoteSection />
       <Footer />
     </main>
   );

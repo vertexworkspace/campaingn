@@ -5,6 +5,7 @@ import { Button } from "../ui/Button"; // adjust import path based on your proje
 import officeImg from "../../public/images/testimonials/1.png"; // replace with your actual image path
 import { ContactForm } from "./ContactForm";
 import { useState } from "react";
+import { StyledMap } from "../ui/StyledMap";
 
 export default function PrivateOffices() {
   const [open, setOpen] = useState(false);
@@ -43,13 +44,7 @@ export default function PrivateOffices() {
 
         {/* Map */}
         <div className="mt-8 mb-12 w-full h-[300px] rounded-lg overflow-hidden">
-          <Image
-            src="/images/offices/map.png" // replace with your map image path
-            alt="Office Locations Map"
-            width={1200}
-            height={300}
-            className="object-cover w-full h-full"
-          />
+         <StyledMap/>
         </div>
 
         {/* Office Cards */}

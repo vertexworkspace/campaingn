@@ -99,53 +99,53 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white mt-20 rounded-xl shadow-lg w-full max-w-6xl  relative p-10 sm:p-12">
+            <div className="bg-white mt-20 rounded-xl shadow-lg w-full max-w-6xl relative p-10 sm:p-12">
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-5 right-5 text-gray-500 hover:text-gray-700"
+                className="absolute top-5 right-5 cursor-pointer text-gray-500 hover:text-gray-700"
               >
                 <X className="w-6 h-6" />
               </button>
-<div className="max-h-[80vh] overflow-y-auto">
-              {/* Main 3-column Layout */}
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-12 gap-y-10">
-                {/* Left Column (Heading) */}
-                <div className="col-span-4">
-                  <h2 className="text-2xl sm:text-[48px] font-semibold text-primary">
-                    Amenities
-                  </h2>
-                </div>
 
-                {/* Middle Column */}
-                <div className="flex col-span-4 flex-col gap-6">
-                  {amenitiesLeft.map((item, index) => (
-                    <div key={index}>
-                      <h3 className="text-[24px] font-semibold text-primary mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-secondary text-lg leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+              {/* Scrollable Content */}
+              <div className="max-h-[80vh] overflow-y-auto pr-4 custom-scrollbar">
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-12 gap-y-10">
+                  {/* Sticky Left Column */}
+                  <div className="col-span-4 lg:sticky top-0 self-start">
+                    <h2 className="text-2xl sm:text-[48px] font-semibold text-primary">
+                      Amenities
+                    </h2>
+                  </div>
 
-                {/* Right Column */}
-                <div className="flex col-span-4 flex-col gap-6">
-                  {amenitiesRight.map((item, index) => (
-                    <div key={index}>
-                      <h3 className="text-[24px] font-semibold text-primary mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-secondary text-lg leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  ))}
+                  {/* Middle and Right Columns */}
+                  <div className="col-span-8 grid grid-cols-2 gap-x-10">
+                    {amenitiesLeft.map((item, index) => (
+                      <React.Fragment key={index}>
+                        {/* Middle Item */}
+                        <div className="flex flex-col justify-start gap-2 border-b border-gray-100 pb-16">
+                          <h3 className="text-[20px] sm:text-[24px] font-semibold text-primary">
+                            {item.title}
+                          </h3>
+                          <p className="text-secondary text-base sm:text-lg leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        {/* Right Item */}
+                        <div className="flex flex-col justify-start gap-2 border-b border-gray-100 pb-4">
+                          <h3 className="text-[20px] sm:text-[24px] font-semibold text-primary">
+                            {amenitiesRight[index]?.title}
+                          </h3>
+                          <p className="text-secondary text-base sm:text-lg leading-relaxed">
+                            {amenitiesRight[index]?.description}
+                          </p>
+                        </div>
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </motion.div>
         </>

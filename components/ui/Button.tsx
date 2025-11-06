@@ -3,23 +3,22 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
-// Define button variants using class-variance-authority (cva)
 const buttonVariants = cva(
-  "inline-flex items-center justify-center cursor-pointer rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center cursor-pointer  text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        primary: "bg-[#0097DC] text-white !text-lg font-bold !rounded-sm hover:bg-[#0097DC]/80",
+        primary: "bg-[#0097DC] text-white text-lg font-semibold hover:bg-[#0097DC]/80",
         secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
         ghost: "hover:bg-gray-100 hover:text-gray-900",
-        link: "text-primary underline-offset-4 hover:underline",
         outline:
           "border border-gray-300 text-gray-800 hover:bg-gray-100 bg-transparent",
+        link: "text-[#0097DC] underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-13 px-4 py-4",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        default: "h-12 px-5 py-3",
+        sm: "h-9  px-3",
+        lg: "h-14 px-8",
         icon: "h-10 w-10",
       },
     },
@@ -29,7 +28,6 @@ const buttonVariants = cva(
     },
   }
 );
-
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -49,6 +47,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
-Button.displayName = "Button";
 
+Button.displayName = "Button";
 export { Button, buttonVariants };
