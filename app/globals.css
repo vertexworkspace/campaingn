@@ -68,3 +68,14 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #a8a8a8 #f1f1f1;
 }
+.PhoneInputInput{
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+}
+html {
+  scroll-behavior: smooth;
+}
+.PhoneInputCountrySelect{
+  color: black !important;
+}

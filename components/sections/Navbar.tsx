@@ -7,7 +7,7 @@ import { Button } from "../ui/Button"; // Changed path for compatibility
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import Link from "next/link";
 import Image from "next/image";
-import { ContactForm } from "./ContactForm";
+import { ContactForm } from "../ContactForm";
 
 // You'll need to install lucide-react: npm install lucide-react
 
@@ -15,7 +15,7 @@ const navLinks = [
   { href: "#overview", label: "Overview" },
   { href: "#amenities", label: "Amenities" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#location", label: "Location" },
+  { href: "#locations", label: "Location" },
 ];
 
 const Navbar = () => {
@@ -24,9 +24,9 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 z-50 w-full  ">
+      <header className="lg:absolute top-0 left-0 right-0 z-50 w-full  ">
         {/* Container for padding and max-width */}
-        <div className=" px-4 sm:px-6 lg:px-20 pt-7 mx-auto">
+        <div className=" px-4 sm:px-6 lg:px-20 py-4 lg:pt-7 mx-auto">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -36,7 +36,7 @@ const Navbar = () => {
             {/* Desktop Navigation Links */}
             <nav className="hidden md:flex text-lg  md:items-center md:space-x-8">
               {navLinks.map((item) => (
-                <Link key={item.label} href={item.href} className="font-medium text-[#000000] text-lg  transition-colors">
+                <Link key={item.label} href={item.href} className="font-medium cursor-pointer text-[#000000] text-lg  transition-colors">
                   {item.label}
                 </Link>
               ))}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <Link // Changed from <Link> for compatibility
                   key={item.label}
                   href={item.href}
-                  className="rounded-md px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                  className="rounded-md px-3 py-2 font-medium text-[#000000] cursor-pointer hover:bg-gray-100 hover:text-blue-600"
                   onClick={() => setIsMobileMenuOpen(false)} // Close menu on click
                 >
                   {item.label}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import logo from "../../public/Icons/vertex-white.svg"
 
 export default function Footer() {
   return (
@@ -10,10 +11,10 @@ export default function Footer() {
         <div className="flex items-center justify-center">
           {/* Replace with your actual logo */}
           <Image
-            src="/icons/vertex-white.svg" // 🔁 replace this path with your actual logo
+            src={logo}// 🔁 replace this path with your actual logo
             alt="Vertex Logo"
-            width={120}
-            height={50}
+            width={160}
+            height={70}
             className="object-contain"
           />
         </div>

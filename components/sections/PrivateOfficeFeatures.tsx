@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "../ui/Button";
 import { Clock, TrendingUp, HeartHandshake } from "lucide-react";
 import privetOffice from "../../public/images/privet-office.webp"; // replace with your actual image
-import { ContactForm } from "./ContactForm";
+import { ContactForm } from "../ContactForm";
 import { useState } from "react";
 
 export default function PrivateOfficeFeatures() {
@@ -123,7 +123,9 @@ export default function PrivateOfficeFeatures() {
 
           {/* Button */}
           <div className="pt-4">
-            <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">Get a Quote</Button>
+            <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
+              Get a Quote
+            </Button>
           </div>
         </div>
 
@@ -139,12 +141,7 @@ export default function PrivateOfficeFeatures() {
           />
         </div>
       </div>
-      {open && (
-        <ContactForm
-          showModal
-          onClose={() => setOpen(false)}
-        />
-      )}
+      {open && <ContactForm showModal onClose={() => setOpen(false)} />}
     </section>
   );
 }

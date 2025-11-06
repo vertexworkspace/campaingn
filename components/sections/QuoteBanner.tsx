@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "../ui/Button";
-import { ContactForm } from "./ContactForm";
+import { ContactForm } from "../ContactForm";
 import { useState } from "react";
 
 export default function QuoteBanner() {
@@ -11,15 +11,14 @@ export default function QuoteBanner() {
     <section className="relative overflow-hidden bg-[#0097DC] text-white px-6 lg:px-12 py-14  lg:py-16">
       {/* Optional Background Pattern (you can replace this image later) */}
       <div className="absolute inset-0 z-0 opacity-10">
-  <Image
-    src="/images/quote-banner/bg.png"
-    alt=""
-    width={1000}
-    height={1000}
-    className="object-cover hidden lg:block absolute left-[70%] top-0 transform -translate-x-1/2 w-[1000px] h-full"
-  />
-</div>
-
+        <Image
+          src="/images/quote-banner/bg.png"
+          alt=""
+          width={1000}
+          height={1000}
+          className="object-cover hidden lg:block absolute left-[70%] top-0 transform -translate-x-1/2 w-[1000px] h-full"
+        />
+      </div>
 
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 mpx-4 sm:px-6 lg:px-20 mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
@@ -33,17 +32,15 @@ export default function QuoteBanner() {
 
         {/* RIGHT BUTTON */}
         <div className="flex justify-center sm:justify-end w-full sm:w-auto">
-          <Button onClick={() => setOpen(true)} className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  hover:bg-blue-50 transition">
+          <Button
+            onClick={() => setOpen(true)}
+            className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  hover:bg-blue-50 transition"
+          >
             Get a Quote
           </Button>
         </div>
       </div>
-      {open && (
-        <ContactForm
-          showModal
-          onClose={() => setOpen(false)}
-        />
-      )}
+      {open && <ContactForm showModal onClose={() => setOpen(false)} />}
     </section>
   );
 }

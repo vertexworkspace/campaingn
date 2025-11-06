@@ -7,24 +7,44 @@ import TestimonialSection from "@/components/sections/TestimonialSection";
 import QuoteBanner from "@/components/sections/QuoteBanner";
 import PrivateOffices from "@/components/sections/PrivateOffices";
 import GetAQuoteSection from "@/components/sections/GetAQuoteSection";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { ContactForm } from "@/components/ContactForm";
 import Footer from "@/components/sections/Footer";
-import { AmenitiesModal } from "@/components/sections/AmenitiesModal";
+import { AmenitiesModal } from "@/components/AmenitiesModal";
 
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-white dark:bg-black">
       <Navbar />
 
-      <HeroSection />
+      {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
+      <section id="overview">
+        <HeroSection />
+      </section>
 
-      <PrivateOfficeFeatures />
+      <section id="amenities">
+        <PrivateOfficeFeatures />
+      </section>
 
-      <WhyChooseVertex />
-      <TestimonialSection />
-      <QuoteBanner />
-      <PrivateOffices />
-      <GetAQuoteSection />
+      <section>
+        <WhyChooseVertex />
+      </section>
+
+      <section>
+        <TestimonialSection />
+      </section>
+
+      <section>
+        <QuoteBanner />
+      </section>
+
+      <section id="pricing">
+        <PrivateOffices />
+      </section>
+
+      <section id="locations">
+        <GetAQuoteSection />
+      </section>
+
       <Footer />
     </main>
   );

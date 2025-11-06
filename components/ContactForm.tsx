@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "../ui/Button";
-import { Input } from "../ui/Input";
-import { Select } from "../ui/Select";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { Select } from "./ui/Select";
 
 // ✅ Utility for conditional class joining
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -38,6 +40,7 @@ interface ContactFormProps {
 }
 
 export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
+  const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -51,10 +54,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
   const button =
     variant === "secondary" ? (
-      <Button
-        type="submit"
-        className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  shadow-sm hover:bg-blue-50 transition"
-      >
+      <Button type="submit" className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  shadow-sm hover:bg-blue-50 transition">
         Get a Quote
       </Button>
     ) : (
@@ -92,23 +92,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
       {/* Row 2 */}
       <FormRow>
         <FormField id="phone">
-          <div className="flex">
-            <span
-              className={cn(
-                "inline-flex items-center  border border-r-0 px-3 text-sm",
-                variant === "secondary" ? "border-white text-white bg-transparent" : "border-[#E2E2E2] text-[#848484] white"
-              )}
-            >
-              +91
-            </span>
-            <Input
-              id="phone"
-              type="tel"
-              placeholder="Phone"
-              required
-              className={cn("rounded-l-none", borderColor, inputBg, placeholderColor, placeholderSize)}
-            />
-          </div>
+          <PhoneInput
+            international
+            defaultCountry="IN"
+            value={phone}
+            onChange={setPhone}
+            placeholder="Phone"
+            className={cn("flex w-full border px-3 py-2 text-sm  outline-none", borderColor, inputBg, placeholderColor)}
+          />
         </FormField>
 
         <FormField id="email">
@@ -145,41 +136,34 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">
-  <div className="flex w-full justify-between flex-wrap items-center flex-col md:flex-row gap-3">
-    <div className="flex items-center">
-    <input
-  id="consent"
-  name="consent"
-  type="checkbox"
-  defaultChecked
-  className={cn(
-    "relative h-4 w-4 cursor-pointer rounded-sm border-2 transition-all duration-200",
-    "focus:outline-none focus:ring-0 focus:ring-offset-0",
-    variant === "secondary"
-      ? // 🟢 Secondary version: white border, black tick, transparent bg
-        "border-white checked:border-white checked:bg-transparent checked:[mask-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%2720 6 9 17 4 12%27/%3E%3C/svg%3E')] checked:bg-no-repeat checked:bg-center"
-      : // 🔵 Primary version: gray border, blue bg, white tick
-        "border-[#E2E2E2] checked:border-[#0097DC] checked:bg-[#0097DC] checked:[mask-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27white%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%2720 6 9 17 4 12%27/%3E%3C/svg%3E')] checked:bg-no-repeat checked:bg-center"
-  )}
-/>
+        <div className="flex w-full justify-between flex-wrap items-center flex-col md:flex-row gap-3">
+          <div className="flex items-center">
+            <input
+              id="consent"
+              name="consent"
+              type="checkbox"
+              defaultChecked
+              className={cn(
+                // Base styles
+                "h-4 w-4 cursor-pointer appearance-none rounded-sm border-2 align-middle",
+                "transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0",
+                // Checked state styles
+                "checked:bg-[#0097DC] checked:bg-no-repeat checked:bg-center checked:bg-[length:12px_12px]",
+                // ✅ White tick as Base64-encoded SVG (centered, visible)
+                "checked:bg-[url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiIvPjwvc3ZnPg==')]",
+                // Variant handling
+                variant === "secondary" ? "border-white" : "border-[#E2E2E2]"
+              )}
+            />
 
+            <label htmlFor="consent" className={cn("ml-3 block text-sm select-none", variant === "secondary" ? "text-white" : "text-gray-700")}>
+              Consent to contact me via Call, SMS, Email, or WhatsApp
+            </label>
+          </div>
 
-
-      <label
-        htmlFor="consent"
-        className={cn(
-          "ml-3 block text-sm",
-          variant === "secondary" ? "text-white" : "text-gray-700"
-        )}
-      >
-        Consent to contact me via Call, SMS, Email, or WhatsApp
-      </label>
-    </div>
-
-    {button}
-  </div>
-</div>
-
+          {button}
+        </div>
+      </div>
     </form>
   );
 
