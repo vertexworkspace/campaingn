@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const notoSans = Noto_Sans({
@@ -54,9 +54,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={notoSans.className}>
-        <SpeedInsights />
         <Navbar />
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>   <SpeedInsights />{children}</SmoothScroll>
       </body>
     </html>
   );
