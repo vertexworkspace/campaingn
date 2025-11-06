@@ -14,18 +14,16 @@ import { AmenitiesModal } from "@/components/AmenitiesModal";
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-white ">
-     
-
       {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
       <section id="overview">
         <HeroSection />
       </section>
 
-      <section id="amenities">
+      <section>
         <PrivateOfficeFeatures />
       </section>
 
-      <section>
+      <section id="amenities">
         <WhyChooseVertex />
       </section>
 
@@ -44,8 +42,7 @@ export default function Home() {
       <section id="locations">
         <GetAQuoteSection />
       </section>
-
-    <Footer />
+      <Footer />
     </main>
   );
 }
