@@ -35,7 +35,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full  bg-white pb-10 lg:pb-16 lg:pt-36 overflow-hidden">
-      <svg className="absolute top-0" width="996" height="1117" viewBox="0 0 996 1117" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="absolute hidden lg:block top-0" width="996" height="1117" viewBox="0 0 996 1117" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M994.492 -30.0756L474.003 732.561L473.819 732.832L473.994 733.109L757.234 1184.27H502.326L326.723 876.953L326.289 876.193L325.854 876.953L150.251 1184.27H-104.652L181.08 733.111L181.249 732.841L181.078 732.573L-92.1119 306.538H164.012L329.576 592.506L329.979 593.203L330.424 592.533L744.648 -30.0756H994.492Z"
           stroke="#0097DC"

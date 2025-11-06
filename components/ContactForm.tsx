@@ -6,6 +6,7 @@ import { Input } from "./ui/Input";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Select } from "./ui/Select";
+import { motion, AnimatePresence } from "framer-motion";
 
 // ✅ Utility for conditional class joining
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -41,6 +42,7 @@ interface ContactFormProps {
 
 export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
+  const [description, setDescription] = React.useState("");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -118,20 +120,36 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
       </FormRow>
 
       {/* Description */}
-      <FormField id="description">
+      <FormField id="description" className="relative">
         <textarea
           id="description"
           rows={4}
+          maxLength={125}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="Description (Optional)"
           className={cn(
-            "flex w-full  placeholder:text-sm border px-3 py-2 text-sm outline-none",
+            "flex w-full placeholder:text-sm border px-3 py-2 text-sm outline-none resize-none",
             borderColor,
             inputBg,
             placeholderColor,
             placeholderSize
           )}
         />
-        <p className={cn("text-xs text-right", variant === "secondary" ? "text-white/70" : "text-gray-400")}>0/125</p>
+        <p
+          className={cn(
+            "text-xs absolute bottom-2 right-3 text-right transition-colors duration-200",
+            variant === "secondary"
+              ? description.length >= 120
+                ? "text-red-300"
+                : "text-white/70"
+              : description.length >= 120
+              ? "text-red-500"
+              : "text-gray-400"
+          )}
+        >
+          {description.length}/125
+        </p>
       </FormField>
 
       {/* Consent + Button */}
@@ -171,29 +189,46 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   if (!showModal) return formContent;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-4xl mx-4">
-        {/* Close Button */}
-        <button onClick={onClose} className="absolute cursor-pointer top-8 right-8 text-xl" aria-label="Close form">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.876 1L1 14.8781M14.876 14.8781L1 1" stroke="#848484" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
+    <AnimatePresence>
+      {showModal && (
+        <motion.div
+          key="contact-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative w-full max-w-4xl mx-4"
+          >
+            {/* Close Button */}
+            <button onClick={onClose} className="absolute cursor-pointer top-8 right-8 text-xl" aria-label="Close form">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.876 1L1 14.8781M14.876 14.8781L1 1" stroke="#848484" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
 
-        <div className="bg-white p-7 lg:p-12 rounded-lg">
-          <div>
-            <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
-              Private Offices <br />
-              That Mean Business
-            </h1>
-            <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
-              Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
-            </p>
-          </div>
+            <div className="bg-white p-7 lg:p-12 rounded-lg">
+              <div>
+                <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
+                  Private Offices <br />
+                  That Mean Business
+                </h1>
+                <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
+                  Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
+                </p>
+              </div>
 
-          {formContent}
-        </div>
-      </div>
-    </div>
+              {formContent}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

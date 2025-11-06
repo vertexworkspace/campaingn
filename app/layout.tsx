@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -12,16 +11,16 @@ const notoSans = Noto_Sans({
 
 export const metadata: Metadata = {
   title: 'Special Offer on Office Space | Vertex Workspace Mangalore',
-  description: 'Discover flexible office solutions in Mangalore. Get a special offer on private offices, coworking, & virtual offices at Vertex. Book your tour today!',
-  // You can also add Open Graph (Facebook/LinkedIn) and Twitter card data
+  description:
+    'Discover flexible office solutions in Mangalore. Get a special offer on private offices, coworking, & virtual offices at Vertex. Book your tour today!',
   openGraph: {
     title: 'Special Offer on Office Space | Vertex Workspace Mangalore',
     description: 'Get a special offer on flexible office solutions at Vertex.',
-    url: 'https://vertexworkspace.com/campaign', // Use your full campaign URL here
+    url: 'https://vertexworkspace.com/campaign',
     siteName: 'Vertex Workspace',
     images: [
       {
-        url: 'https://vertexworkspace.com/your-campaign-image.jpg', // Add a link to a relevant image
+        url: 'https://vertexworkspace.com/your-campaign-image.jpg',
         width: 1200,
         height: 630,
       },
@@ -33,9 +32,15 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Special Offer on Office Space | Vertex Workspace Mangalore',
     description: 'Get a special offer on flexible office solutions at Vertex.',
-    images: ['https://vertexworkspace.com/your-campaign-image.jpg'], // Add a link to a relevant image
+    images: ['https://vertexworkspace.com/your-campaign-image.jpg'],
   },
-}
+  icons: {
+    icon: '/Icons/icon.png', // ✅ main favicon
+    shortcut: '/Icons/icon.png', // ✅ optional for older browsers
+    apple: '/apple-touch-icon.png', // ✅ optional for iOS devices
+  },
+};
+
 
 export default function RootLayout({
   children,
@@ -48,6 +53,7 @@ export default function RootLayout({
         className={notoSans.className}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
