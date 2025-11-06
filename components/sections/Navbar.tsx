@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
-import vertexlogo from "../../public/icons/vertexlogo.svg";
+import vertexlogo from "../../public/vertexlogo.svg";
 import { ContactForm } from "../ContactForm";
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
