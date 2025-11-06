@@ -34,7 +34,7 @@ export default function QuoteBanner() {
         <div className="flex justify-center sm:justify-end w-full sm:w-auto">
           <Button
             onClick={() => setOpen(true)}
-            className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  hover:bg-blue-50 transition"
+            className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-blue-50 transition"
           >
             Get a Quote
           </Button>

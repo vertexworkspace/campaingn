@@ -52,7 +52,7 @@ export default function PrivateOffices() {
                 <h3 className="text-3xl font-semibold text-primary">{office.title}</h3>
                 <p className="text-secondary mt-1 text-lg leading-relaxed">{office.address}</p>
                 <div className="mt-6">
-                  <Button onClick={() => setOpen(true)} variant="primary" size="default">
+                  <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
                     Get a Quote
                   </Button>
                 </div>

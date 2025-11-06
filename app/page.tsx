@@ -13,8 +13,8 @@ import { AmenitiesModal } from "@/components/AmenitiesModal";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-white dark:bg-black">
-      <Navbar />
+    <main className="flex flex-col min-h-screen bg-white ">
+     
 
       {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
       <section id="overview">
@@ -45,7 +45,7 @@ export default function Home() {
         <GetAQuoteSection />
       </section>
 
-      <Footer />
+    <Footer />
     </main>
   );
 }
