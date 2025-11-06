@@ -110,7 +110,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
 
               {/* Scrollable Content */}
               <div className="max-h-[80vh] overflow-x-hidden overflow-y-auto pr-4 custom-scrollbar">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-5 lg:gap-y-10">
                   {/* Sticky Left Column */}
                   <div className="col-span-4 lg:sticky top-0 self-start">
                     <h2 className="text-2xl sm:text-[48px] font-semibold text-primary">
