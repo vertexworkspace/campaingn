@@ -110,7 +110,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
 
               {/* Scrollable Content */}
               <div className="max-h-[80vh] overflow-y-auto pr-4 custom-scrollbar">
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-12 gap-y-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10">
                   {/* Sticky Left Column */}
                   <div className="col-span-4 lg:sticky top-0 self-start">
                     <h2 className="text-2xl sm:text-[48px] font-semibold text-primary">
@@ -119,7 +119,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
                   </div>
 
                   {/* Middle and Right Columns */}
-                  <div className="col-span-8 grid grid-cols-2 gap-x-10">
+                  <div className="col-span-8 grid lg:grid-cols-2 gap-x-10">
                     {amenitiesLeft.map((item, index) => (
                       <React.Fragment key={index}>
                         {/* Middle Item */}

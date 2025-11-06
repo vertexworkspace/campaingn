@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function PrivateOfficeFeatures() {
   const [open, setOpen] = useState(false);
   return (
-    <section className="bg-white py-16 lg:py-24 px-6 lg:px-12">
+    <section className="bg-white pb-16 lg:py-24 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* LEFT SIDE CONTENT */}
         <div className="space-y-6">
@@ -21,7 +21,7 @@ export default function PrivateOfficeFeatures() {
               <br />
               That Thrive in Focus
             </h2>
-            <p className="mt-4 text-primary text-base sm:text-lg max-w-md">
+            <p className="mt-4 text-primary font-semibold text-base sm:text-lg max-w-xl">
               Our private offices are built for professionals who want a fully furnished, lockable office with access to world-class amenities.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function PrivateOfficeFeatures() {
 
           {/* Button */}
           <div className="pt-4">
-            <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 rounded-md">Get a Quote</Button>
+            <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">Get a Quote</Button>
           </div>
         </div>
 

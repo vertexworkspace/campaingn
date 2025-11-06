@@ -36,10 +36,10 @@ export default function WhyChooseVertex() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="bg-gray-50 py-16 lg:py-24 px-6 lg:px-12">
+    <section className="bg-[#F8F8F8] py-16 lg:py-24 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+        <div className="flex flex-col lg:flex-row justify-between flex-wrap items-start lg:items-center mb-10 gap-4">
           <div>
             <h2 className="text-3xl sm:text-[40px] font-semibold text-primary leading-snug">
               Why Choose Vertex
@@ -60,7 +60,7 @@ export default function WhyChooseVertex() {
         </div>
 
         {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Column (Tall Card for Desktop, Square on Mobile) */}
           <div className="relative rounded-lg overflow-hidden group h-[250px] sm:h-[250px] lg:h-[630px] xl:h-full">
             <Image

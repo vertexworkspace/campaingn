@@ -31,7 +31,7 @@ export default function PrivateOffices() {
   ];
 
   return (
-    <section className="bg-[#f7f7f7] py-16 px-6 lg:px-12">
+    <section className="bg-[#F8F8F8] py-16 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-[40px] text-start font-semibold text-primary leading-snug">
@@ -61,10 +61,8 @@ export default function PrivateOffices() {
                   fill
                   className="object-cover"
                 />
-                {/* Corner Badge */}
-                <div className="absolute top-3 right-3 bg-white/90 text-gray-800 font-semibold text-sm w-7 h-7 flex items-center justify-center rounded-full border border-gray-300">
-                  A
-                </div>
+             
+
               </div>
               <div className="p-6 text-left">
                 <h3 className="text-3xl font-semibold text-primary">

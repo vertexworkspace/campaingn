@@ -24,9 +24,9 @@ const Navbar = () => {
 
   return (
     <>
-      <header className=" top-0 z-50 w-full bg-transparent backdrop-blur-sm">
+      <header className="absolute top-0 left-0 right-0 z-50 w-full  ">
         {/* Container for padding and max-width */}
-        <div className=" px-4 sm:px-6 lg:px-20 py-3 mx-auto">
+        <div className=" px-4 sm:px-6 lg:px-20 pt-7 mx-auto">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0">
