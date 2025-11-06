@@ -24,7 +24,7 @@ export default function QuoteBanner() {
       <div className="relative z-10 mpx-4 sm:px-6 lg:px-20 mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
         {/* LEFT TEXT */}
         <div className="text-center sm:text-left max-w-lg">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-snug">
+          <h2 className="text-3xl lg:text-4xl font-semibold leading-snug">
             Find the space that <br className="hidden sm:block" />
             fits your vision.
           </h2>

@@ -85,7 +85,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
         <>
           {/* Overlay */}
           <motion.div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            className="fixed inset-0  bg-black/50 backdrop-blur-sm z-40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -99,7 +99,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white mt-20 rounded-xl shadow-lg w-full max-w-6xl relative p-10 sm:p-12">
+            <div className="bg-white mt-20 rounded-xl shadow-lg w-full max-w-6xl relative p-5 sm:p-12">
               {/* Close Button */}
               <button
                 onClick={onClose}
@@ -109,7 +109,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
               </button>
 
               {/* Scrollable Content */}
-              <div className="max-h-[80vh] overflow-y-auto pr-4 custom-scrollbar">
+              <div className="max-h-[80vh] overflow-x-hidden overflow-y-auto pr-4 custom-scrollbar">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10">
                   {/* Sticky Left Column */}
                   <div className="col-span-4 lg:sticky top-0 self-start">
@@ -123,7 +123,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
                     {amenitiesLeft.map((item, index) => (
                       <React.Fragment key={index}>
                         {/* Middle Item */}
-                        <div className="flex flex-col justify-start gap-2  pb-16">
+                        <div className="flex flex-col justify-start gap-2  pb-4 lg:pb-16">
                           <h3 className="text-[20px] sm:text-[24px] font-semibold text-primary">
                             {item.title}
                           </h3>
