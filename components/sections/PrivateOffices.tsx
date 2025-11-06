@@ -43,7 +43,7 @@ export default function PrivateOffices() {
         </p>
 
         {/* Map */}
-        <div className="mt-8 mb-12 w-full h-[300px] rounded-lg overflow-hidden">
+        <div className="mt-8 mb-12 w-full h-[300px]  overflow-hidden">
          <StyledMap/>
         </div>
 

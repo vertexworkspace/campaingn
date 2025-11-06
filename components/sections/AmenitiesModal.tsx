@@ -123,7 +123,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
                     {amenitiesLeft.map((item, index) => (
                       <React.Fragment key={index}>
                         {/* Middle Item */}
-                        <div className="flex flex-col justify-start gap-2 border-b border-gray-100 pb-16">
+                        <div className="flex flex-col justify-start gap-2  pb-16">
                           <h3 className="text-[20px] sm:text-[24px] font-semibold text-primary">
                             {item.title}
                           </h3>
@@ -133,7 +133,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
                         </div>
 
                         {/* Right Item */}
-                        <div className="flex flex-col justify-start gap-2 border-b border-gray-100 pb-4">
+                        <div className="flex flex-col justify-start gap-2  pb-4">
                           <h3 className="text-[20px] sm:text-[24px] font-semibold text-primary">
                             {amenitiesRight[index]?.title}
                           </h3>

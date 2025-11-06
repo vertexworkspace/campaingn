@@ -6,14 +6,11 @@ import { Input } from "../ui/Input";
 import { Select } from "../ui/Select";
 
 // ✅ Utility for conditional class joining
-const cn = (...classes: (string | boolean | undefined)[]) =>
-  classes.filter(Boolean).join(" ");
+const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
 
 // ✅ Layout wrapper for consistent spacing
 const FormRow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-    {children}
-  </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">{children}</div>
 );
 
 // ✅ Generic FormField wrapper
@@ -25,10 +22,7 @@ const FormField: React.FC<{
 }> = ({ id, label, className, children }) => (
   <div className={cn("space-y-2", className)}>
     {label && (
-      <label
-        htmlFor={id}
-        className="text-sm font-medium text-[#848484]"
-      >
+      <label htmlFor={id} className="text-sm font-medium text-[#848484]">
         {label}
       </label>
     )}
@@ -43,12 +37,7 @@ interface ContactFormProps {
   variant?: "primary" | "secondary";
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({
-  className,
-  showModal = false,
-  onClose,
-  variant = "primary",
-}) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -56,10 +45,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
   // 🎨 Variant-based style setup
   const borderColor = variant === "secondary" ? "border-white" : "border-[#E2E2E2]";
-  const placeholderColor =
-    variant === "secondary"
-      ? "placeholder-white text-white"
-      : "placeholder-[#848484] text-[#848484]";
+  const placeholderColor = variant === "secondary" ? "placeholder-white text-white" : "placeholder-[#848484] text-[#848484]";
   const inputBg = "bg-transparent";
   const placeholderSize = "text-sm";
 
@@ -78,35 +64,27 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     );
 
   const formContent = (
-    <form
-      onSubmit={handleSubmit}
-      className={cn("space-y-5 rounded-lg", className)}
-    >
+    <form onSubmit={handleSubmit} className={cn("space-y-5 rounded-lg", className)}>
       {/* Row 1 */}
       <FormRow>
         <FormField id="name">
-          <Input
-            id="name"
-            type="text"
-            placeholder="Name"
-            required
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
-          />
+          <Input id="name" type="text" placeholder="Name" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
         </FormField>
 
         <FormField id="location">
-          <Select
-            id="location"
-            defaultValue=""
-            required
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
-          >
+          <Select id="location" defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
             <option value="" disabled>
               Location
             </option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Hyderabad">Hyderabad</option>
+            <option value="Bangalore" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
+              Bangalore
+            </option>
+            <option value="Chennai" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
+              Chennai
+            </option>
+            <option value="Hyderabad" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
+              Hyderabad
+            </option>
           </Select>
         </FormField>
       </FormRow>
@@ -117,10 +95,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           <div className="flex">
             <span
               className={cn(
-                "inline-flex items-center rounded-l-md border border-r-0 px-3 text-sm",
-                variant === "secondary"
-                  ? "border-white text-white bg-transparent"
-                  : "border-[#E2E2E2] text-[#848484] bg-gray-100"
+                "inline-flex items-center  border border-r-0 px-3 text-sm",
+                variant === "secondary" ? "border-white text-white bg-transparent" : "border-[#E2E2E2] text-[#848484] bg-gray-100"
               )}
             >
               +91
@@ -130,45 +106,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               type="tel"
               placeholder="Phone"
               required
-              className={cn(
-                "rounded-l-none",
-                borderColor,
-                inputBg,
-                placeholderColor,
-                placeholderSize
-              )}
+              className={cn("rounded-l-none", borderColor, inputBg, placeholderColor, placeholderSize)}
             />
           </div>
         </FormField>
 
         <FormField id="email">
-          <Input
-            id="email"
-            type="email"
-            placeholder="Email"
-            required
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
-          />
+          <Input id="email" type="email" placeholder="Email" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
         </FormField>
       </FormRow>
 
       {/* Row 3 */}
       <FormRow>
         <FormField id="company">
-          <Input
-            id="company"
-            type="text"
-            placeholder="Company Name"
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
-          />
+          <Input id="company" type="text" placeholder="Company Name" className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
         </FormField>
         <FormField id="team-size">
-          <Input
-            id="team-size"
-            type="number"
-            placeholder="Team Size"
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
-          />
+          <Input id="team-size" type="number" placeholder="Team Size" className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
         </FormField>
       </FormRow>
 
@@ -186,43 +140,41 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             placeholderSize
           )}
         />
-        <p
-          className={cn(
-            "text-xs text-right",
-            variant === "secondary" ? "text-white/70" : "text-gray-400"
-          )}
-        >
-          0/125
-        </p>
+        <p className={cn("text-xs text-right", variant === "secondary" ? "text-white/70" : "text-gray-400")}>0/125</p>
       </FormField>
 
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">
-        <div className="flex w-full justify-between items-center flex-col md:flex-row gap-3">
-          <div className="flex items-center">
-            <input
-              id="consent"
-              name="consent"
-              type="checkbox"
-              className={cn(
-                "h-4 w-4 rounded border-gray-300 text-[#0097DC]",
-                variant === "secondary" ? "bg-transparent border-white" : ""
-              )}
-              defaultChecked
-            />
-            <label
-              htmlFor="consent"
-              className={cn(
-                "ml-3 block text-sm",
-                variant === "secondary" ? "text-white" : "text-gray-700"
-              )}
-            >
-              Consent to contact me via Call, SMS, Email, or WhatsApp
-            </label>
-          </div>
-          {button}
-        </div>
-      </div>
+  <div className="flex w-full justify-between items-center flex-col md:flex-row gap-3">
+    <div className="flex items-center">
+      <input
+        id="consent"
+        name="consent"
+        type="checkbox"
+        className={cn(
+          "h-4 w-4 rounded transition-all duration-200 cursor-pointer accent-[#0097DC]",
+          variant === "secondary"
+            ? "border !border-white focus:ring-white/40"
+            : "border-none focus:ring-[#0097DC]/40"
+        )}
+        defaultChecked
+      />
+
+      <label
+        htmlFor="consent"
+        className={cn(
+          "ml-3 block text-sm",
+          variant === "secondary" ? "text-white" : "text-gray-700"
+        )}
+      >
+        Consent to contact me via Call, SMS, Email, or WhatsApp
+      </label>
+    </div>
+
+    {button}
+  </div>
+</div>
+
     </form>
   );
 
@@ -233,25 +185,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="relative w-full max-w-4xl mx-4">
         {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute cursor-pointer top-4 right-4 text-xl"
-          aria-label="Close form"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.876 1L1 14.8781M14.876 14.8781L1 1"
-              stroke="#848484"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+        <button onClick={onClose} className="absolute cursor-pointer top-4 right-4 text-xl" aria-label="Close form">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.876 1L1 14.8781M14.876 14.8781L1 1" stroke="#848484" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
 

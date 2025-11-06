@@ -62,7 +62,7 @@ export default function WhyChooseVertex() {
         {/* Responsive Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Left Column (Tall Card for Desktop, Square on Mobile) */}
-          <div className="relative rounded-lg overflow-hidden group h-[250px] sm:h-[250px] lg:h-[630px]">
+          <div className="relative rounded-lg overflow-hidden group h-[250px] sm:h-[250px] lg:h-[630px] xl:h-full">
             <Image
               src={amenities[0].image}
               alt={amenities[0].title}

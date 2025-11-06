@@ -14,10 +14,8 @@ import { AmenitiesModal } from "@/components/sections/AmenitiesModal";
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-white dark:bg-black">
-   
       <Navbar />
 
-     
       <HeroSection />
 
       <PrivateOfficeFeatures />

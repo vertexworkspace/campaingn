@@ -158,7 +158,7 @@ export default function TestimonialSection() {
                           width={1000}
                           height={1000}
                           src={testimonial.image}
-                          className="object-contain w-full h-auto relative z-30"
+                          className="object-contain w-full h-auto xl:h-[60vh] relative z-30"
                         />
                       </div>
                     </div>
