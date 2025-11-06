@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logo from "../../public/Icons/vertex-white.svg"
+import logo from "../../public/icons/vertex-white.svg"
 
 export default function Footer() {
   return (

@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     images: ["/Icons/og-image.jpg"],
   },
   icons: {
-    icon: "/Icons/icon.png", 
-    shortcut: "/Icons/icon.png",
-    apple: "/Icons/apple-touch-icon.png",
+    icon: "/icons/icon.png", 
+    shortcut: "/icons/icon.png",
+    apple: "/icons/apple-touch-icon.png",
   },
   metadataBase: new URL("https://vertexworkspace.com"),
 };
