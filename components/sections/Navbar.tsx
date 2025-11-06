@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react"; // For mobile menu icons
 import Link from "next/link";
 import Image from "next/image";
 import { ContactForm } from "../ContactForm";
+import vertexlogo from "../../public/Icons/vertexlogo.svg"
 
 // You'll need to install lucide-react: npm install lucide-react
 
@@ -30,7 +31,7 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Image src="/icons/vertexlogo.svg" alt="Vertex Logo" width={150} height={32} priority />
+              <Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority />
             </div>
 
             {/* Desktop Navigation Links */}
