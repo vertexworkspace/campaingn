@@ -7,11 +7,20 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    if (window.history.length > 1) {
-      router.back();
-    } else {
-      router.replace("/coworking-space");
-    }
+    let navigated = false;
+
+    // Try going back first
+    router.back();
+
+    // After a short delay, if still on the same page, redirect
+    const timeout = setTimeout(() => {
+      if (!navigated) {
+        router.replace("/coworking-space");
+      }
+    }, 300);
+
+    // Clean up
+    return () => clearTimeout(timeout);
   }, [router]);
 
   return null;
