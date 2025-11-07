@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navbar from "@/components/sections/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
+import { Analytics } from "@vercel/analytics/next";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     images: ["/Icons/og-image.jpg"],
   },
   icons: {
-    icon: "/icons/icon.png", 
+    icon: "/icons/icon.png",
     shortcut: "/icons/icon.png",
     apple: "/icons/apple-touch-icon.png",
   },
@@ -55,7 +56,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={notoSans.className}>
         <Navbar />
-        <SmoothScroll>   <SpeedInsights />{children}</SmoothScroll>
+
+        <SpeedInsights />
+        <Analytics />
+        <SmoothScroll> {children} </SmoothScroll>
       </body>
     </html>
   );
