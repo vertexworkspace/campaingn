@@ -132,7 +132,7 @@ export default function TestimonialSection() {
       <div className="relative px-12 sm:px-6 lg:px-32 mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
         <div className="w-full relative">
           {/* Navigation Buttons (Static) */}
-          <div className="absolute hidden w-full left-0 top-[50%] lg:left-auto lg:top-72 lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
+          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg2:top-72 lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
             <button
               onClick={prevSlide}
               aria-label="Previous testimonial"
@@ -192,7 +192,7 @@ export default function TestimonialSection() {
                     className="relative z-10 flex flex-col lg:flex-row justify-between lg:gap-10"
                   >
                     {/* LEFT — Text Content */}
-                    <div className="relative z-20 flex flex-col items-start justify-start mt-8 space-y-6 w-full lg:w-1/2 text-center lg:text-left  lg:pt-10">
+                    <div className="relative z-20 flex flex-col items-start justify-start mt-4 lg:mt-8 space-y-6 w-full lg:w-1/2 text-center lg:text-left  lg2:pt-10">
 
                       <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-3xl font-semibold text-primary max-w-2xl mx-auto lg:mx-0">
                         {testimonial.text}
@@ -219,7 +219,7 @@ export default function TestimonialSection() {
       </div>
 
       {/* ===================== DARK FOOTER BAR ===================== */}
-      <div className="relative z-0 mt-[-20px] sm:mt-[-80px] lg:mt-[-150px] ">
+      <div className="relative z-0 mt-[-20px] sm:mt-[-10px] lg:mt-[-15px] lg2:mt-[-150px] ">
         <div className="bg-[#12181C] text-white">
           <div className="sm:px-6 lg:px-32 mx-auto flex flex-col sm:flex-row items-center justify-between py-10 sm:py-6 gap-4">
             <div className="flex justify-between px-10 lg:px-0 w-full lg:w-[50%] text-center sm:text-left">

@@ -5,8 +5,9 @@ import { Button } from "../ui/Button";
 import { ContactForm } from "../ContactForm";
 import { useState } from "react";
 
-export default function QuoteBanner() {
+export default function QuoteBanner({ type = "primary" }: { type?: string }) {
   const [open, setOpen] = useState(false);
+  const cta = type === "primary" ? "Get a Quote" : "Book Now";
   return (
     <section className="relative overflow-hidden bg-[#0097DC] text-white px-6 lg:px-12 py-14  lg:py-16">
       {/* Optional Background Pattern (you can replace this image later) */}
@@ -32,11 +33,8 @@ export default function QuoteBanner() {
 
         {/* RIGHT BUTTON */}
         <div className="flex justify-center sm:justify-end w-full sm:w-auto">
-          <Button
-            onClick={() => setOpen(true)}
-            className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-blue-50 transition"
-          >
-            Get a Quote
+          <Button onClick={() => setOpen(true)} className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-blue-50 transition">
+            {cta}
           </Button>
         </div>
       </div>

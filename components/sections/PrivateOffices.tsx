@@ -32,7 +32,7 @@ export default function PrivateOffices() {
   ];
 
   return (
-    <section className="bg-[#F8F8F8] py-16 px-6 lg:px-12">
+    <section className="bg-[#F8F8F8] pt-10 pb-14 lg:py-16 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-[40px] text-start font-semibold text-primary leading-snug">Our Private Offices</h2>

@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function PrivateOfficeFeatures() {
   const [open, setOpen] = useState(false);
   return (
-    <section className="bg-white pb-16 lg:py-24 px-6 lg:px-12">
+    <section className="bg-white pb-11 lg:py-24 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* LEFT SIDE CONTENT */}
         <div className="space-y-6">

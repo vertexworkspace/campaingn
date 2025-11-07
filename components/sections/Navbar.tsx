@@ -11,7 +11,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 
-const navLinks = [
+const navLinksCoworking = [
+  { href: "#overviewsco", label: "Overview" },
+  { href: "#amenitiesco", label: "Amenities" },
+  { href: "#pricingsco", label: "Pricing" },
+  { href: "#locationsco", label: "Location" },
+];
+
+const navLinksWorkSpace = [
   { href: "#overview", label: "Overview" },
   { href: "#amenities", label: "Amenities" },
   { href: "#pricing", label: "Pricing" },
@@ -22,6 +29,8 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
+const navLinks=pathname==="coworking-space"?navLinksCoworking:navLinksWorkSpace
 
   return (
     <>

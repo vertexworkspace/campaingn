@@ -29,7 +29,7 @@ const page = () => {
       </section>
 
       <section>
-        <QuoteBanner />
+        <QuoteBanner type='secondary'/>
       </section>
 
       <section id="pricing">

@@ -39,7 +39,7 @@ export default function WhyChooseVertex() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="bg-[#F8F8F8] py-16 lg:pt-20 px-6 lg:px-12">
+    <section className="bg-[#F8F8F8] pt-8 pb-12 lg:pt-20 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between flex-wrap items-start lg:items-center mb-10 gap-4">

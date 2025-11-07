@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { X, Wifi, Users, MonitorCheck, Printer } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../ui/Button";
+import { ContactForm } from "../ContactForm";
 
 interface SolutionSectionModalProps {
   isOpen: boolean;
@@ -32,6 +33,8 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
     wifi: Wifi,
     users: Users,
   };
+
+  const [open, setOpen] = useState(false);
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
@@ -133,71 +136,89 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
 
           {/* 🔹 Modal Container */}
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex justify-center items-stretch sm:items-center p-0 sm:p-4"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white mt-6 sm:mt-12 lg:mt-28  shadow-2xl w-full max-w-7xl relative p-6 sm:pt-10 sm:px-10">
-              <button onClick={onClose} className="absolute z-50 top-1 right-1 lg:top-3 lg:right-3 cursor-pointer text-gray-500 hover:text-gray-700">
+            <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-10 sm:px-10">
+              <button onClick={onClose} className="absolute z-50 top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700">
                 <X className="w-6 h-6" />
               </button>
 
               {/* 🔹 Scrollable Content */}
-              <div data-lenis-prevent className="max-h-[90vh] overflow-y-auto overflow-x-hidden custom-scrollbar">
+              <div data-lenis-prevent className="h-full sm:max-h-[90vh] overflow-y-auto pt-10 overflow-x-hidden custom-scrollbar">
                 {/* ✅ TOP SECTION */}
-                <div className="px-0 data-lenis-prevent sm:px-6 relative lg:pe-10  lg:pl-20">
-                  {/* ✅ RIGHT SIDE - SWIPER */}
-                  <div className="relative w-full lg:w-[70%] lg:ml-auto h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] xl:h-[600px]">
-                    <div className="relative min-h-[260px] md:min-h-full">
-                      <Image src={image} alt="People working together" fill className="object-cover" priority />
-                    </div>
-                  </div>
+                <div className="px-4 data-lenis-prevent sm:px-6 relative lg:pe-5 lg:pl-20">
+  {/* ✅ Desktop Image & Overlay */}
+  <div className="hidden lg:block relative w-full px-0 sm:px-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
+    <div className="relative min-h-full">
+      <Image src={image} alt="People working together" fill className="object-cover" priority />
+    </div>
+  </div>
 
-                  <div className="hidden lg:block lg:absolute top-1/2 -translate-y-1/2 left-6 sm:left-10 lg:left-[5%] bg-white w-[90%] sm:w-[80%] md:w-[60%] h-[450px] lg:w-[44%]  p-6 sm:p-10 z-10">
-                    <div className="max-w-xl flex flex-col justify-center h-full">
-                      <h2 className="text-3xl sm:text-4xl lg:text-[45px] font-semibold text-primary leading-tight mb-4">
-                        {titleText}
-                        <br className="hidden sm:block" />
-                      </h2>
-                      <p className="text-primary font-medium text-base sm:text-[24px] max-w-xl">{subtitle}</p>
-                    </div>
-                  </div>
-                  {/* ✅ MOBILE/TABLET TEXT SECTION */}
-                  <div className="lg:hidden mt-4 sm:mt-6 px-1 sm:px-0">
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
-                    <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
-                  </div>
-                </div>
+  {/* ✅ Mobile: Stack image + text */}
+  <div className="lg:hidden flex flex-col gap-4">
+    <div className="relative w-full h-[250px] sm:h-[350px]">
+      <Image
+        src={image}
+        alt="People working together"
+        fill
+        className="object-cover "
+        priority
+      />
+    </div>
+    <div className="mt-4 sm:mt-6 px-2 sm:px-0">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
+      <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
+    </div>
+  </div>
+
+  {/* ✅ Desktop Text Overlay */}
+  <div className="hidden lg:block lg:absolute top-1/2 -translate-y-1/2 left-6 sm:left-10 lg:left-[5%] bg-white w-[44%] h-[450px] p-10 z-10 ">
+    <div className="max-w-xl flex flex-col justify-center h-full">
+      <h2 className="text-3xl sm:text-4xl lg:text-[45px] font-semibold text-primary leading-tight mb-4">
+        {titleText}
+      </h2>
+      <p className="text-primary font-medium text-base sm:text-[24px] max-w-xl">{subtitle}</p>
+    </div>
+  </div>
+</div>
+
 
                 {/* ✅ BOTTOM SECTION */}
                 {!isMeetingRoom && (
-                  <div className="grid grid-cols-1  sm:grid-cols-2 gap-8 mt-10 p-4 sm:p-6 sm:pb-16">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-6 sm:mt-10 p-4 sm:p-6 pb-8 sm:pb-16">
                     {/* 🔹 Monthly Pass Card */}
-                    <div className="bg-[#0094E0] text-white p-6 sm:p-8 flex flex-col gap-6  shadow-md">
+                    <div className="bg-[#0094E0] text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
                       <div>
-                        <h3 className="text-2xl font-semibold">{peiceTitle}</h3>
+                        <h3 className="text-2xl sm:text-[40px] font-semibold">{peiceTitle}</h3>
                         {<p className="text-sm mt-1">{priceSubTitle}</p>}
-                        <p className="text-sm sm:text-base opacity-90  mt-3">
+                        <p className="text-sm sm:text-[29px]  mt-3">
                           Starting From:
                           <br />
-                          <span className="text-xl sm:text-2xl font-semibold">{priceLabel}</span>
+                          <span className="text-lg sm:text-2xl opacity-100 font-semibold">{priceLabel}</span>
                         </p>
                       </div>
                       <div>
-                        <Button className="bg-white text-[#0097DC] font-semibold px-6 py-2  hover:bg-blue-50 transition">{ctaLabel}</Button>
+                        <Button
+                          onClick={() => setOpen(true)}
+                          className="w-full sm:w-auto bg-white text-[#0097DC] font-semibold px-6 py-2 hover:bg-blue-50 transition"
+                        >
+                          {ctaLabel}
+                        </Button>
                       </div>
                     </div>
 
                     {/* 🔹 Features */}
-                    <div className="flex flex-col justify-center">
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+                    <div className="flex flex-col justify-center px-1 sm:px-0">
+                      <h3 className="text-2xl sm:text-[40px] font-semibold text-primary mb-4 sm:mb-6">
                         Workspaces Designed <br className="hidden sm:block" /> Around You
                       </h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-gray-700 text-sm sm:text-base">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 text-gray-700 text-sm sm:text-base">
                         {features.map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-3">
-                           <div> {renderIcon(feature.icon)}</div>
+                            <div>{renderIcon(feature.icon)}</div>
                             <span>{feature.text}</span>
                           </div>
                         ))}
@@ -209,41 +230,41 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                 {/* meeting room render section */}
                 {isMeetingRoom && (
                   <>
-                    <div className="text-center mt-16 mb-10">
+                    <div className="text-center mt-10 sm:mt-16 mb-8 sm:mb-10 px-4 sm:px-0">
                       <h2 className="text-2xl sm:text-[40px] font-semibold text-primary">
                         Workspaces Designed <br className="hidden sm:block" /> Around You
                       </h2>
                     </div>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto mb-10 sm:mb-12 px-4 sm:px-0">
                       {featuress.map((feature, idx) => (
-                        <div key={idx} className="border border-[#0097DC] text-center py-6 px-4 text-gray-800  transition">
+                        <div key={idx} className="border border-[#0097DC] text-center py-5 sm:py-6 px-3 sm:px-4 text-gray-800 transition">
                           <p className="text-sm sm:text-lg text-secondary leading-relaxed">{feature.text}</p>
                         </div>
                       ))}
                     </div>
 
                     {/* Rooms Section */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto pb-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto pb-12 sm:pb-16 px-4 sm:px-0">
                       {rooms.map((room, idx) => (
-                        <div key={idx} className="bg-[#0094E0] text-white p-6 sm:p-10  flex flex-col justify-between shadow-lg">
+                        <div key={idx} className="bg-[#0094E0] text-white p-6 sm:p-10 flex flex-col justify-between ">
                           <div>
-                            <h3 className="text-2xl sm:text-[40px] font-semibold mb-2">{room.title}</h3>
-                            <p className="text-[29px] mb-6 opacity-90">{room.seats}</p>
+                            <h3 className="text-2xl sm:text-[40px] font-semibold mb-1 sm:mb-2">{room.title}</h3>
+                            <p className="text-lg sm:text-[29px] mb-4 sm:mb-6 opacity-90">{room.seats}</p>
 
-                            <p className="font-medium sm:text-[24px] mb-4">Starting From:</p>
+                            <p className="font-medium text-base sm:text-[24px] mb-2 sm:mb-4">Starting From:</p>
                             {room.pricing.map((plan, i) => (
                               <div key={i} className="mb-4">
-                                <p className="text-base sm:text-[24px]">
+                                <p className="text-sm sm:text-[24px]">
                                   {plan.time}: <span className="font-semibold">{plan.price}</span>
                                 </p>
-                                {plan.note && <p className="text-lg opacity-80 mt-1">{plan.note}</p>}
+                                {plan.note && <p className="text-sm sm:text-lg opacity-80 mt-1">{plan.note}</p>}
                               </div>
                             ))}
                           </div>
 
-                          <Button className="self-start bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2  hover:bg-blue-50 transition">
+                          <Button onClick={() => setOpen(true)} className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition">
                             Book Now
                           </Button>
                         </div>
@@ -254,6 +275,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
               </div>
             </div>
           </motion.div>
+          {open && <ContactForm showModal onClose={() => setOpen(false)} />}
         </>
       )}
     </AnimatePresence>
