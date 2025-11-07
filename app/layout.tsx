@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/Icons/og-image.jpg", // ✅ Store in /public/Icons
+        url: "/icon.png", // ✅ Store in /public/Icons
         width: 1200,
         height: 630,
         alt: "Vertex Workspace Office Offer",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     images: ["/Icons/og-image.jpg"],
   },
   icons: {
-    icon: "/icons/icon.png",
-    shortcut: "/icons/icon.png",
-    apple: "/icons/apple-touch-icon.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   metadataBase: new URL("https://vertexworkspace.com"),
 };
