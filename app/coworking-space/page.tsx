@@ -12,7 +12,7 @@ const page = () => {
   return (
     <main className="flex flex-col min-h-screen bg-white ">
       {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
-      <section id="overview">
+      <section id="overviewsco">
         <HeroSection />
       </section>
 
@@ -20,7 +20,7 @@ const page = () => {
         <SolutionsSection />
       </section>
 
-      <section id="amenities">
+      <section id="amenitiesco">
         <WorkspacesSection />
       </section>
 
@@ -32,11 +32,11 @@ const page = () => {
         <QuoteBanner type='secondary'/>
       </section>
 
-      <section id="pricing">
+      <section id="pricingsco">
         <PrivateOffices />
       </section>
 
-      <section id="locations">
+      <section id="locationsco">
         <GetAQuoteSection />
       </section>
       <Footer />
