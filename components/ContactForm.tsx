@@ -163,7 +163,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
               defaultChecked
               className={cn(
                 // Base styles
-                "h-4 w-4 cursor-pointer appearance-none border align-middle",
+                "lg:h-4 lg:w-4 h-5 w-6 cursor-pointer appearance-none border align-middle",
                 "transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0",
                 // Checked state styles
                 "checked:bg-[#0097DC] checked:bg-no-repeat checked:bg-center checked:bg-[length:12px_12px]",
