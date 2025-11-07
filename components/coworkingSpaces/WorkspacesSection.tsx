@@ -22,7 +22,7 @@ export default function WorkspacesSection() {
           </div>
 
           {/* Bottom-right Image */}
-          <div className="absolute bottom-2 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[160px] sm:h-[220px] md:h-[260px] lg:h-[300px] overflow-hidden ">
+          <div className="absolute bottom-2 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[160px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
             <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
           </div>
         </div>
@@ -39,24 +39,24 @@ export default function WorkspacesSection() {
           {/* ✅ Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             <div className="flex items-start gap-3">
-              <Syestem />
+              <div><Syestem /></div>
               <p className="text-base md:text-lg text-secondary">
                 Choose from flexible memberships or day passes that fit your schedule and style of work.
               </p>
             </div>
 
             <div className="flex items-start gap-3">
-              <Hand />
+            <div ><Hand /></div>
               <p className="text-base md:text-lg text-secondary">Be part of a thriving community that encourages collaboration and learning.</p>
             </div>
 
             <div className="flex items-start gap-3">
-              <Coffe />
+            <div > <Coffe /></div>
               <p className="text-secondary text-base md:text-lg">Work, meet, or unwind in our fully serviced café & collaboration lounge.</p>
             </div>
 
             <div className="flex items-start gap-3">
-              <Developer />
+            <div > <Developer /></div>
               <p className="text-gray-700 text-base md:text-lg">
                 Enjoy a comfortable, secure, & well-equipped environment designed for effortless productivity.
               </p>

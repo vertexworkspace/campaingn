@@ -63,8 +63,24 @@ export default function HeroSection() {
             ))}
           </Swiper>
 
-          {/* ✅ Custom Navigation Buttons + Dots */}
-          <div className="absolute bottom-6 right-5  z-20 flex items-center gap-6">
+          {/* ✅ Mobile Navigation Buttons */}
+          <button
+            onClick={handlePrev}
+            aria-label="Previous slide"
+            className="lg:hidden absolute top-1/2 left-4 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 text-primary flex items-center justify-center shadow-sm"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={handleNext}
+            aria-label="Next slide"
+            className="lg:hidden absolute top-1/2 right-4 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 text-primary flex items-center justify-center shadow-sm"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* ✅ Desktop Navigation Buttons + Dots */}
+          <div className="hidden lg:flex absolute bottom-6 right-5  z-20 items-center gap-6">
             {/* Dots */}
             <div className="flex justify-center gap-5">
               {slides.map((_, i) => (
