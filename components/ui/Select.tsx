@@ -35,7 +35,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         <ChevronDown
           className={cn(
             'absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 pointer-events-none',
-            variant === 'secondary' ? 'text-white' : 'text-[#848484]'
+            variant === 'secondary' ? 'text-white' : 'text-[#0097DC]'
           )}
           aria-hidden="true"
         />

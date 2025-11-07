@@ -99,7 +99,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white mt-20 rounded-xl shadow-lg w-full max-w-6xl relative p-5 sm:p-12">
+            <div className="bg-white mt-20  shadow-lg w-full max-w-6xl relative p-5 sm:p-12">
               {/* Close Button */}
               <button
                 onClick={onClose}

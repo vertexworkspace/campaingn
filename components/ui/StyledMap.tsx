@@ -49,7 +49,7 @@ export const StyledMap = () => {
       center={center}
       zoom={17}
       options={{
-        styles: mapStyles,
+     
         disableDefaultUI: true,
         zoomControl: true,
       }}

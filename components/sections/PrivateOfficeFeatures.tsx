@@ -26,6 +26,17 @@ export default function PrivateOfficeFeatures() {
             </p>
           </div>
 
+          <div className="relative  lg:hidden w-full h-[350px] sm:h-[450px] lg:h-[500px]  overflow-hidden shadow-x">
+          <Image
+            src={privetOffice}
+            alt="Office workspace with team collaboration"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+        </div>
+
           {/* Space Details */}
           <div className="mt-8">
             <h3 className="font-semibold text-secondary text-lg mb-4">Space Details:</h3>
@@ -130,7 +141,7 @@ export default function PrivateOfficeFeatures() {
         </div>
 
         {/* RIGHT SIDE IMAGE */}
-        <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[500px]  overflow-hidden shadow-x">
+        <div className="relative hidden lg:block w-full h-[350px] sm:h-[450px] lg:h-[500px]  overflow-hidden shadow-x">
           <Image
             src={privetOffice}
             alt="Office workspace with team collaboration"

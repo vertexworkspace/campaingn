@@ -8,6 +8,9 @@ import img3 from "../../public/images/why-choose-vertex/3.webp";
 import img4 from "../../public/images/why-choose-vertex/4.webp";
 import { AmenitiesModal } from "../AmenitiesModal";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
 
 const amenities = [
   {
@@ -56,36 +59,58 @@ export default function WhyChooseVertex() {
           </Button>
         </div>
 
-        {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column (Tall Card for Desktop, Square on Mobile) */}
-          <div className="relative rounded-lg overflow-hidden group h-[250px] sm:h-[250px] lg:h-[630px] xl:h-full">
+        {/* Mobile Swiper */}
+        <div className="lg:hidden">
+          <Swiper  spaceBetween={24} slidesPerView={1} loop={true} // ✅ Enables looping
+            autoplay={{
+              delay: 2000, // ✅ 3 seconds per slide
+              disableOnInteraction: false, // Keeps autoplay active after user swipes
+            }}
+            modules={[Autoplay]} >
+            {amenities.map((item) => (
+              <SwiperSlide key={item.id}>
+                <div className="relative  overflow-hidden group h-[250px]">
+                  <Image src={item.image} alt={item.title} className="object-cover w-full h-full" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 flex items-end transition-colors duration-300">
+                    <p className="text-white font-semibold text-lg sm:text-2xl p-4">{item.title}</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Desktop Grid Layout */}
+        <div className="hidden lg:grid grid-cols-3 gap-6">
+          {/* Left Column (Tall Card for Desktop) */}
+          <div className="relative  overflow-hidden group h-[630px] xl:h-full">
             <Image src={amenities[0].image} alt={amenities[0].title} className="object-cover w-full h-full" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute inset-0 flex items-end transition-colors duration-300">
-              <p className="text-white font-semibold text-lg sm:text-2xl lg:text-3xl p-4">{amenities[0].title}</p>
+              <p className="text-white font-semibold text-3xl p-4">{amenities[0].title}</p>
             </div>
           </div>
 
-          {/* Right Columns (2x2 Grid in Desktop, uniform in Mobile) */}
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2 gap-6">
+          {/* Right Columns (2x2 Grid in Desktop) */}
+          <div className="col-span-2 grid grid-cols-2 grid-rows-2 gap-6">
             {/* Top two cards */}
             {amenities.slice(1, 3).map((item) => (
-              <div key={item.id} className="relative rounded-lg overflow-hidden group h-[250px] sm:h-[250px] lg:h-auto">
+              <div key={item.id} className="relative  overflow-hidden group h-auto">
                 <Image src={item.image} alt={item.title} className="object-cover w-full h-full" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 flex items-end transition-colors duration-300">
-                  <p className="text-white font-semibold text-lg sm:text-2xl lg:text-3xl p-4">{item.title}</p>
+                  <p className="text-white font-semibold text-3xl p-4">{item.title}</p>
                 </div>
               </div>
             ))}
 
             {/* Bottom full-width card */}
-            <div className="relative col-span-1 sm:col-span-2 rounded-lg overflow-hidden group h-[250px] sm:h-[250px] lg:h-auto">
+            <div className="relative col-span-2  overflow-hidden group h-auto">
               <Image src={amenities[3].image} alt={amenities[3].title} className="object-cover w-full h-full" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute inset-0 flex items-end transition-colors duration-300">
-                <p className="text-white font-semibold text-lg sm:text-2xl lg:text-3xl p-4">{amenities[3].title}</p>
+                <p className="text-white font-semibold text-3xl p-4">{amenities[3].title}</p>
               </div>
             </div>
           </div>

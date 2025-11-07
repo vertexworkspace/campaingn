@@ -74,7 +74,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         </FormField>
 
         <FormField id="location">
-          <Select id="location" defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
+          <Select id="location" variant={variant} defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
             <option value="" disabled>
               Location
             </option>
@@ -163,7 +163,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
               defaultChecked
               className={cn(
                 // Base styles
-                "h-4 w-4 cursor-pointer appearance-none rounded-sm border-2 align-middle",
+                "h-4 w-4 cursor-pointer appearance-none border align-middle",
                 "transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0",
                 // Checked state styles
                 "checked:bg-[#0097DC] checked:bg-no-repeat checked:bg-center checked:bg-[length:12px_12px]",
@@ -197,14 +197,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/50 backdrop-blur-sm overflow-y-auto px-4 py-10 sm:px-6 sm:py-12"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-full max-w-4xl mx-4"
+            className="relative w-full max-w-4xl mx-auto"
           >
             {/* Close Button */}
             <button onClick={onClose} className="absolute cursor-pointer top-8 right-8 text-xl" aria-label="Close form">

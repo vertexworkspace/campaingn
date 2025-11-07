@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/icon.png", // ✅ Store in /public/Icons
+        url: "/icon.png", 
         width: 1200,
         height: 630,
         alt: "Vertex Workspace Office Offer",

@@ -219,10 +219,10 @@ export default function TestimonialSection() {
       </div>
 
       {/* ===================== DARK FOOTER BAR ===================== */}
-      <div className="relative z-0 mt-[-10px] sm:mt-[-80px] md:mt-[-150px]">
+      <div className="relative z-0 mt-[-20px] sm:mt-[-80px] lg:mt-[-150px] ">
         <div className="bg-[#12181C] text-white">
-          <div className="sm:px-6 lg:px-32 mx-auto flex flex-col sm:flex-row items-center justify-between py-5 sm:py-6 gap-4">
-            <div className="flex justify-between px-10 lg:px-0 w-full sm:w-[50%] text-center sm:text-left">
+          <div className="sm:px-6 lg:px-32 mx-auto flex flex-col sm:flex-row items-center justify-between py-10 sm:py-6 gap-4">
+            <div className="flex justify-between px-10 lg:px-0 w-full lg:w-[50%] text-center sm:text-left">
               {/* Person Info */}
               <div className="flex text-start flex-col">
                 <h4 className="text-lg sm:text-3xl font-semibold text-white">

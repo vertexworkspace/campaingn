@@ -6,6 +6,10 @@ import officeImg from "../../public/images/testimonials/1.png"; // replace with 
 import { ContactForm } from "../ContactForm";
 import { useState } from "react";
 import { StyledMap } from "../ui/StyledMap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+
 
 export default function PrivateOffices() {
   const [open, setOpen] = useState(false);
@@ -42,7 +46,35 @@ export default function PrivateOffices() {
         </div>
 
         {/* Office Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
+        <div className="md:hidden">
+          <Swiper spaceBetween={24} slidesPerView={1} loop={true} // ✅ Enables looping
+            autoplay={{
+              delay: 2000, // ✅ 3 seconds per slide
+              disableOnInteraction: false, // Keeps autoplay active after user swipes
+            }}
+            modules={[Autoplay]} >
+            {offices.map((office, index) => (
+              <SwiperSlide key={index}>
+                <div className="bg-white overflow-hidden transition">
+                  <div className="relative w-full h-52">
+                    <Image src={office.image} alt={office.title} fill className="object-cover" />
+                  </div>
+                  <div className="p-6 text-left">
+                    <h3 className="text-2xl lg:text-3xl font-semibold text-primary">{office.title}</h3>
+                    <p className="text-secondary mt-1text-base sm:text-lg leading-relaxed">{office.address}</p>
+                    <div className="mt-6">
+                      <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
+                        Get a Quote
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
           {offices.map((office, index) => (
             <div key={index} className="bg-white  overflow-hidden  transition">
               <div className="relative w-full h-52">
