@@ -90,9 +90,9 @@ export default function HeroSection({ title, title2, description }: { title: str
                 <path
                   d="M11.3587 1.00001L1.41419 10.9445L11.3587 20.889"
                   stroke="#848484"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
                 />
               </svg>
             </button>
@@ -117,9 +117,9 @@ export default function HeroSection({ title, title2, description }: { title: str
                 <path
                   d="M0.999973 20.889L10.9445 10.9445L0.999975 0.999999"
                   stroke="#D1D1D1"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
                 />
               </svg>
             </button>
