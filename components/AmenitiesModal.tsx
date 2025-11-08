@@ -103,7 +103,7 @@ React.useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white mt-20  shadow-lg w-full max-w-6xl relative  sm:p-12">
+            <div className="bg-white mt-20  shadow-lg w-full max-w-6xl relative sm:pb-12 py-5 lg:pt-16 lg:pe-8  sm:pl-12">
               {/* Close Button */}
               <button
                 aria-label="Close amenities modal"
@@ -117,12 +117,12 @@ React.useEffect(() => {
               <div data-lenis-prevent className=" max-h-[90vh] lg:max-h-[80vh] overflow-x-hidden overflow-y-auto scrollbar pb-10 lg:pb-0  p-5 ">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-5 lg:gap-y-10">
                   {/* Sticky Left Column */}
-                  <div className="col-span-4 lg:sticky top-0 self-start">
+                  <div className="col-span-4 lg:col-span-3 lg:sticky top-0 self-start">
                     <h2 className="text-2xl sm:text-[48px] font-semibold text-primary">Amenities</h2>
                   </div>
 
                   {/* Middle and Right Columns */}
-                  <div className="col-span-8 grid lg:grid-cols-2  gap-x-10">
+                  <div className="col-span-8 lg:col-span-9 grid lg:grid-cols-2 lg:pe-2  gap-x-10">
                     {amenitiesLeft.map((item, index) => (
                       <React.Fragment key={index}>
                         {/* Middle Item */}
