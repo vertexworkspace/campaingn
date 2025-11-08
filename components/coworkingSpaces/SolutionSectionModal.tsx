@@ -211,9 +211,9 @@ React.useEffect(() => {
 
                 {/* ✅ BOTTOM SECTION */}
                 {!isMeetingRoom && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-6 sm:mt-10 p-4 sm:p-6 pb-8 sm:pb-16">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 mt-6 sm:mt-10 p-4 sm:p-6 pb-8 sm:pb-16">
                     {/* 🔹 Monthly Pass Card */}
-                    <div className="bg-[#0094E0] text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
+                    <div className="bg-[#0097DC] col-span-5 text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
                       <div>
                         <h3 className="text-2xl sm:text-[40px] font-semibold">{peiceTitle}</h3>
                         {<p className="text-sm mt-1">{priceSubTitle}</p>}
@@ -234,14 +234,14 @@ React.useEffect(() => {
                     </div>
 
                     {/* 🔹 Features */}
-                    <div className="flex flex-col justify-center px-1 sm:px-0">
+                    <div className="flex flex-col col-span-7 justify-center px-1 sm:px-0">
                       <h3 className="text-2xl sm:text-[40px] font-semibold text-primary mb-4 sm:mb-6">
                         Workspaces Designed <br className="hidden sm:block" /> Around You
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 text-gray-700 text-sm sm:text-base">
                         {features.map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-3">
-                            <div>{renderIcon(feature.icon)}</div>
+                            <div className="mt-1">{renderIcon(feature.icon)}</div>
                             <span>{feature.text}</span>
                           </div>
                         ))}

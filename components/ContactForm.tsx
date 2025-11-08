@@ -69,11 +69,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const button =
     variant === "secondary" ? (
       <Button type="submit" className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  shadow-sm hover:bg-blue-50 transition">
-      {dorpdownText === "Location"?"Get a Quote":"Book Now"}  
+      {dropdown?"Get a Quote":"Book Now"}  
       </Button>
     ) : (
       <Button type="submit" className="w-full md:w-auto font-semibold ">
-   {dorpdownText === "Location"?"Get a Quote":"Book Now"}  
+   {dropdown?"Get a Quote":"Book Now"}  
       </Button>
     );
 
@@ -138,7 +138,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           maxLength={125}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description (Optional)"
+          placeholder="Description <span>(Optional)</span>"
           className={cn(
             "flex w-full placeholder:text-sm border px-3 py-2 text-sm outline-none resize-none",
             borderColor,

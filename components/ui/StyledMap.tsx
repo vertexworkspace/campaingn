@@ -47,7 +47,7 @@ export const StyledMap = () => {
     <GoogleMap
       mapContainerClassName="w-full h-full"
       center={center}
-      zoom={17}
+      zoom={13}
       options={{
      
         disableDefaultUI: true,
@@ -65,9 +65,11 @@ export const StyledMap = () => {
         mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
         getPixelPositionOffset={getPixelPositionOffset}
       >
-        <div className="p-2" style={{ transform: 'translateX(-50px) translateY(-03px)' }}>
-           <p className="text-[#E31313] font-normal text-[12px] whitespace-nowrap bg-brand-dark px-2 py-1 ">
-            Megamind Studios
+        <div className="p-2" style={{ transform: 'translateX(-80px) translateY(-95px)' }}>
+    
+           <p className="text-secondary w-[150px] border border-gray-400 bg-white flex justify-center  font-normal text-[12px] whitespace-nowrap bg-brand-dark  py-2 ">
+           Vertex Lounge,<br />
+           Managed marketspace
           </p>
         </div>
       </OverlayView>

@@ -7,13 +7,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import heroImageUrl from "../../public/stockImages/HeroBannerImage1.png";
+import image2 from "../../public/images/solution-section/1.png";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function HeroSection({title,title2,description}:{title:string,title2:string,description:string}) {
+export default function HeroSection({ title, title2, description }: { title: string; title2: string; description: string }) {
   const swiperRef = useRef<any>(null);
   const slides = [heroImageUrl, heroImageUrl, heroImageUrl];
   const [current, setCurrent] = useState(0);
@@ -81,6 +82,17 @@ export default function HeroSection({title,title2,description}:{title:string,tit
 
           {/* ✅ Desktop Navigation Buttons + Dots */}
           <div className="hidden lg:flex absolute bottom-6 right-5  z-20 items-center gap-6">
+            <button onClick={handlePrev} className=" text-[#848484] cursor-pointer">
+              <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.3587 1.00001L1.41419 10.9445L11.3587 20.889"
+                  stroke="#848484"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
             {/* Dots */}
             <div className="flex justify-center gap-5">
               {slides.map((_, i) => (
@@ -93,12 +105,16 @@ export default function HeroSection({title,title2,description}:{title:string,tit
             </div>
 
             {/* Next Button */}
-            <button onClick={handleNext} className=" text-[#D1D1D1]">
-              <ChevronRight
-                className={`${
-                  current === slides.length - 1 ? "text-[#D1D1D1]" : "text-[#D1D1D1]"
-                } size-10 transition-colors duration-300 cursor-pointer`}
-              />
+            <button onClick={handleNext} className=" cursor-pointer text-[#D1D1D1]">
+              <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0.999973 20.889L10.9445 10.9445L0.999975 0.999999"
+                  stroke="#D1D1D1"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                />
+              </svg>
             </button>
           </div>
         </div>
@@ -108,11 +124,9 @@ export default function HeroSection({title,title2,description}:{title:string,tit
           <div className="max-w-xl">
             <h1 className="text-3xl sm:text-[40px] lg:text-[50px] font-semibold leading-tight text-primary">
               {title} <br />
-             {title2}
+              {title2}
             </h1>
-            <p className="mt-3 text-base sm:text-lg lg:text-[22px] text-primary">
-              {description}
-            </p>
+            <p className="mt-3 text-base sm:text-lg lg:text-[22px] text-primary">{description}</p>
 
             <div className="mt-6">
               <ContactForm />

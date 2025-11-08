@@ -19,7 +19,7 @@ export default function GetAQuoteSection({dorpdownText}:{dorpdownText:string}) {
             <svg width="651" height="338" viewBox="0 0 651 338" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M647.214 2L341.277 450.268L340.539 451.349L341.235 452.458L507.072 716.609H360.42L257.081 535.758L255.345 532.719L253.607 535.758L150.269 716.609H3.63379L170.925 452.465L171.606 451.388L170.919 450.315L11.0703 201.033H158.411L255.812 369.271L257.426 372.057L259.209 369.376L503.625 2H647.214Z"
-                stroke="#26428B"
+                stroke="#fffff"
                 strokeWidth="4"
               />
             </svg>
