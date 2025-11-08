@@ -38,34 +38,31 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
 
   const [open, setOpen] = useState(false);
 
+  React.useEffect(() => {
+    const lenis = getLenis();
 
+    if (isOpen) {
+      // 🔹 Stop Lenis scrolling instead of body overflow
+      lenis?.stop();
+      document.documentElement.setAttribute("data-lenis-prevent", "true");
+    } else {
+      // 🔹 Resume smooth scrolling
+      lenis?.start();
+      document.documentElement.removeAttribute("data-lenis-prevent");
+    }
 
-React.useEffect(() => {
-  const lenis = getLenis();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) onClose();
+    };
 
-  if (isOpen) {
-    // 🔹 Stop Lenis scrolling instead of body overflow
-    lenis?.stop();
-    document.documentElement.setAttribute("data-lenis-prevent", "true");
-  } else {
-    // 🔹 Resume smooth scrolling
-    lenis?.start();
-    document.documentElement.removeAttribute("data-lenis-prevent");
-  }
+    window.addEventListener("keydown", handleKeyDown);
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Escape" && isOpen) onClose();
-  };
-
-  window.addEventListener("keydown", handleKeyDown);
-
-  return () => {
-    lenis?.start();
-    document.documentElement.removeAttribute("data-lenis-prevent");
-    window.removeEventListener("keydown", handleKeyDown);
-  };
-}, [isOpen, onClose]);
-
+    return () => {
+      lenis?.start();
+      document.documentElement.removeAttribute("data-lenis-prevent");
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
@@ -174,9 +171,11 @@ React.useEffect(() => {
             exit={{ opacity: 0, scale: 0.95 }}
           >
             <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-14 sm:px-10">
-              <button 
+              <button
                 aria-label="Close modal"
-                onClick={onClose} className="absolute z-50 top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700">
+                onClick={onClose}
+                className="absolute z-50 top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700"
+              >
                 <X className="w-6 h-6" />
               </button>
 
@@ -289,14 +288,15 @@ React.useEffect(() => {
                               </div>
                             ))}
                           </div>
-
-                          <Button
-                            aria-label="Book Now"
-                            onClick={() => setOpen(true)}
-                            className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
-                          >
-                            Book Now
-                          </Button>
+                          <div className="flex justify-end">
+                            <Button
+                              aria-label="Book Now"
+                              onClick={() => setOpen(true)}
+                              className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
+                            >
+                              Book Now
+                            </Button>
+                          </div>
                         </div>
                       ))}
                     </div>

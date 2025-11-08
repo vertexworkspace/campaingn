@@ -101,7 +101,7 @@ const solutions: SolutionData[] = [
     peiceTitle:"Virtual Address",
     titleText: "Your Official Business Address, Without the Office.",
     modalImage: "/images/solution-section/modalImages/4.png",
-    subtitle: "Host launches, workshops, and community events.",
+    subtitle: "Establish a professional presence with a prestigious mailing address with no physical space required.",
     priceLabel: "₹1,000 + GST / per month",
     ctaLabel: "Enquire Now",
     features: [
@@ -117,7 +117,7 @@ const solutions: SolutionData[] = [
     peiceTitle:"Flexi Desk",
     titleText: "Where Ideas Meet. Collaborate. Conquer.",
     modalImage: "/images/solution-section/modalImages/5.png",
-    subtitle: "Private rooms for client calls and team syncs.",
+    subtitle: "Host seamless meetings in fully equipped, professional spaces designed to make every discussion productive.",
     priceLabel: "₹499 + GST / hour",
     ctaLabel: "Book Room",
     features: [
@@ -152,7 +152,10 @@ export default function SolutionsSection() {
             modules={[Autoplay]} >
           {solutions.map((solution, index) => (
             <SwiperSlide key={index}>
-              <motion.div className="relative overflow-hidden group cursor-pointer h-[300px]">
+              <motion.div  onClick={() => {
+                      setSelected(solution);
+                      setOpen(true);
+                    }} className="relative overflow-hidden group cursor-pointer h-[300px]">
                 <Image
                   src={solution.image}
                   alt={solution.title}
@@ -192,6 +195,10 @@ export default function SolutionsSection() {
       <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-20 mx-auto  auto-rows-[250px] md:auto-rows-[300px]">
         {solutions.map((solution, index) => (
           <motion.div
+            onClick={() => {
+                  setSelected(solution);
+                  setOpen(true);
+                }}
             key={index}
             className={`relative overflow-hidden  group cursor-pointer ${index === 0 ? "lg:row-span-2 h-full" : "h-full"}`}
           >
@@ -208,7 +215,7 @@ export default function SolutionsSection() {
 
             {/* Text Overlay */}
             <div className="absolute bottom-5 left-5 flex items-center justify-between w-[calc(100%-2.5rem)]">
-              <h3 className="text-white text-2xl font-semibold">{solution.title}</h3>
+              <h3 className="text-white text-2xl xl:text-[30px] font-semibold">{solution.title}</h3>
               <div
                 onClick={() => {
                   setSelected(solution);

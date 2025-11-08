@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "../ui/Button"; // adjust import path based on your project
-import officeImg from "../../public/images/testimonials/1.png"; // replace with your actual image path
+import officeImg from "../../public/images/2.png"; // replace with your actual image path
 import { ContactForm } from "../ContactForm";
 import { useState } from "react";
 import { StyledMap } from "../ui/StyledMap";
@@ -78,7 +78,7 @@ export default function PrivateOffices({ title, description,buttontext }: { titl
           </Swiper>
         </div>
 
-     <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
+     <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 xl:gap-20">
   {offices.map((office, index) => (
     <div
       key={index}

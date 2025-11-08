@@ -15,22 +15,26 @@ import { Autoplay } from "swiper/modules";
 const amenities = [
   {
     id: 1,
-    title: "Fully furnished, workspaces ready",
+    title: "Fully furnished,",
+    title2:"workspaces ready",
     image: img1,
   },
   {
     id: 2,
-    title: "Dedicated private cabins for secure work",
+    title: "Dedicated private ",
+    title2:"cabins for secure work",
     image: img2,
   },
   {
     id: 3,
-    title: "Housekeeping ensures a clean environment",
+    title: "Housekeeping ensures ",
+    title2:"a clean environment",
     image: img3,
   },
   {
     id: 4,
-    title: "High-speed internet for seamless connectivity",
+    title: "High-speed internet for",
+    title2:"seamless connectivity",
     image: img4,
   },
 ];
@@ -72,9 +76,10 @@ export default function WhyChooseVertex() {
               <SwiperSlide key={item.id}>
                 <div className="relative  overflow-hidden group h-[250px]">
                   <Image src={item.image} alt={item.title} className="object-cover w-full h-full" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/80 to-transparent"></div>
+
                   <div className="absolute inset-0 flex items-end transition-colors duration-300">
-                    <p className="text-white font-semibold text-lg sm:text-2xl p-4">{item.title}</p>
+                    <p className="text-white font-semibold text-lg sm:text-2xl p-4">{item.title} <br />{item.title2}</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -87,9 +92,10 @@ export default function WhyChooseVertex() {
           {/* Left Column (Tall Card for Desktop) */}
           <div className="relative  overflow-hidden group h-[630px] xl:h-full">
             <Image src={amenities[0].image} alt={amenities[0].title} className="object-cover w-full h-full" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/80 to-transparent"></div>
+
             <div className="absolute inset-0 flex items-end transition-colors duration-300">
-              <p className="text-white font-semibold text-3xl p-4">{amenities[0].title}</p>
+              <p className="text-white font-semibold text-3xl xl:text-[38px] p-4">{amenities[0].title} <br /> {amenities[0].title2}</p>
             </div>
           </div>
 
@@ -99,9 +105,10 @@ export default function WhyChooseVertex() {
             {amenities.slice(1, 3).map((item) => (
               <div key={item.id} className="relative  overflow-hidden group h-auto">
                 <Image src={item.image} alt={item.title} className="object-cover w-full h-full" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/80 to-transparent"></div>
+
                 <div className="absolute inset-0 flex items-end transition-colors duration-300">
-                  <p className="text-white font-semibold text-3xl p-4">{item.title}</p>
+                  <p className="text-white font-semibold text-3xl xl:text-[38px] p-4">{item.title} <br />{item.title2}</p>
                 </div>
               </div>
             ))}
@@ -109,9 +116,10 @@ export default function WhyChooseVertex() {
             {/* Bottom full-width card */}
             <div className="relative col-span-2  overflow-hidden group h-auto">
               <Image src={amenities[3].image} alt={amenities[3].title} className="object-cover w-full h-full" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/80 to-transparent"></div>
+
               <div className="absolute inset-0 flex items-end transition-colors duration-300">
-                <p className="text-white font-semibold text-3xl p-4">{amenities[3].title}</p>
+                <p className="text-white font-semibold text-3xl xl:text-[38px] p-4">{amenities[3].title} <br /> {amenities[3].title2}</p>
               </div>
             </div>
           </div>
