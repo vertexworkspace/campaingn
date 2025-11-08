@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
-import { getLenis } from "@/components/SmoothScroll";
+import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
 interface AmenitiesModalProps {
   isOpen: boolean;
@@ -65,17 +65,11 @@ const amenitiesRight = [
 ];
 
 export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({ isOpen, onClose }) => {
-  React.useEffect(() => {
-    const lenis = getLenis();
-
+React.useEffect(() => {
     if (isOpen) {
-      // 🔹 Stop Lenis scrolling instead of body overflow
-      lenis?.stop();
-      document.documentElement.setAttribute("data-lenis-prevent", "true");
+      disableLenis(); // ✅ stop smooth scroll globally
     } else {
-      // 🔹 Resume smooth scrolling
-      lenis?.start();
-      document.documentElement.removeAttribute("data-lenis-prevent");
+      enableLenis(); // ✅ resume when modal closes
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -85,8 +79,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({ isOpen, onClose 
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      lenis?.start();
-      document.documentElement.removeAttribute("data-lenis-prevent");
+      enableLenis();
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
@@ -110,7 +103,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({ isOpen, onClose 
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white mt-20  shadow-lg w-full max-w-6xl relative p-5 sm:p-12">
+            <div className="bg-white mt-20  shadow-lg w-full max-w-6xl relative  sm:p-12">
               {/* Close Button */}
               <button
                 aria-label="Close amenities modal"
@@ -121,7 +114,7 @@ export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({ isOpen, onClose 
               </button>
 
               {/* Scrollable Content */}
-              <div data-lenis-prevent className="max-h-[80vh] overflow-x-hidden overflow-y-auto pr-4 custom-scrollbar">
+              <div data-lenis-prevent className=" max-h-[90vh] lg:max-h-[80vh] overflow-x-hidden overflow-y-auto scrollbar pb-10 lg:pb-0  p-5 ">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-5 lg:gap-y-10">
                   {/* Sticky Left Column */}
                   <div className="col-span-4 lg:sticky top-0 self-start">

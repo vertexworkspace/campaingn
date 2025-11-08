@@ -52,7 +52,7 @@ export default function Page() {
         <HeroSection title=" Private Offices" title2="That Mean Business" description="Vertex Private Offices give you privacy, productivity, and prestige all under one roof."/>
       </section>
 
-      <section>
+      <section id="pricing">
         <PrivateOfficeFeatures />
       </section>
 
@@ -68,11 +68,11 @@ export default function Page() {
         <QuoteBanner />
       </section>
 
-      <section id="pricing">
+      <section id="locations" >
         <PrivateOffices buttontext="Get a Quote" title="Our Private Offices" description="Empower your business with an office space in the most sought after locations across the city." />
       </section>
 
-      <section id="locations">
+      <section >
         <GetAQuoteSection  dorpdownText="Location"/>
       </section>
       <Footer />

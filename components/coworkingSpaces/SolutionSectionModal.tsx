@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { Button } from "../ui/Button";
 import { ContactForm } from "../ContactForm";
-import { getLenis } from "@/components/SmoothScroll";
+import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
 interface SolutionSectionModalProps {
   isOpen: boolean;
@@ -37,18 +37,11 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
   };
 
   const [open, setOpen] = useState(false);
-
-  React.useEffect(() => {
-    const lenis = getLenis();
-
+ React.useEffect(() => {
     if (isOpen) {
-      // 🔹 Stop Lenis scrolling instead of body overflow
-      lenis?.stop();
-      document.documentElement.setAttribute("data-lenis-prevent", "true");
+      disableLenis(); // ✅ stop smooth scroll globally
     } else {
-      // 🔹 Resume smooth scrolling
-      lenis?.start();
-      document.documentElement.removeAttribute("data-lenis-prevent");
+      enableLenis(); // ✅ resume when modal closes
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -58,11 +51,11 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      lenis?.start();
-      document.documentElement.removeAttribute("data-lenis-prevent");
+      enableLenis();
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
+
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
@@ -165,12 +158,12 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
 
           {/* 🔹 Modal Container */}
           <motion.div
-            className="fixed inset-0 z-50 flex justify-center items-stretch sm:items-center p-0 sm:p-4"
+            className="fixed inset-0 z-50 flex justify-center items-stretch sm:items-center pb-0 sm:p-4"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-14 sm:px-10">
+            <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-14   lg:pe-5 lg:pb-[80px]">
               <button
                 aria-label="Close modal"
                 onClick={onClose}
@@ -180,15 +173,19 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
               </button>
 
               {/* 🔹 Scrollable Content */}
-              <div data-lenis-prevent className="h-full sm:max-h-[90vh] overflow-y-auto  overflow-x-hidden custom-scrollbar">
+            <div
+  data-lenis-prevent
+  className="h-full overflow-y-auto overflow-x-hidden scrollbar pb-24 lg:h-[calc(100vh-7rem)]"
+>
+
                 {/* ✅ TOP SECTION */}
-                <div className="px-4 data-lenis-prevent sm:px-6 relative lg:pe-5 lg:pl-20">
-                   <div className="mb-4 mt-8 lg:hidden sm:mt-6 px-2 sm:px-0">
+                <div className=" data-lenis-prevent sm:pl-6 relative lg:pe-3 lg:pl-20">
+                   <div className="my-10 lg:hidden sm:mt-6 px-2 sm:px-0">
                       <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
                       <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
                     </div>
                   {/* ✅ Desktop Image & Overlay */}
-                  <div className="hidden lg:block relative w-full px-0 sm:px-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
+                  <div className="hidden lg:block relative w-full px-0 sm:pl-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
                     <div className="relative min-h-full">
                       <Image src={modalImage} alt="People working together" fill className="object-cover" priority />
                     </div>
@@ -216,9 +213,9 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
 
                 {/* ✅ BOTTOM SECTION */}
                 {!isMeetingRoom && (
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 mt-6 sm:mt-10 p-4 sm:p-6 pb-8 sm:pb-16">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:px-10 mt-6 sm:mt-10 pb-10 sm:pb-8 ">
                     {/* 🔹 Monthly Pass Card */}
-                    <div className="bg-[#0097DC] col-span-5 text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
+                    <div className="bg-[#0097DC] col-span-12 lg:col-span-5 text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
                       <div>
                         <h3 className="text-2xl sm:text-[40px] font-semibold">{peiceTitle}</h3>
                         {<p className="text-sm mt-1">{priceSubTitle}</p>}
@@ -240,7 +237,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                     </div>
 
                     {/* 🔹 Features */}
-                    <div className="flex flex-col col-span-7 justify-center px-1 sm:px-0">
+                    <div className="flex flex-col col-span-12  lg:col-span-7 justify-center px-1 sm:px-0">
                       <h3 className="text-2xl sm:text-[40px] font-semibold text-primary mb-4 sm:mb-6">
                         Workspaces Designed <br className="hidden sm:block" /> Around You
                       </h3>
@@ -259,14 +256,14 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                 {/* meeting room render section */}
                 {isMeetingRoom && (
                   <>
-                    <div className="text-center mt-10 sm:mt-16 mb-8 sm:mb-10 px-4 sm:px-0">
+                    <div className="text-center mt-10 sm:mt-16 mb-8 sm:mb-10 px-4 sm:px-0 ">
                       <h2 className="text-2xl sm:text-[40px] font-semibold text-primary">
                         Workspaces Designed <br className="hidden sm:block" /> Around You
                       </h2>
                     </div>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto mb-10 sm:mb-12 px-4 sm:px-0">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6   mb-10 sm:mb-12  lg:pl-8 lg:pe-3">
                       {featuress.map((feature, idx) => (
                         <div key={idx} className="border border-[#0097DC] text-center py-5 sm:py-6 px-3 sm:px-4 text-gray-800 transition">
                           <p className="text-sm sm:text-lg text-secondary leading-relaxed">{feature.text}</p>
@@ -275,7 +272,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                     </div>
 
                     {/* Rooms Section */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto pb-12 sm:pb-16 px-4 sm:px-0">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8  pb-9  lg:pl-8 lg:pe-3">
                       {rooms.map((room, idx) => (
                         <div key={idx} className="bg-[#0094E0] text-white p-6 sm:p-10 flex flex-col justify-between ">
                           <div>

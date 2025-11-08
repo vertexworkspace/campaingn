@@ -8,7 +8,7 @@ import "react-phone-number-input/style.css";
 import { Select } from "./ui/Select";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { getLenis } from "@/components/SmoothScroll";
+import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
 // ✅ Utility for conditional class joining
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -107,25 +107,28 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         aria-label={buttontext || "Submit form"}
         type="submit"
         disabled={loading}
-        className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3 shadow-sm hover:bg-blue-50 transition"
+        className="bg-white text-[#0097DC] font-semibold text-lg   hover:bg-blue-50 transition"
       >
         {buttontext}
       </Button>
     ) : (
-      <Button aria-label={buttontext || "Submit form"} type="submit" disabled={loading} className="w-full md:w-auto font-semibold">
+      <Button aria-label={buttontext || "Submit form"} type="submit" disabled={loading} className="w-full text-lg md:w-auto font-semibold">
         {buttontext}
       </Button>
     );
 
-  React.useEffect(() => {
-    const lenis = getLenis();
+ React.useEffect(() => {
+  // Run only on client (avoid SSR issues)
+  if (typeof window === "undefined") return;
 
+  // ✅ Check for large screens only (≥ 1024px)
+  const isLargeScreen = window.innerWidth >= 1024;
+
+  if (isLargeScreen) {
     if (showModal) {
-      lenis?.stop();
-      document.documentElement.setAttribute("data-lenis-prevent", "true");
+      disableLenis(); // stop smooth scroll
     } else {
-      lenis?.start();
-      document.documentElement.removeAttribute("data-lenis-prevent");
+      enableLenis(); // resume when modal closes
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -135,11 +138,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      lenis?.start();
-      document.documentElement.removeAttribute("data-lenis-prevent");
+      enableLenis();
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [showModal, onClose]);
+  }
+}, [showModal, onClose]);
+
 
   const formContent = (
     <form onSubmit={handleSubmit} className={cn("space-y-5 rounded-lg", className)}>
@@ -209,6 +213,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           <Input
             id="company"
             name="company"
+            required
             type="text"
             placeholder="Company Name"
             className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
@@ -218,6 +223,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           <Input
             id="team-size"
             name="team-size"
+            required
             type="number"
             placeholder="Team Size"
             className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
@@ -263,7 +269,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">
-        <div className="flex w-full justify-between flex-wrap items-center flex-col md:flex-row gap-3">
+        <div className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${variant === "secondary"?"gap-12":"gap-4"}   md:gap-4 lg:gap-3`}>
           <div className="flex items-center">
             <input
               id="consent"
@@ -301,7 +307,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/50 backdrop-blur-sm overflow-y-auto px-4 py-10 sm:px-6 sm:py-12"
+          className="fixed inset-0 z-50 flex items-start md:items-center justify-center  bg-black/50 backdrop-blur-sm overflow-y-auto px-4 py-10 sm:px-6 sm:py-12"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}

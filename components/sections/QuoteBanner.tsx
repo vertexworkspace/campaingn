@@ -37,7 +37,7 @@ export default function QuoteBanner({ type = "primary" }: { type?: string }) {
           aria-label="Get a Quote"
          
           
-          onClick={() => setOpen(true)} className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-blue-50 transition">
+          onClick={() => setOpen(true)} className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-white transition">
             {cta}
           </Button>
         </div>

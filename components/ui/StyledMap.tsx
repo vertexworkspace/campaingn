@@ -55,7 +55,12 @@ export const StyledMap = () => {
       }}
     >
       {/* The Marker's only job is to be the red pin. No label prop. */}
-      <Marker position={center} />
+      <Marker position={center}  onClick={() => {
+    window.open(
+      `https://www.google.com/maps?q=${center.lat},${center.lng}`,
+      "_blank"
+    );
+  }} />
 
       {/* This is the OverlayView component. It places our custom div 
         on the map at the exact same coordinates as the marker.

@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 
 export default function HeroSection({ title, title2, description }: { title: string; title2: string; description: string }) {
   const swiperRef = useRef<any>(null);
-  const slides = [heroImageUrl, heroImageUrl, heroImageUrl];
+  const slides = [heroImageUrl, image2, heroImageUrl,image2];
   const [current, setCurrent] = useState(0);
 
   const handleNext = () => {

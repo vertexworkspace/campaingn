@@ -6,15 +6,14 @@ import { Button } from "../ui/Button";
 import Image from "next/image";
 import vertexlogo from "../../public/vertexlogo.svg";
 import { ContactForm } from "../ContactForm";
-import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinksCoworking = [
-  { href: "#overviewsco", label: "Overview" },
-  { href: "#amenitiesco", label: "Amenities" },
-  { href: "#pricingsco", label: "Pricing" },
-  { href: "#locationsco", label: "Location" },
+  { href: "#overviewco", label: "Overview" },
+  { href: "#amenitieco", label: "Amenities" },
+  { href: "#pricingco", label: "Pricing" },
+  { href: "#locationco", label: "Location" },
 ];
 
 const navLinksWorkSpace = [
@@ -34,11 +33,17 @@ const Navbar = () => {
   const isWorkspace = pathname.startsWith("/work-space");
 
   const navLinks = isCoworking ? navLinksCoworking : navLinksWorkSpace;
-
-  // Determine base path for each
   const basePath = isCoworking ? "/coworking-space" : "/work-space";
-
   const isThankYouPage = pathname.includes("/thank-you");
+
+  // ✅ Smooth scroll handler (replaces react-scroll)
+  const handleScroll = (id: string) => {
+    const element = document.querySelector(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -54,21 +59,14 @@ const Navbar = () => {
             <nav className="hidden md:flex text-lg md:items-center md:space-x-8">
               {navLinks.map((item) =>
                 !isThankYouPage ? (
-                  // ✅ When on main page, scroll smoothly
-                  <ScrollLink
+                  <button
                     key={item.label}
-                    to={item.href.replace("#", "")}
-                    smooth={true}
-                    duration={700}
-                    offset={-80}
-                    spy={true}
-                    className="font-medium cursor-pointer text-[#000000] text-lg transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => handleScroll(item.href)}
+                    className="font-medium cursor-pointer text-[#000000] text-lg transition-colors bg-transparent border-none"
                   >
                     {item.label}
-                  </ScrollLink>
+                  </button>
                 ) : (
-                  // ✅ When on thank-you page, go back to main route
                   <Link
                     key={item.label}
                     href={`${basePath}/${item.href}`}
@@ -80,17 +78,18 @@ const Navbar = () => {
               )}
 
               <Button
-              aria-label={isCoworking ? "Book Now" : "Get a Quote"}
-              
-              onClick={() => setOpen(true)} variant="primary" size="default">
-              {isCoworking ? "Book Now" : "Get a Quote"} 
+                aria-label={isCoworking ? "Book Now" : "Get a Quote"}
+                onClick={() => setOpen(true)}
+                variant="primary"
+                size="default"
+              >
+                {isCoworking ? "Book Now" : "Get a Quote"}
               </Button>
             </nav>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden text-black">
               <Button
-                
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -108,18 +107,13 @@ const Navbar = () => {
             <nav className="flex flex-col space-y-2 px-4 py-4">
               {navLinks.map((item) =>
                 !isThankYouPage ? (
-                  <ScrollLink
+                  <button
                     key={item.label}
-                    to={item.href.replace("#", "")}
-                    smooth={true}
-                    duration={700}
-                    offset={-80}
-                    spy={true}
-                    className="rounded-md px-3 py-2 font-medium text-[#000000] cursor-pointer hover:bg-gray-100"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => handleScroll(item.href)}
+                    className="rounded-md px-3 py-2 font-medium text-[#000000] cursor-pointer hover:bg-gray-100 text-left bg-transparent border-none"
                   >
                     {item.label}
-                  </ScrollLink>
+                  </button>
                 ) : (
                   <Link
                     key={item.label}
@@ -134,10 +128,12 @@ const Navbar = () => {
 
               <div className="pt-2">
                 <Button
-                aria-label={isCoworking ? "Book Now" : "Get a Quote"}
-                
-                onClick={() => setOpen(true)} variant="primary" className="w-full">
-                 {isCoworking ? "Book Now" : "Get a Quote"} 
+                  aria-label={isCoworking ? "Book Now" : "Get a Quote"}
+                  onClick={() => setOpen(true)}
+                  variant="primary"
+                  className="w-full"
+                >
+                  {isCoworking ? "Book Now" : "Get a Quote"}
                 </Button>
               </div>
             </nav>

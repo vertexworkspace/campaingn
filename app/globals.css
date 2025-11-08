@@ -40,34 +40,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-}
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; /* light grey background */
-  border-radius: 8px;
-}
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #a8a8a8; /* darker grey thumb */
-  border-radius: 8px;
-}
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #888; /* slightly darker on hover */
-}
 
-/* Hide the ugly scrollbar arrows on Windows */
-.custom-scrollbar::-webkit-scrollbar-button {
-  display: none;
-}
 
-/* For Firefox */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #a8a8a8 #f1f1f1;
-}
+
+
 .PhoneInputInput{
   border: none !important;
   outline: none !important;
@@ -80,3 +59,55 @@ html {
   color: black !important;
 }
 
+/* ✅ Hide scrollbar but keep scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none !important;             /* Chrome, Safari, Opera */
+}
+
+
+
+
+
+.scrollbar {
+  overflow-y: auto;
+  overflow-x: hidden;
+ 
+  padding: 10px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(83, 83, 83, 0.07);
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #D9D9D9 !important;
+  }
+
+  /* ✅ Hide top/bottom arrow buttons */
+  &::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Some systems still reserve space — force remove */
+  &::-webkit-scrollbar-button:single-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
