@@ -36,6 +36,22 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
 
   const [open, setOpen] = useState(false);
 
+
+React.useEffect(() => {
+  // Lock scroll when modal is open
+  document.body.style.overflow = isOpen ? "hidden" : "auto";
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape" && isOpen) {
+      onClose(); // ✅ Close the main modal instead of setOpen(false)
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, [isOpen, onClose]);
+
+
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
   const peiceTitle = data?.peiceTitle;

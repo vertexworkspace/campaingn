@@ -11,7 +11,7 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
 
-export default function PrivateOffices() {
+export default function PrivateOffices({title,description}:{title:string,description:string}) {
   const [open, setOpen] = useState(false);
   const offices = [
     {

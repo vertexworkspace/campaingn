@@ -16,7 +16,7 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-white ">
       {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
       <section id="overview">
-        <HeroSection />
+        <HeroSection title=" Private Offices" title2="That Mean Business" description="Vertex Private Offices give you privacy, productivity, and prestige all under one roof."/>
       </section>
 
       <section>
@@ -36,7 +36,7 @@ export default function Home() {
       </section>
 
       <section id="pricing">
-        <PrivateOffices />
+        <PrivateOffices title="Our Private Offices" description="Empower your business with an office space in the most sought after locations across the city." />
       </section>
 
       <section id="locations">

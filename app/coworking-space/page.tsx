@@ -13,7 +13,7 @@ const page = () => {
     <main className="flex flex-col min-h-screen bg-white ">
       {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
       <section id="overviewsco">
-        <HeroSection />
+        <HeroSection title='Where Work' title2='Meets Community' description='Vertex offers flexible, inspiring work environments that fuel collaboration and growth.' />
       </section>
 
       <section>
@@ -33,7 +33,7 @@ const page = () => {
       </section>
 
       <section id="pricingsco">
-        <PrivateOffices />
+        <PrivateOffices title='Our Vertex Workspaces' description='Empower your business with an office space in the most sought after locations across the city.'/>
       </section>
 
       <section id="locationsco">

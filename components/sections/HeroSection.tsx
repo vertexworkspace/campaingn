@@ -13,7 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function HeroSection() {
+export default function HeroSection({title,title2,description}:{title:string,title2:string,description:string}) {
   const swiperRef = useRef<any>(null);
   const slides = [heroImageUrl, heroImageUrl, heroImageUrl];
   const [current, setCurrent] = useState(0);
@@ -107,11 +107,11 @@ export default function HeroSection() {
         <div className="hidden lg:block lg:absolute top-1/2 -translate-y-1/2 left-6 sm:left-10 lg:left-[5%] bg-white w-[90%] sm:w-[80%] md:w-[60%] lg:w-[44%] xl:w-[35%] p-6 sm:p-10 z-10">
           <div className="max-w-xl">
             <h1 className="text-3xl sm:text-[40px] lg:text-[50px] font-semibold leading-tight text-primary">
-              Private Offices <br />
-              That Mean Business
+              {title} <br />
+             {title2}
             </h1>
             <p className="mt-3 text-base sm:text-lg lg:text-[22px] text-primary">
-              Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
+              {description}
             </p>
 
             <div className="mt-6">
