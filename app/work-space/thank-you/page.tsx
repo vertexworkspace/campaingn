@@ -10,7 +10,7 @@ export default function ThankYouPage() {
       {/* Large faint "X" background */}
 
       <svg
-        className="absolute hidden  lg:block -left-32 -top-48"
+        className="absolute hidden  lg:block -left-40 xl:-left-32 -top-48"
         width="1101"
         height="1216"
         viewBox="0 0 1101 1216"
@@ -23,7 +23,7 @@ export default function ThankYouPage() {
         />
       </svg>
 
-      <div className="flex items-center h-[70vh] lg:h-screen justify-end">
+      <div className="flex items-center h-[70vh]  lg:h-[100vh] lg:pt-20 lg2:me-5 xl:me-10 justify-end">
         {/* Main content */}
         <div className="relative z-10 max-3xl text-start md:text-left px-6">
           <h1 className="text-2xl md:text-[48px] xl:text-[56px] font-semibold text-primary leading-snug">

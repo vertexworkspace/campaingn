@@ -174,7 +174,9 @@ React.useEffect(() => {
             exit={{ opacity: 0, scale: 0.95 }}
           >
             <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-14 sm:px-10">
-              <button onClick={onClose} className="absolute z-50 top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700">
+              <button 
+                aria-label="Close modal"
+                onClick={onClose} className="absolute z-50 top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700">
                 <X className="w-6 h-6" />
               </button>
 
@@ -225,6 +227,7 @@ React.useEffect(() => {
                       </div>
                       <div>
                         <Button
+                          aria-label={ctaLabel}
                           onClick={() => setOpen(true)}
                           className="w-full sm:w-auto bg-white text-[#0097DC] font-semibold px-6 py-2 hover:bg-blue-50 transition"
                         >
@@ -288,6 +291,7 @@ React.useEffect(() => {
                           </div>
 
                           <Button
+                            aria-label="Book Now"
                             onClick={() => setOpen(true)}
                             className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
                           >

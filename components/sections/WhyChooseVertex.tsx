@@ -51,6 +51,7 @@ export default function WhyChooseVertex() {
           </div>
 
           <Button
+            aria-label="View More Amenities"
             onClick={() => setIsOpen(true)}
             variant="outline"
             className="border font-bold border-primary text-primary text-lg hover:bg-gray-100 px-5 py-2 rounded-none"

@@ -64,7 +64,10 @@ export default function PrivateOffices({ title, description,buttontext }: { titl
                     <h3 className="text-2xl lg:text-3xl font-semibold text-primary">{office.title}</h3>
                     <p className="text-secondary mt-1text-base sm:text-lg leading-relaxed">{office.address}</p>
                     <div className="mt-6">
-                      <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
+                      <Button 
+                      aria-label="Get a Quote"
+                      
+                      onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
                         Get a Quote
                       </Button>
                     </div>
@@ -96,6 +99,10 @@ export default function PrivateOffices({ title, description,buttontext }: { titl
         {/* 🧭 Button pinned at the bottom */}
         <div className="mt-auto pt-6 flex ">
           <Button
+            aria-label="Get a Quote"
+            
+
+
             onClick={() => setOpen(true)}
             className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
           >

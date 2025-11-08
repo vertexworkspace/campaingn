@@ -33,7 +33,11 @@ export default function QuoteBanner({ type = "primary" }: { type?: string }) {
 
         {/* RIGHT BUTTON */}
         <div className="flex justify-center sm:justify-end w-full sm:w-auto">
-          <Button onClick={() => setOpen(true)} className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-blue-50 transition">
+          <Button
+          aria-label="Get a Quote"
+         
+          
+          onClick={() => setOpen(true)} className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-blue-50 transition">
             {cta}
           </Button>
         </div>

@@ -79,7 +79,10 @@ const Navbar = () => {
                 )
               )}
 
-              <Button onClick={() => setOpen(true)} variant="primary" size="default">
+              <Button
+              aria-label={isCoworking ? "Book Now" : "Get a Quote"}
+              
+              onClick={() => setOpen(true)} variant="primary" size="default">
               {isCoworking ? "Book Now" : "Get a Quote"} 
               </Button>
             </nav>
@@ -87,6 +90,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <div className="md:hidden text-black">
               <Button
+                
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -129,7 +133,10 @@ const Navbar = () => {
               )}
 
               <div className="pt-2">
-                <Button onClick={() => setOpen(true)} variant="primary" className="w-full">
+                <Button
+                aria-label={isCoworking ? "Book Now" : "Get a Quote"}
+                
+                onClick={() => setOpen(true)} variant="primary" className="w-full">
                  {isCoworking ? "Book Now" : "Get a Quote"} 
                 </Button>
               </div>

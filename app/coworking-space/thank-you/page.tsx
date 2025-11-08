@@ -13,7 +13,7 @@ export default function ThankYouPage() {
 <path d="M1100.05 0.5L579.564 763.137L579.38 763.407L579.555 763.685L862.795 1214.84H607.887L432.284 907.528L431.85 906.769L431.415 907.528L255.812 1214.84H0.90918L286.641 763.686L286.811 763.417L286.639 763.148L13.4492 337.113H269.573L435.137 623.082L435.54 623.778L435.985 623.108L850.209 0.5H1100.05Z" stroke="#0097DC"/>
 </svg>
 
-<div className="flex items-center h-[70vh] lg:h-[110vh] justify-end">
+<div className="flex items-center h-[70vh]  lg:h-[100vh] lg:pt-20 lg2:me-5 xl:me-10 justify-end">
       {/* Main content */}
       <div className="relative z-10 max-3xl text-start md:text-left px-6">
         <h1 className="text-2xl md:text-[48px] xl:text-[56px] font-semibold text-primary leading-snug">

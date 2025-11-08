@@ -134,7 +134,10 @@ export default function PrivateOfficeFeatures() {
 
           {/* Button */}
           <div className="pt-4">
-            <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
+            <Button 
+            aria-label="Get a Quote"
+            
+            onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
               Get a Quote
             </Button>
           </div>

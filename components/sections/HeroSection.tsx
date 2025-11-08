@@ -66,6 +66,7 @@ export default function HeroSection({ title, title2, description }: { title: str
 
           {/* ✅ Mobile Navigation Buttons */}
           <button
+        
             onClick={handlePrev}
             aria-label="Previous slide"
             className="lg:hidden absolute top-1/2 left-4 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 text-primary flex items-center justify-center shadow-sm"
@@ -82,7 +83,9 @@ export default function HeroSection({ title, title2, description }: { title: str
 
           {/* ✅ Desktop Navigation Buttons + Dots */}
           <div className="hidden lg:flex absolute bottom-6 right-5  z-20 items-center gap-6">
-            <button onClick={handlePrev} className=" text-[#848484] cursor-pointer">
+            <button
+              aria-label="Previous slide"
+             onClick={handlePrev} className=" text-[#848484] cursor-pointer">
               <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M11.3587 1.00001L1.41419 10.9445L11.3587 20.889"
@@ -97,6 +100,7 @@ export default function HeroSection({ title, title2, description }: { title: str
             <div className="flex justify-center gap-5">
               {slides.map((_, i) => (
                 <button
+                  aria-label={`Slide ${i + 1}`}
                   key={i}
                   onClick={() => handleDotClick(i)}
                   className={`w-7 h-[2.55px] rounded-2xl transition-all cursor-pointer ${i === current ? "bg-[#0097DC] scale-125" : "bg-[#E2E2E2]"}`}
@@ -105,7 +109,10 @@ export default function HeroSection({ title, title2, description }: { title: str
             </div>
 
             {/* Next Button */}
-            <button onClick={handleNext} className=" cursor-pointer text-[#D1D1D1]">
+            <button 
+            
+              aria-label="Next slide"
+              onClick={handleNext} className=" cursor-pointer text-[#D1D1D1]">
               <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M0.999973 20.889L10.9445 10.9445L0.999975 0.999999"
