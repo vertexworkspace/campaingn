@@ -3,7 +3,7 @@
 import React from "react";
 import { ContactForm } from "../ContactForm"; // adjust import path as needed
 
-export default function GetAQuoteSection() {
+export default function GetAQuoteSection({dorpdownText}:{dorpdownText:string}) {
   return (
     <section className="relative bg-[#0097dc] text-white pt-10 pb-14 lg:py-16 px-6 lg:px-12  overflow-hidden">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 ">
@@ -29,7 +29,7 @@ export default function GetAQuoteSection() {
         {/* RIGHT SIDE FORM */}
         <div className="bg-[#0097DC] text-black">
           <div className="bg-[#0097DC] text-black p-0">
-            <ContactForm variant="secondary" />
+            <ContactForm dorpdownText={dorpdownText} variant="secondary" />
           </div>
         </div>
       </div>

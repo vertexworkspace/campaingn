@@ -18,6 +18,7 @@ interface SolutionSectionModalProps {
     priceLabel?: string;
     peiceTitle?: string;
     ctaLabel?: string;
+      modalImage?: string;
     priceSubTitle?: string;
     features?: Array<{
       icon: React.ReactNode | React.ComponentType<{ className?: string }> | "monitor" | "printer" | "wifi" | "users";
@@ -55,6 +56,7 @@ React.useEffect(() => {
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
   const peiceTitle = data?.peiceTitle;
+  const modalImage=data?.modalImage ?? "/stockImages/HeroBannerImage1.png";
   const priceSubTitle = data?.priceSubTitle;
   const image = data?.image ?? "/stockImages/HeroBannerImage1.png";
   const subtitle = data?.subtitle ?? "Enjoy 24-hour access to your own dedicated workstation with all the amenities you need to focus on and thrive.";
@@ -169,7 +171,7 @@ React.useEffect(() => {
   {/* ✅ Desktop Image & Overlay */}
   <div className="hidden lg:block relative w-full px-0 sm:px-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
     <div className="relative min-h-full">
-      <Image src={image} alt="People working together" fill className="object-cover" priority />
+      <Image src={modalImage} alt="People working together" fill className="object-cover" priority />
     </div>
   </div>
 
@@ -177,7 +179,7 @@ React.useEffect(() => {
   <div className="lg:hidden flex flex-col gap-4">
     <div className="relative w-full h-[250px] sm:h-[350px]">
       <Image
-        src={image}
+        src={modalImage}
         alt="People working together"
         fill
         className="object-cover "

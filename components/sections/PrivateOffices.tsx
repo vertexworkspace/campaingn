@@ -10,8 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
-
-export default function PrivateOffices({title,description}:{title:string,description:string}) {
+export default function PrivateOffices({ title, description,buttontext }: { title: string; description: string; buttontext: string}) {
   const [open, setOpen] = useState(false);
   const offices = [
     {
@@ -35,10 +34,8 @@ export default function PrivateOffices({title,description}:{title:string,descrip
     <section className="bg-[#F8F8F8] pt-10 pb-14 lg:py-16 px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl sm:text-[40px] text-start font-semibold text-primary leading-snug">Our Private Offices</h2>
-        <p className="mt-2 text-secondary font-normal text-base sm:text-lg">
-          Empower your business with an office space in the most sought after locations across the city.
-        </p>
+        <h2 className="text-3xl sm:text-[40px] text-start font-semibold text-primary leading-snug">{title}</h2>
+        <p className="mt-2 text-secondary font-normal text-base sm:text-lg">{description}</p>
 
         {/* Map */}
         <div className="mt-8 mb-12 w-full h-[300px]  overflow-hidden">
@@ -47,12 +44,16 @@ export default function PrivateOffices({title,description}:{title:string,descrip
 
         {/* Office Cards */}
         <div className="md:hidden">
-          <Swiper spaceBetween={24} slidesPerView={1} loop={true} // ✅ Enables looping
+          <Swiper
+            spaceBetween={24}
+            slidesPerView={1}
+            loop={true} // ✅ Enables looping
             autoplay={{
               delay: 2000, // ✅ 3 seconds per slide
               disableOnInteraction: false, // Keeps autoplay active after user swipes
             }}
-            modules={[Autoplay]} >
+            modules={[Autoplay]}
+          >
             {offices.map((office, index) => (
               <SwiperSlide key={index}>
                 <div className="bg-white overflow-hidden transition">
@@ -85,7 +86,7 @@ export default function PrivateOffices({title,description}:{title:string,descrip
                 <p className="text-secondary mt-1 text-lg leading-relaxed">{office.address}</p>
                 <div className="mt-6">
                   <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
-                    Get a Quote
+                   {buttontext}
                   </Button>
                 </div>
               </div>

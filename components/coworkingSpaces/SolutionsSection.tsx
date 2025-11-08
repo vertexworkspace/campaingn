@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import heroImageUrl from "../../public/stockImages/HeroBannerImage1.png";
+import heroImageUrl from "../../public/images/solution-section/1.png";
 import SolutionSectionModal from "./SolutionSectionModal";
 import { useState } from "react";
 import type React from "react";
@@ -40,6 +40,7 @@ type SolutionData = {
   peiceTitle?:string;
   titleText?: string;
   priceSubTitle?:string;
+  modalImage?: string;
   features?: Array<{ icon: React.ReactNode | React.ComponentType<{ className?: string }>; text: string }>;
 };
 
@@ -47,10 +48,11 @@ const solutions: SolutionData[] = [
   {
     title: "Coworking Spaces",
     titleText: "Work. Collaborate. Grow in a space built for productivity.",
-    image: "/stockImages/HeroBannerImage1.png",
+    image: "/images/solution-section/1.png",
     subtitle: "Enjoy 24-hour access to your own dedicated workstation with all the amenities you need to focus on and thrive.",
     peiceTitle:"Monthly Pass",
     
+    modalImage: "/images/solution-section/modalImages/1.png",
     priceLabel: "₹6,000 + GST / per month",
     ctaLabel: "Book Now",
     features: [
@@ -62,8 +64,9 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Flexi Desks",
-    image: "/stockImages/HeroBannerImage1.png",
+    image: "/images/solution-section/2.png",
     titleText: "Flexible Workdays. One Pass Away.",
+    modalImage: "/images/solution-section/modalImages/2.png",
     subtitle: "Flexible seating for dynamic schedules and changing needs.",
     priceLabel: "₹299 + GST / per day",
     peiceTitle:"Flexi Desk",
@@ -77,8 +80,9 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Virtual Offices",
-    image: "/stockImages/HeroBannerImage1.png",
+    image: "/images/solution-section/3.png",
     titleText: "Professional Spaces for Every Occasion",
+    modalImage: "/images/solution-section/modalImages/3.png",
     peiceTitle:"Vertex Events",
     priceSubTitle:"(Available at Vertex One / Treo)",
     subtitle: "Professional business address and mail handling services.",
@@ -93,9 +97,10 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Event Spaces",
-    image: "/stockImages/HeroBannerImage1.png",
+    image: "/images/solution-section/4.png",
     peiceTitle:"Virtual Address",
     titleText: "Your Official Business Address, Without the Office.",
+    modalImage: "/images/solution-section/modalImages/4.png",
     subtitle: "Host launches, workshops, and community events.",
     priceLabel: "₹1,000 + GST / per month",
     ctaLabel: "Enquire Now",
@@ -108,9 +113,10 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Meeting Rooms",
-    image: "/stockImages/HeroBannerImage1.png",
+    image: "/images/solution-section/5.png",
     peiceTitle:"Flexi Desk",
     titleText: "Where Ideas Meet. Collaborate. Conquer.",
+    modalImage: "/images/solution-section/modalImages/5.png",
     subtitle: "Private rooms for client calls and team syncs.",
     priceLabel: "₹499 + GST / hour",
     ctaLabel: "Book Room",
@@ -187,7 +193,7 @@ export default function SolutionsSection() {
         {solutions.map((solution, index) => (
           <motion.div
             key={index}
-            className={`relative overflow-hidden  group cursor-pointer ${index === 0 ? "lg:row-span-2 lg:h-[630px]" : "h-full"}`}
+            className={`relative overflow-hidden  group cursor-pointer ${index === 0 ? "lg:row-span-2 h-full" : "h-full"}`}
           >
             <Image
               src={solution.image}

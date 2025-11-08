@@ -38,9 +38,19 @@ interface ContactFormProps {
   showModal?: boolean;
   onClose?: () => void;
   variant?: "primary" | "secondary";
+  dorpdownText?: string;
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
+const locations = ["Bangalore", "Chennai", "Hyderabad"];
+const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
+
+export const ContactForm: React.FC<ContactFormProps> = ({
+  className,
+  showModal = false,
+  onClose,
+  variant = "primary",
+  dorpdownText = "Location",
+}) => {
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
   const handleSubmit = (e: React.FormEvent) => {
@@ -54,14 +64,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const inputBg = "bg-transparent";
   const placeholderSize = "text-sm";
 
+  const dropdown = dorpdownText === "Location" ? locations : solution;
+
   const button =
     variant === "secondary" ? (
       <Button type="submit" className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  shadow-sm hover:bg-blue-50 transition">
-        Get a Quote
+      {dorpdownText === "Location"?"Get a Quote":"Book Now"}  
       </Button>
     ) : (
       <Button type="submit" className="w-full md:w-auto font-semibold ">
-        Get a Quote
+   {dorpdownText === "Location"?"Get a Quote":"Book Now"}  
       </Button>
     );
 
@@ -76,17 +88,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         <FormField id="location">
           <Select id="location" variant={variant} defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
             <option value="" disabled>
-              Location
+              {dorpdownText}
             </option>
-            <option value="Bangalore" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
-              Bangalore
-            </option>
-            <option value="Chennai" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
-              Chennai
-            </option>
-            <option value="Hyderabad" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
-              Hyderabad
-            </option>
+
+            {dropdown.map((item, index) => {
+              return (
+                <option key={index} value={item} className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
+                  {item}
+                </option>
+              );
+            })}
           </Select>
         </FormField>
       </FormRow>

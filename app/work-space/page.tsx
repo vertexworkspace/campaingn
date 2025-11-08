@@ -36,11 +36,11 @@ export default function Home() {
       </section>
 
       <section id="pricing">
-        <PrivateOffices title="Our Private Offices" description="Empower your business with an office space in the most sought after locations across the city." />
+        <PrivateOffices buttontext="Get a Quote" title="Our Private Offices" description="Empower your business with an office space in the most sought after locations across the city." />
       </section>
 
       <section id="locations">
-        <GetAQuoteSection />
+        <GetAQuoteSection  dorpdownText="Locations"/>
       </section>
       <Footer />
     </main>

@@ -33,11 +33,11 @@ const page = () => {
       </section>
 
       <section id="pricingsco">
-        <PrivateOffices title='Our Vertex Workspaces' description='Empower your business with an office space in the most sought after locations across the city.'/>
+        <PrivateOffices buttontext='Book Now' title='Our Vertex Workspaces' description='Empower your business with an office space in the most sought after locations across the city.'/>
       </section>
 
       <section id="locationsco">
-        <GetAQuoteSection />
+        <GetAQuoteSection dorpdownText="Solutions" />
       </section>
       <Footer />
     </main>
