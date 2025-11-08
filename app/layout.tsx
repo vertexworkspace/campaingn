@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
     description: "Get a special offer on flexible office solutions at Vertex.",
-    images: ["/Icons/og-image.jpg"],
+    images: ["/icon.png"],
   },
   icons: {
     icon: [
