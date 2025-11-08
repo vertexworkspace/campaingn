@@ -79,7 +79,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     };
 
     try {
-      const response = await fetch(googleScriptUrl, {
+      const response = await fetch(googleScriptUrl!, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data as any),
