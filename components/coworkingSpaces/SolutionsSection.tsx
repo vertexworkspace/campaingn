@@ -168,10 +168,10 @@ export default function SolutionsSection() {
                       <path
                         d="M20.6251 10.8118L0.999994 10.8133M10.8118 20.6251L10.8133 1"
                         stroke="white"
-                        stroke-width="2"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   </div>
@@ -214,10 +214,10 @@ export default function SolutionsSection() {
                   <path
                     d="M20.6251 10.8118L0.999994 10.8133M10.8118 20.6251L10.8133 1"
                     stroke="white"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>

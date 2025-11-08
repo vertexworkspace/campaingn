@@ -213,7 +213,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
               </svg>
             </button>
 
-            <div className="bg-white p-7 lg:p-12 rounded-lg">
+            <div className="bg-white p-7 lg:p-12 ">
               <div>
                 <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
                   Private Offices <br />
