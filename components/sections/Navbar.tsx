@@ -80,7 +80,7 @@ const Navbar = () => {
               )}
 
               <Button onClick={() => setOpen(true)} variant="primary" size="default">
-                Get a Quote
+              {isCoworking ? "Book Now" : "Get a Quote"} 
               </Button>
             </nav>
 
@@ -130,7 +130,7 @@ const Navbar = () => {
 
               <div className="pt-2">
                 <Button onClick={() => setOpen(true)} variant="primary" className="w-full">
-                  Get a Quote
+                 {isCoworking ? "Book Now" : "Get a Quote"} 
                 </Button>
               </div>
             </nav>

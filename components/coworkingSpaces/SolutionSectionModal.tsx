@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { Button } from "../ui/Button";
 import { ContactForm } from "../ContactForm";
+import { getLenis } from "@/components/SmoothScroll";
 
 interface SolutionSectionModalProps {
   isOpen: boolean;
@@ -18,7 +19,7 @@ interface SolutionSectionModalProps {
     priceLabel?: string;
     peiceTitle?: string;
     ctaLabel?: string;
-      modalImage?: string;
+    modalImage?: string;
     priceSubTitle?: string;
     features?: Array<{
       icon: React.ReactNode | React.ComponentType<{ className?: string }> | "monitor" | "printer" | "wifi" | "users";
@@ -38,25 +39,38 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
   const [open, setOpen] = useState(false);
 
 
+
 React.useEffect(() => {
-  // Lock scroll when modal is open
-  document.body.style.overflow = isOpen ? "hidden" : "auto";
+  const lenis = getLenis();
+
+  if (isOpen) {
+    // 🔹 Stop Lenis scrolling instead of body overflow
+    lenis?.stop();
+    document.documentElement.setAttribute("data-lenis-prevent", "true");
+  } else {
+    // 🔹 Resume smooth scrolling
+    lenis?.start();
+    document.documentElement.removeAttribute("data-lenis-prevent");
+  }
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Escape" && isOpen) {
-      onClose(); // ✅ Close the main modal instead of setOpen(false)
-    }
+    if (event.key === "Escape" && isOpen) onClose();
   };
 
   window.addEventListener("keydown", handleKeyDown);
-  return () => window.removeEventListener("keydown", handleKeyDown);
+
+  return () => {
+    lenis?.start();
+    document.documentElement.removeAttribute("data-lenis-prevent");
+    window.removeEventListener("keydown", handleKeyDown);
+  };
 }, [isOpen, onClose]);
 
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
   const peiceTitle = data?.peiceTitle;
-  const modalImage=data?.modalImage ?? "/stockImages/HeroBannerImage1.png";
+  const modalImage = data?.modalImage ?? "/stockImages/HeroBannerImage1.png";
   const priceSubTitle = data?.priceSubTitle;
   const image = data?.image ?? "/stockImages/HeroBannerImage1.png";
   const subtitle = data?.subtitle ?? "Enjoy 24-hour access to your own dedicated workstation with all the amenities you need to focus on and thrive.";
@@ -159,50 +173,41 @@ React.useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-10 sm:px-10">
+            <div className="bg-white w-full h-full sm:w-[90%] sm:h-auto sm:mt-12 lg:mt-28  sm:max-w-7xl relative sm:rounded-none overflow-hidden p-0 sm:pt-14 sm:px-10">
               <button onClick={onClose} className="absolute z-50 top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700">
                 <X className="w-6 h-6" />
               </button>
 
               {/* 🔹 Scrollable Content */}
-              <div data-lenis-prevent className="h-full sm:max-h-[90vh] overflow-y-auto pt-10 overflow-x-hidden custom-scrollbar">
+              <div data-lenis-prevent className="h-full sm:max-h-[90vh] overflow-y-auto  overflow-x-hidden custom-scrollbar">
                 {/* ✅ TOP SECTION */}
                 <div className="px-4 data-lenis-prevent sm:px-6 relative lg:pe-5 lg:pl-20">
-  {/* ✅ Desktop Image & Overlay */}
-  <div className="hidden lg:block relative w-full px-0 sm:px-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
-    <div className="relative min-h-full">
-      <Image src={modalImage} alt="People working together" fill className="object-cover" priority />
-    </div>
-  </div>
+                  {/* ✅ Desktop Image & Overlay */}
+                  <div className="hidden lg:block relative w-full px-0 sm:px-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
+                    <div className="relative min-h-full">
+                      <Image src={modalImage} alt="People working together" fill className="object-cover" priority />
+                    </div>
+                  </div>
 
-  {/* ✅ Mobile: Stack image + text */}
-  <div className="lg:hidden flex flex-col gap-4">
-    <div className="relative w-full h-[250px] sm:h-[350px]">
-      <Image
-        src={modalImage}
-        alt="People working together"
-        fill
-        className="object-cover "
-        priority
-      />
-    </div>
-    <div className="mt-4 sm:mt-6 px-2 sm:px-0">
-      <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
-      <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
-    </div>
-  </div>
+                  {/* ✅ Mobile: Stack image + text */}
+                  <div className="lg:hidden flex flex-col gap-4">
+                    <div className="relative w-full h-[250px] sm:h-[350px]">
+                      <Image src={modalImage} alt="People working together" fill className="object-cover " priority />
+                    </div>
+                    <div className="mt-4 sm:mt-6 px-2 sm:px-0">
+                      <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
+                      <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
+                    </div>
+                  </div>
 
-  {/* ✅ Desktop Text Overlay */}
-  <div className="hidden lg:block lg:absolute top-1/2 -translate-y-1/2 left-6 sm:left-10 lg:left-[5%] bg-white w-[44%] h-[450px] p-10 z-10 ">
-    <div className="max-w-xl flex flex-col justify-center h-full">
-      <h2 className="text-3xl sm:text-4xl lg:text-[45px] font-semibold text-primary leading-tight mb-4">
-        {titleText}
-      </h2>
-      <p className="text-primary font-medium text-base sm:text-[24px] max-w-xl">{subtitle}</p>
-    </div>
-  </div>
-</div>
-
+                  {/* ✅ Desktop Text Overlay */}
+                  <div className="hidden lg:block lg:absolute top-1/2 -translate-y-1/2 left-6 sm:left-10 lg:left-[5%] bg-white w-[44%] h-[450px] p-10 z-10 ">
+                    <div className="max-w-xl flex flex-col justify-center h-full">
+                      <h2 className="text-3xl sm:text-4xl lg:text-[45px] font-semibold text-primary leading-tight mb-4">{titleText}</h2>
+                      <p className="text-primary font-medium text-base sm:text-[24px] max-w-xl">{subtitle}</p>
+                    </div>
+                  </div>
+                </div>
 
                 {/* ✅ BOTTOM SECTION */}
                 {!isMeetingRoom && (
@@ -282,7 +287,10 @@ React.useEffect(() => {
                             ))}
                           </div>
 
-                          <Button onClick={() => setOpen(true)} className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition">
+                          <Button
+                            onClick={() => setOpen(true)}
+                            className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
+                          >
                             Book Now
                           </Button>
                         </div>
