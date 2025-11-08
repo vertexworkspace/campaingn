@@ -37,7 +37,7 @@ const page = () => {
       </section>
 
       <section id="locationsco">
-        <GetAQuoteSection dorpdownText="Solutions" />
+        <GetAQuoteSection dorpdownText="Solution" />
       </section>
       <Footer />
     </main>
