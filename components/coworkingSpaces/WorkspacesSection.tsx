@@ -35,7 +35,7 @@ export default function WorkspacesSection() {
             what matters: your work, your team, and your growth, while we take care of the rest. From flexible memberships to thoughtfully curated
             community spaces, every detail enhances how you work and connect.
           </p>
-          <div className="relative lg:hidden mb-8  bg-white col-span-12 lg:col-span-4 flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
+          <div className="relative lg:hidden mb-8   col-span-12 lg:col-span-4 flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
           {/* Top-left Image */}
           <div className="absolute top-2 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
             <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />

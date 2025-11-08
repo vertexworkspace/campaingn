@@ -78,7 +78,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="bg-white overflow-hidden  pt-6 pb-12 md:py-16 lg:py-20 relative">
+    <section className="bg-white overflow-hidden  pt-6 pb-0 md:py-16 lg:py-20 relative">
         {/* Mobile Navigation Buttons */}
 <div className="lg:hidden">
   {/* Left Button */}

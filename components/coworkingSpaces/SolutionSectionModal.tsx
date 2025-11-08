@@ -183,6 +183,10 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
               <div data-lenis-prevent className="h-full sm:max-h-[90vh] overflow-y-auto  overflow-x-hidden custom-scrollbar">
                 {/* ✅ TOP SECTION */}
                 <div className="px-4 data-lenis-prevent sm:px-6 relative lg:pe-5 lg:pl-20">
+                   <div className="mb-4 mt-8 lg:hidden sm:mt-6 px-2 sm:px-0">
+                      <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
+                      <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
+                    </div>
                   {/* ✅ Desktop Image & Overlay */}
                   <div className="hidden lg:block relative w-full px-0 sm:px-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
                     <div className="relative min-h-full">
@@ -195,7 +199,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                     <div className="relative w-full h-[250px] sm:h-[350px]">
                       <Image src={modalImage} alt="People working together" fill className="object-cover " priority />
                     </div>
-                    <div className="mt-4 sm:mt-6 px-2 sm:px-0">
+                    <div className="mt-4 hidden lg:block sm:mt-6 px-2 sm:px-0">
                       <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
                       <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
                     </div>

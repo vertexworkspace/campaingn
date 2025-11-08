@@ -81,11 +81,28 @@ const solutions: SolutionData[] = [
   {
     title: "Virtual Offices",
     image: "/images/solution-section/3.png",
-    titleText: "Professional Spaces for Every Occasion",
+      peiceTitle:"Virtual Address",
+    titleText: "Your Official Business Address, Without the Office.",
+    modalImage: "/images/solution-section/modalImages/4.png",
+    subtitle: "Establish a professional presence with a prestigious mailing address with no physical space required.",
+    priceLabel: "₹1,000 + GST / per month",
+    ctaLabel: "Book Now",
+    features: [
+      { icon: Flat, text: "Prime business address for registration & correspondence" },
+      { icon: WomenPc, text: "Affordable plans for startups and remote businesses" },
+      { icon: Mail, text: "Mail and courier handling support" },
+      { icon: Like, text: "Enhance brand credibility with minimal overhead" },
+    ],
+  },
+  {
+    title: "Event Spaces",
+    image: "/images/solution-section/4.png",
+ 
+     titleText: "Professional Spaces for Every Occasion",
     modalImage: "/images/solution-section/modalImages/3.png",
     peiceTitle:"Vertex Events",
     priceSubTitle:"(Available at Vertex One / Treo)",
-    subtitle: "Professional business address and mail handling services.",
+    subtitle: "Host impactful meetings, workshops, or events in modern, fully equipped venues.",
     priceLabel: "₹5,000 + GST / 4-hour slot",
     ctaLabel: "Book Now",
     features: [
@@ -93,22 +110,6 @@ const solutions: SolutionData[] = [
       { icon: Clock, text: "4-hour booking slots with flexible extensions" },
       { icon: Projector, text: "Audio-visual setup, projector, and presentation support" },
       { icon: HandShake, text: "Ideal for corporate meets, training, or networking events" },
-    ],
-  },
-  {
-    title: "Event Spaces",
-    image: "/images/solution-section/4.png",
-    peiceTitle:"Virtual Address",
-    titleText: "Your Official Business Address, Without the Office.",
-    modalImage: "/images/solution-section/modalImages/4.png",
-    subtitle: "Establish a professional presence with a prestigious mailing address with no physical space required.",
-    priceLabel: "₹1,000 + GST / per month",
-    ctaLabel: "Enquire Now",
-    features: [
-      { icon: Flat, text: "Prime business address for registration & correspondence" },
-      { icon: WomenPc, text: "Affordable plans for startups and remote businesses" },
-      { icon: Mail, text: "Mail and courier handling support" },
-      { icon: Like, text: "Enhance brand credibility with minimal overhead" },
     ],
   },
   {

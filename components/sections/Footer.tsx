@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-[#121B1F] text-gray-300 py-10 px-6 border-t border-gray-800">
       <div className="max-w-7xl xl:max-w-[85%] px-4 mx-auto sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-5">
         {/* ===== Logo ===== */}
-        <div className="flex items-center justify-center">
+        <div className="flex cursor-pointer items-center justify-center">
           {/* Replace with your actual logo */}
           <Image
             src={logo}// 🔁 replace this path with your actual logo

@@ -8,6 +8,7 @@ import "react-phone-number-input/style.css";
 import { Select } from "./ui/Select";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
+import { getLenis } from "@/components/SmoothScroll";
 
 // ✅ Utility for conditional class joining
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -48,19 +49,45 @@ const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event S
 export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary", dorpdownText }) => {
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const googleScriptUrl =
+    pathname === "/work-space" ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // (Optional) Perform validation or API call here
-    console.log("Form submitted");
-
-    // ✅ Redirect conditionally based on pathname
+    setLoading(true);
     if (pathname === "/work-space") {
       router.push("/work-space/thank-you");
     } else {
       router.push("/coworking-space/thank-you");
+    }
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    const consentChecked = formData.get("consent") === "on";
+
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: phone || "",
+      location: formData.get("location") as string,
+      company: formData.get("company") as string,
+      teamSize: formData.get("team-size") as string,
+      description:description||"",
+      consent: consentChecked ? "Yes" : "No",
+    };
+
+    try {
+      const response = await fetch(googleScriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data as any),
+      });
+    } catch (error) {
+      console.error("❌ Submission failed:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,47 +98,82 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const placeholderSize = "text-sm";
 
   const dropdown = pathname === "/work-space" ? locations : solution;
-
   const buttontext = pathname === "/work-space" ? "Get a Quote" : "Book Now";
-  const dropwontext= pathname === "/work-space" ? "Location" : "Solution";
-
+  const dropwontext = pathname === "/work-space" ? "Location" : "Solution";
 
   const button =
     variant === "secondary" ? (
       <Button
         aria-label={buttontext || "Submit form"}
         type="submit"
-        className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  shadow-sm hover:bg-blue-50 transition"
+        disabled={loading}
+        className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3 shadow-sm hover:bg-blue-50 transition"
       >
         {buttontext}
       </Button>
     ) : (
-      <Button aria-label={buttontext || "Submit form"} type="submit" className="w-full md:w-auto font-semibold ">
+      <Button aria-label={buttontext || "Submit form"} type="submit" disabled={loading} className="w-full md:w-auto font-semibold">
         {buttontext}
       </Button>
     );
+
+  React.useEffect(() => {
+    const lenis = getLenis();
+
+    if (showModal) {
+      lenis?.stop();
+      document.documentElement.setAttribute("data-lenis-prevent", "true");
+    } else {
+      lenis?.start();
+      document.documentElement.removeAttribute("data-lenis-prevent");
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && showModal) onClose?.();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      lenis?.start();
+      document.documentElement.removeAttribute("data-lenis-prevent");
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showModal, onClose]);
 
   const formContent = (
     <form onSubmit={handleSubmit} className={cn("space-y-5 rounded-lg", className)}>
       {/* Row 1 */}
       <FormRow>
         <FormField id="name">
-          <Input id="name" type="text" placeholder="Name" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            required
+            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+          />
         </FormField>
 
         <FormField id="location">
-          <Select id="location" variant={variant} defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
+          <Select
+            id="location"
+            name="location"
+            variant={variant}
+            defaultValue=""
+            required
+            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+          >
             <option value="" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"} disabled>
               {dropwontext}
             </option>
 
-            {dropdown.map((item, index) => {
-              return (
-                <option key={index} value={item} className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
-                  {item}
-                </option>
-              );
-            })}
+            {dropdown.map((item, index) => (
+              <option key={index} value={item} className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
+                {item}
+              </option>
+            ))}
           </Select>
         </FormField>
       </FormRow>
@@ -125,22 +187,41 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             value={phone}
             onChange={setPhone}
             placeholder="Phone"
-            className={cn("flex w-full border px-3 py-2 text-sm  outline-none", borderColor, inputBg, placeholderColor)}
+            className={cn("flex w-full border px-3 py-2 text-sm outline-none", borderColor, inputBg, placeholderColor)}
           />
         </FormField>
 
         <FormField id="email">
-          <Input id="email" type="email" placeholder="Email" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+          />
         </FormField>
       </FormRow>
 
       {/* Row 3 */}
       <FormRow>
         <FormField id="company">
-          <Input id="company" type="text" placeholder="Company Name" className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
+          <Input
+            id="company"
+            name="company"
+            type="text"
+            placeholder="Company Name"
+            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+          />
         </FormField>
         <FormField id="team-size">
-          <Input id="team-size" type="number" placeholder="Team Size" className={cn(borderColor, inputBg, placeholderColor, placeholderSize)} />
+          <Input
+            id="team-size"
+            name="team-size"
+            type="number"
+            placeholder="Team Size"
+            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+          />
         </FormField>
       </FormRow>
 
@@ -149,6 +230,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         <div className="relative">
           <textarea
             id="description"
+            name="description"
             rows={4}
             maxLength={125}
             value={description}
@@ -156,7 +238,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             placeholder="Description"
             className={cn("flex w-full border px-3 py-2 text-sm outline-none resize-none", borderColor, inputBg, placeholderColor, placeholderSize)}
           />
-          {/* 👇 Positioned smaller “(Optional)” text inside the box */}
           {!description && (
             <span className={cn("absolute left-[91px] top-3.5 text-[10px]", variant === "secondary" ? "text-white/90" : "text-[#848484]/70")}>
               (Optional)
@@ -190,14 +271,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
               type="checkbox"
               defaultChecked
               className={cn(
-                // Base styles
                 "lg:h-4 lg:w-4 h-5 w-6 cursor-pointer appearance-none border align-middle",
                 "transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0",
-                // Checked state styles
                 "checked:bg-[#0097DC] checked:bg-no-repeat checked:bg-center checked:bg-[length:12px_12px]",
-                // ✅ White tick as Base64-encoded SVG (centered, visible)
                 "checked:bg-[url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiIvPjwvc3ZnPg==')]",
-                // Variant handling
                 variant === "secondary" ? "border-white" : "border-[#E2E2E2]"
               )}
             />
@@ -213,7 +290,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     </form>
   );
 
-  // 🧊 Modal Wrapper
   if (!showModal) return formContent;
 
   return (
@@ -234,7 +310,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="relative w-full max-w-4xl mx-auto"
           >
-            {/* Close Button */}
             <button onClick={onClose} className="absolute cursor-pointer top-8 right-8 text-xl" aria-label="Close form">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.876 1L1 14.8781M14.876 14.8781L1 1" stroke="#848484" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

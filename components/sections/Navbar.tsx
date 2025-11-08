@@ -46,7 +46,7 @@ const Navbar = () => {
         <div className="px-4 sm:px-6 lg:px-20 py-4 lg:pt-7 mx-auto">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 cursor-pointer">
               <Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority />
             </div>
 
