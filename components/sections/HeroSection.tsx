@@ -129,7 +129,7 @@ export default function HeroSection({ title, title2, description }: { title: str
             <p className="mt-3 text-base sm:text-lg lg:text-[22px] text-primary">{description}</p>
 
             <div className="mt-6">
-              <ContactForm />
+              <ContactForm dorpdownText="Location" />
             </div>
           </div>
         </div>

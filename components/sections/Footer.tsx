@@ -14,8 +14,8 @@ export default function Footer() {
           <Image
             src={logo}// 🔁 replace this path with your actual logo
             alt="Vertex Logo"
-            width={160}
-            height={70}
+            width={180}
+            height={90}
             className="object-contain"
           />
         </div>

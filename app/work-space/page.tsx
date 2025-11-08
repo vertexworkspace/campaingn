@@ -40,7 +40,7 @@ export default function Home() {
       </section>
 
       <section id="locations">
-        <GetAQuoteSection  dorpdownText="Locations"/>
+        <GetAQuoteSection  dorpdownText="Location"/>
       </section>
       <Footer />
     </main>

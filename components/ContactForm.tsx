@@ -7,6 +7,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Select } from "./ui/Select";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 
 // ✅ Utility for conditional class joining
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -44,19 +45,25 @@ interface ContactFormProps {
 const locations = ["Bangalore", "Chennai", "Hyderabad"];
 const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
 
-export const ContactForm: React.FC<ContactFormProps> = ({
-  className,
-  showModal = false,
-  onClose,
-  variant = "primary",
-  dorpdownText = "Location",
-}) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary", dorpdownText }) => {
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
-  const handleSubmit = (e: React.FormEvent) => {
+const pathname=usePathname()
+  const router = useRouter();
+ const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // (Optional) Perform validation or API call here
     console.log("Form submitted");
+
+    // ✅ Redirect conditionally based on pathname
+    if (pathname === "/work-space") {
+      router.push("/work-space/thank-you");
+    } else {
+      router.push("/coworking-space/thank-you");
+    }
   };
+
 
   // 🎨 Variant-based style setup
   const borderColor = variant === "secondary" ? "border-white" : "border-[#E2E2E2]";
@@ -64,16 +71,19 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const inputBg = "bg-transparent";
   const placeholderSize = "text-sm";
 
-  const dropdown = dorpdownText === "Location" ? locations : solution;
+  const dropdown = pathname === "/work-space" ? locations : solution;
+
+  const buttontext=pathname === "/work-space" ? "Get a Quote" : "Book Now"
+  
 
   const button =
     variant === "secondary" ? (
       <Button type="submit" className="bg-white text-[#0097DC] font-semibold text-sm sm:text-base px-5 py-3  shadow-sm hover:bg-blue-50 transition">
-      {dropdown?"Get a Quote":"Book Now"}  
+        {buttontext}
       </Button>
     ) : (
       <Button type="submit" className="w-full md:w-auto font-semibold ">
-   {dropdown?"Get a Quote":"Book Now"}  
+        {buttontext}
       </Button>
     );
 
@@ -131,37 +141,53 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       </FormRow>
 
       {/* Description */}
-      <FormField id="description" className="relative">
-        <textarea
-          id="description"
-          rows={4}
-          maxLength={125}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description <span>(Optional)</span>"
-          className={cn(
-            "flex w-full placeholder:text-sm border px-3 py-2 text-sm outline-none resize-none",
-            borderColor,
-            inputBg,
-            placeholderColor,
-            placeholderSize
-          )}
-        />
-        <p
-          className={cn(
-            "text-xs absolute bottom-2 right-3 text-right transition-colors duration-200",
-            variant === "secondary"
-              ? description.length >= 120
-                ? "text-red-300"
-                : "text-white/70"
-              : description.length >= 120
-              ? "text-red-500"
-              : "text-gray-400"
-          )}
-        >
-          {description.length}/125
-        </p>
-      </FormField>
+<FormField id="description" className="relative">
+  <div className="relative">
+    <textarea
+      id="description"
+      rows={4}
+      maxLength={125}
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      placeholder="Description"
+      className={cn(
+        "flex w-full border px-3 py-2 text-sm outline-none resize-none",
+        borderColor,
+        inputBg,
+        placeholderColor,
+        placeholderSize
+      )}
+    />
+    {/* 👇 Positioned smaller “(Optional)” text inside the box */}
+    {!description && (
+      <span
+        className={cn(
+          "absolute left-[91px] top-3.5 text-[10px]",
+          variant === "secondary" ? "text-white/90" : "text-[#848484]/70"
+        )}
+      >
+        (Optional)
+      </span>
+    )}
+  </div>
+
+  <p
+    className={cn(
+      "text-xs absolute bottom-2 right-3 text-right transition-colors duration-200",
+      variant === "secondary"
+        ? description.length >= 120
+          ? "text-red-300"
+          : "text-white/70"
+        : description.length >= 120
+        ? "text-red-500"
+        : "text-gray-400"
+    )}
+  >
+    {description.length}/125
+  </p>
+</FormField>
+
+
 
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">

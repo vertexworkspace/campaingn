@@ -75,24 +75,37 @@ export default function PrivateOffices({ title, description,buttontext }: { titl
           </Swiper>
         </div>
 
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
-          {offices.map((office, index) => (
-            <div key={index} className="bg-white  overflow-hidden  transition">
-              <div className="relative w-full h-52">
-                <Image src={office.image} alt={office.title} fill className="object-cover" />
-              </div>
-              <div className="p-6 text-left">
-                <h3 className="text-3xl font-semibold text-primary">{office.title}</h3>
-                <p className="text-secondary mt-1 text-lg leading-relaxed">{office.address}</p>
-                <div className="mt-6">
-                  <Button onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
-                   {buttontext}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
+     <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
+  {offices.map((office, index) => (
+    <div
+      key={index}
+      className="bg-white overflow-hidden transition flex flex-col h-full"
+    >
+      {/* 🖼️ Image */}
+      <div className="relative w-full h-52">
+        <Image src={office.image} alt={office.title} fill className="object-cover" />
+      </div>
+
+      {/* 📄 Content section */}
+      <div className="flex flex-col flex-1 p-6 text-left">
+        <div>
+          <h3 className="text-3xl font-semibold text-primary">{office.title}</h3>
+          <p className="text-secondary mt-1 text-lg leading-relaxed">{office.address}</p>
         </div>
+
+        {/* 🧭 Button pinned at the bottom */}
+        <div className="mt-auto pt-6 flex ">
+          <Button
+            onClick={() => setOpen(true)}
+            className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
+          >
+            {buttontext}
+          </Button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
         {open && <ContactForm showModal onClose={() => setOpen(false)} />}
       </div>
     </section>
