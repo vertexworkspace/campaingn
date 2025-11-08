@@ -99,7 +99,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
         <FormField id="location">
           <Select id="location" variant={variant} defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
-            <option value="" disabled>
+            <option value="" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"} disabled>
               {dorpdownText}
             </option>
 
