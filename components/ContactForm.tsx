@@ -73,6 +73,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const dropdown = pathname === "/work-space" ? locations : solution;
 
   const buttontext = pathname === "/work-space" ? "Get a Quote" : "Book Now";
+  const dropwontext= pathname === "/work-space" ? "Location" : "Solution";
+
 
   const button =
     variant === "secondary" ? (
@@ -100,7 +102,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         <FormField id="location">
           <Select id="location" variant={variant} defaultValue="" required className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}>
             <option value="" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"} disabled>
-              {dorpdownText}
+              {dropwontext}
             </option>
 
             {dropdown.map((item, index) => {
