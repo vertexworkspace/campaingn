@@ -13,7 +13,7 @@ const navLinksCoworking = [
   { href: "#overview", label: "Overview" },
   { href: "#amenitie", label: "Amenities" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#location", label: "Location" },
+  { href: "#locations", label: "Location" },
 ];
 
 const navLinksWorkSpace = [

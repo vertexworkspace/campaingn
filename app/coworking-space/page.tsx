@@ -74,7 +74,7 @@ const page = () => {
         <QuoteBanner type="secondary" />
       </section>
 
-      <section id="location" >
+      <section id="locations" >
         <PrivateOffices
           buttontext="Book Now"
           title="Our Vertex Workspaces"
