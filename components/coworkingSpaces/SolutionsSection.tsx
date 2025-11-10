@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import heroImageUrl from "../../public/images/solution-section/1.png";
-import SolutionSectionModal from "./SolutionSectionModal";
+import SolutionSectionModal from "./modalComponents/SolutionSectionModal";
 import { useState } from "react";
 import type React from "react";
 import {
@@ -30,16 +30,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
-
 type SolutionData = {
   title: string;
   image: string;
   subtitle?: string;
   priceLabel?: string;
   ctaLabel?: string;
-  peiceTitle?:string;
+  peiceTitle?: string;
   titleText?: string;
-  priceSubTitle?:string;
+  priceSubTitle?: string;
   modalImage?: string;
   features?: Array<{ icon: React.ReactNode | React.ComponentType<{ className?: string }>; text: string }>;
 };
@@ -50,8 +49,8 @@ const solutions: SolutionData[] = [
     titleText: "Work. Collaborate. Grow in a space built for productivity.",
     image: "/images/solution-section/1.png",
     subtitle: "Enjoy 24-hour access to your own dedicated workstation with all the amenities you need to focus on and thrive.",
-    peiceTitle:"Monthly Pass",
-    
+    peiceTitle: "Monthly Pass",
+
     modalImage: "/images/solution-section/modalImages/1.png",
     priceLabel: "₹6,000 + GST / per month",
     ctaLabel: "Book Now",
@@ -69,7 +68,7 @@ const solutions: SolutionData[] = [
     modalImage: "/images/solution-section/modalImages/2.png",
     subtitle: "Flexible seating for dynamic schedules and changing needs.",
     priceLabel: "₹299 + GST / per day",
-    peiceTitle:"Flexi Desk",
+    peiceTitle: "Flexi Desk",
     ctaLabel: "Book Now",
     features: [
       { icon: Pc, text: "8-hour access to shared desks in common area" },
@@ -81,7 +80,7 @@ const solutions: SolutionData[] = [
   {
     title: "Virtual Offices",
     image: "/images/solution-section/3.png",
-      peiceTitle:"Virtual Address",
+    peiceTitle: "Virtual Address",
     titleText: "Your Official Business Address, Without the Office.",
     modalImage: "/images/solution-section/modalImages/4.png",
     subtitle: "Establish a professional presence with a prestigious mailing address with no physical space required.",
@@ -97,11 +96,11 @@ const solutions: SolutionData[] = [
   {
     title: "Event Spaces",
     image: "/images/solution-section/4.png",
- 
-     titleText: "Professional Spaces for Every Occasion",
+
+    titleText: "Professional Spaces for Every Occasion",
     modalImage: "/images/solution-section/modalImages/3.png",
-    peiceTitle:"Vertex Events",
-    priceSubTitle:"(Available at Vertex One / Treo)",
+    peiceTitle: "Vertex Events",
+    priceSubTitle: "(Available at Vertex One / Treo)",
     subtitle: "Host impactful meetings, workshops, or events in modern, fully equipped venues.",
     priceLabel: "₹5,000 + GST / 4-hour slot",
     ctaLabel: "Book Now",
@@ -115,7 +114,7 @@ const solutions: SolutionData[] = [
   {
     title: "Meeting Rooms",
     image: "/images/solution-section/5.png",
-    peiceTitle:"Flexi Desk",
+    peiceTitle: "Flexi Desk",
     titleText: "Where Ideas Meet. Collaborate. Conquer.",
     modalImage: "/images/solution-section/modalImages/5.png",
     subtitle: "Host seamless meetings in fully equipped, professional spaces designed to make every discussion productive.",
@@ -145,18 +144,25 @@ export default function SolutionsSection() {
 
       {/* Mobile: Swiper */}
       <div className="md:hidden px-4 sm:px-6 lg:px-20 mx-auto">
-        <Swiper  spaceBetween={24} slidesPerView={1} loop={true} // ✅ Enables looping
-            autoplay={{
-              delay: 2000, // ✅ 3 seconds per slide
-              disableOnInteraction: false, // Keeps autoplay active after user swipes
-            }}
-            modules={[Autoplay]} >
+        <Swiper
+          spaceBetween={24}
+          slidesPerView={1}
+          loop={true} // ✅ Enables looping
+          autoplay={{
+            delay: 2000, // ✅ 3 seconds per slide
+            disableOnInteraction: false, // Keeps autoplay active after user swipes
+          }}
+          modules={[Autoplay]}
+        >
           {solutions.map((solution, index) => (
             <SwiperSlide key={index}>
-              <motion.div  onClick={() => {
-                      setSelected(solution);
-                      setOpen(true);
-                    }} className="relative overflow-hidden group cursor-pointer h-[300px]">
+              <motion.div
+                onClick={() => {
+                  setSelected(solution);
+                  setOpen(true);
+                }}
+                className="relative overflow-hidden group cursor-pointer h-[300px]"
+              >
                 <Image
                   src={solution.image}
                   alt={solution.title}
@@ -197,9 +203,9 @@ export default function SolutionsSection() {
         {solutions.map((solution, index) => (
           <motion.div
             onClick={() => {
-                  setSelected(solution);
-                  setOpen(true);
-                }}
+              setSelected(solution);
+              setOpen(true);
+            }}
             key={index}
             className={`relative overflow-hidden  group cursor-pointer ${index === 0 ? "lg:row-span-2 h-full" : "h-full"}`}
           >

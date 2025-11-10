@@ -4,9 +4,11 @@ import Image from "next/image";
 import { X, Wifi, Users, MonitorCheck, Printer } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
-import { Button } from "../ui/Button";
-import { ContactForm } from "../ContactForm";
+import { Button } from "../../ui/Button";
+import { ContactForm } from "../../ContactForm";
 import { disableLenis, enableLenis } from "@/components/SmoothScroll";
+import WorkspacePlans from "./WorkspacePlans";
+import BanquetSpace from "./BanquetSpace";
 
 interface SolutionSectionModalProps {
   isOpen: boolean;
@@ -37,7 +39,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
   };
 
   const [open, setOpen] = useState(false);
- React.useEffect(() => {
+  React.useEffect(() => {
     if (isOpen) {
       disableLenis(); // ✅ stop smooth scroll globally
     } else {
@@ -55,7 +57,6 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
-
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
@@ -105,7 +106,6 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
     },
   ];
 
-  const isMeetingRoom = (data?.title ?? "").toLowerCase() === "meeting rooms";
 
   type Pricing = { time: string; price: string; note?: string };
   type Room = { title: string; seats: string; pricing: Pricing[] };
@@ -173,17 +173,13 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
               </button>
 
               {/* 🔹 Scrollable Content */}
-            <div
-  data-lenis-prevent
-  className="h-full overflow-y-auto overflow-x-hidden scrollbar pb-24 lg:h-[calc(100vh-7rem)]"
->
-
+              <div data-lenis-prevent className="h-full overflow-y-auto overflow-x-hidden scrollbar pb-24 md:h-[calc(100vh-7rem)]">
                 {/* ✅ TOP SECTION */}
                 <div className=" data-lenis-prevent sm:pl-6 relative lg:pe-3 lg:pl-20">
-                   <div className="my-10 lg:hidden sm:mt-6 px-2 sm:px-0">
-                      <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
-                      <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
-                    </div>
+                  <div className="my-10 lg:hidden sm:mt-6 px-2 sm:px-0">
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-primary leading-snug mb-2">{titleText}</h2>
+                    <p className="text-primary/90 text-sm sm:text-base">{subtitle}</p>
+                  </div>
                   {/* ✅ Desktop Image & Overlay */}
                   <div className="hidden lg:block relative w-full px-0 sm:pl-5 lg:w-[70%] lg:ml-auto h-[550px] xl:h-[600px]">
                     <div className="relative min-h-full">
@@ -211,98 +207,137 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                   </div>
                 </div>
 
-                {/* ✅ BOTTOM SECTION */}
-                {!isMeetingRoom && (
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:px-10 mt-6 sm:mt-10 pb-10 sm:pb-8 ">
-                    {/* 🔹 Monthly Pass Card */}
-                    <div className="bg-[#0097DC] col-span-12 lg:col-span-5 text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
-                      <div>
-                        <h3 className="text-2xl sm:text-[40px] font-semibold">{peiceTitle}</h3>
-                        {<p className="text-sm mt-1">{priceSubTitle}</p>}
-                        <p className="text-sm sm:text-[29px]  mt-3">
-                          Starting From:
-                          <br />
-                          <span className="text-lg sm:text-2xl opacity-100 font-semibold">{priceLabel}</span>
-                        </p>
-                      </div>
-                      <div>
-                        <Button
-                          aria-label={ctaLabel}
-                          onClick={() => setOpen(true)}
-                          className="w-full sm:w-auto bg-white text-[#0097DC] font-semibold px-6 py-2 hover:bg-blue-50 transition"
-                        >
-                          {ctaLabel}
-                        </Button>
-                      </div>
-                    </div>
+                {(() => {
+                  const title = (data?.title ?? "").toLowerCase();
 
-                    {/* 🔹 Features */}
-                    <div className="flex flex-col col-span-12  lg:col-span-7 justify-center px-1 sm:px-0">
-                      <h3 className="text-2xl sm:text-[40px] font-semibold text-primary mb-4 sm:mb-6">
-                        Workspaces Designed <br className="hidden sm:block" /> Around You
-                      </h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 text-gray-700 text-sm sm:text-base">
-                        {features.map((feature, idx) => (
-                          <div key={idx} className="flex items-start gap-3">
-                            <div className="mt-1">{renderIcon(feature.icon)}</div>
-                            <span>{feature.text}</span>
+                  if (title === "coworking spaces") {
+                    return (
+                      <>
+                        {/* 🔹 Top Section already rendered above */}
+                        <WorkspacePlans type="coworking spaces" />
+                      </>
+                    );
+                  }
+
+                  if (title === "flexi desks") {
+                    return (
+                      <>
+                        {/* ✅ Bottom Section */}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:px-10 mt-13 lg:mt-18 pb-10 sm:pb-8 ">
+                          {/* 🔹 Monthly Pass Card */}
+                          <div className="bg-[#0097DC] col-span-12 mb-4 lg:mb-0 lg:col-span-5 text-white p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 ">
+                            <div>
+                              <h3 className="text-2xl sm:text-[40px] font-semibold">{peiceTitle}</h3>
+                              {<p className="text-sm mt-1">{priceSubTitle}</p>}
+                              <p className="text-sm sm:text-[29px]  mt-3">
+                                Starting From:
+                                <br />
+                                <span className="text-lg sm:text-2xl opacity-100 font-semibold">{priceLabel}</span>
+                              </p>
+                            </div>
+                            <div>
+                              <Button
+                                aria-label={ctaLabel}
+                                onClick={() => setOpen(true)}
+                                className="w-full sm:w-auto bg-white text-[#0097DC] font-semibold px-6 py-2 hover:bg-blue-50 transition"
+                              >
+                                {ctaLabel}
+                              </Button>
+                            </div>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
 
-                {/* meeting room render section */}
-                {isMeetingRoom && (
-                  <>
-                    <div className="text-center mt-10 sm:mt-16 mb-8 sm:mb-10 px-4 sm:px-0 ">
-                      <h2 className="text-2xl sm:text-[40px] font-semibold text-primary">
-                        Workspaces Designed <br className="hidden sm:block" /> Around You
-                      </h2>
-                    </div>
-
-                    {/* Features Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6   mb-10 sm:mb-12  lg:pl-8 lg:pe-3">
-                      {featuress.map((feature, idx) => (
-                        <div key={idx} className="border border-[#0097DC] text-center py-5 sm:py-6 px-3 sm:px-4 text-gray-800 transition">
-                          <p className="text-sm sm:text-lg text-secondary leading-relaxed">{feature.text}</p>
+                          {/* 🔹 Features */}
+                          <div className="flex flex-col col-span-12  lg:col-span-7 justify-center px-1 sm:px-0">
+                            <h3 className="text-2xl sm:text-[40px] font-semibold text-primary mb-4 sm:mb-6">
+                              Workspaces Designed <br className="hidden sm:block" /> Around You
+                            </h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 text-gray-700 text-sm sm:text-base">
+                              {features.map((feature, idx) => (
+                                <div key={idx} className="flex lg:items-start items-center gap-3">
+                                  <div className="mt-1">{renderIcon(feature.icon)}</div>
+                                  <span>{feature.text}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
-                      ))}
-                    </div>
+                      </>
+                    );
+                  }
 
-                    {/* Rooms Section */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8  pb-9  lg:pl-8 lg:pe-3">
-                      {rooms.map((room, idx) => (
-                        <div key={idx} className="bg-[#0094E0] text-white p-6 sm:p-10 flex flex-col justify-between ">
-                          <div>
-                            <h3 className="text-2xl sm:text-[40px] font-semibold mb-1 sm:mb-2">{room.title}</h3>
-                            <p className="text-lg sm:text-[29px] mb-4 sm:mb-6 opacity-90">{room.seats}</p>
+                  if (title === "event spaces") {
+                    return (
+                      <>
+                        {/* 🔹 Top Section already rendered above */}
+                        <BanquetSpace />
+                      </>
+                    );
+                  }
 
-                            <p className="font-medium text-base sm:text-[24px] mb-2 sm:mb-4">Starting From:</p>
-                            {room.pricing.map((plan, i) => (
-                              <div key={i} className="mb-4">
-                                <p className="text-sm sm:text-[24px]">
-                                  {plan.time}: <span className="font-semibold">{plan.price}</span>
-                                </p>
-                                {plan.note && <p className="text-sm sm:text-lg opacity-80 mt-1">{plan.note}</p>}
+                  if (title === "virtual offices") {
+                    return (
+                      <>
+                        {/* 🔹 Top Section already rendered above */}
+                        <WorkspacePlans type="virtual offices" />
+                      </>
+                    );
+                  }
+
+                  if (title === "meeting rooms") {
+                    return (
+                      <>
+                        {/* ✅ Meeting Room Render Section */}
+                        <div className="text-center mt-10 sm:mt-16 mb-8 sm:mb-10 px-4 sm:px-0 ">
+                          <h2 className="text-2xl sm:text-[40px] font-semibold text-primary">
+                            Workspaces Designed <br className="hidden sm:block" /> Around You
+                          </h2>
+                        </div>
+
+                        {/* Features Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12 lg:pl-8 lg:pe-3">
+                          {featuress.map((feature, idx) => (
+                            <div key={idx} className="border border-[#0097DC] text-center py-5 sm:py-6 px-3 sm:px-4 text-gray-800 transition">
+                              <p className="text-sm sm:text-lg text-secondary leading-relaxed">{feature.text}</p>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Rooms Section */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 pb-9 lg:pl-8 lg:pe-3">
+                          {rooms.map((room, idx) => (
+                            <div key={idx} className="bg-[#0094E0] text-white p-6 sm:p-10 flex flex-col justify-between ">
+                              <div>
+                                <h3 className="text-2xl sm:text-[40px] font-semibold mb-1 sm:mb-2">{room.title}</h3>
+                                <p className="text-lg sm:text-[29px] mb-4 sm:mb-6 opacity-90">{room.seats}</p>
+
+                                <p className="font-medium text-base sm:text-[24px] mb-2 sm:mb-4">Starting From:</p>
+                                {room.pricing.map((plan, i) => (
+                                  <div key={i} className="mb-4">
+                                    <p className="text-sm sm:text-[24px]">
+                                      {plan.time}: <span className="font-semibold">{plan.price}</span>
+                                    </p>
+                                    {plan.note && <p className="text-sm sm:text-lg opacity-80 mt-1">{plan.note}</p>}
+                                  </div>
+                                ))}
                               </div>
-                            ))}
-                          </div>
-                          <div className="flex justify-end">
-                            <Button
-                              aria-label="Book Now"
-                              onClick={() => setOpen(true)}
-                              className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
-                            >
-                              Book Now
-                            </Button>
-                          </div>
+                              <div className="flex justify-end">
+                                <Button
+                                  aria-label="Book Now"
+                                  onClick={() => setOpen(true)}
+                                  className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
+                                >
+                                  Book Now
+                                </Button>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </>
-                )}
+                      </>
+                    );
+                  }
+
+                  return null;
+                })()}
               </div>
             </div>
           </motion.div>
