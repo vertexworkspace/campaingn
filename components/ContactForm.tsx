@@ -10,15 +10,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
-// ✅ Utility for conditional class joining
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
 
-// ✅ Layout wrapper for consistent spacing
 const FormRow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">{children}</div>
 );
 
-// ✅ Generic FormField wrapper
 const FormField: React.FC<{
   id: string;
   label?: string;
@@ -46,7 +43,8 @@ interface ContactFormProps {
 const locations = ["Bangalore", "Chennai", "Hyderabad"];
 const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
 
-export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary", dorpdownText }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
+  const [formErrors, setFormErrors] = React.useState<Record<string, string>>({});
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -54,17 +52,43 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const router = useRouter();
 
   const googleScriptUrl =
-    pathname === "/work-space" ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
+    pathname === "/work-space"
+      ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE
+      : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
+
+  const validateForm = (formData: FormData) => {
+    const errors: Record<string, string> = {};
+
+    if (!formData.get("name")) errors.name = "Please enter your name";
+    if (!formData.get("email")) errors.email = "Please enter your email";
+    if (!formData.get("location")) errors.location = "Please select a location";
+    if (!phone) errors.phone = "Please enter your phone number";
+    if (!formData.get("company")) errors.company = "Please enter your company name";
+    if (!formData.get("team-size")) errors["team-size"] = "Please enter your team size";
+
+    return errors;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+    const errors = validateForm(formData);
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormErrors({});
     setLoading(true);
+
     if (pathname === "/work-space") {
       router.push("/work-space/thank-you");
     } else {
       router.push("/coworking-space/thank-you");
     }
-    const form = e.currentTarget as HTMLFormElement;
-    const formData = new FormData(form);
+
     const consentChecked = formData.get("consent") === "on";
 
     const data = {
@@ -74,12 +98,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
       location: formData.get("location") as string,
       company: formData.get("company") as string,
       teamSize: formData.get("team-size") as string,
-      description:description||"",
+      description: description || "",
       consent: consentChecked ? "Yes" : "No",
     };
 
     try {
-      const response = await fetch(googleScriptUrl!, {
+      await fetch(googleScriptUrl!, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data as any),
@@ -91,7 +115,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     }
   };
 
-  // 🎨 Variant-based style setup
   const borderColor = variant === "secondary" ? "border-white" : "border-[#E2E2E2]";
   const placeholderColor = variant === "secondary" ? "placeholder-white text-white" : "placeholder-[#848484] text-[#848484]";
   const inputBg = "bg-transparent";
@@ -107,7 +130,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         aria-label={buttontext || "Submit form"}
         type="submit"
         disabled={loading}
-        className="bg-white text-[#0097DC] font-semibold text-lg   hover:bg-blue-50 transition"
+        className="bg-white text-[#0097DC] font-semibold text-lg hover:bg-blue-50 transition"
       >
         {buttontext}
       </Button>
@@ -117,33 +140,25 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
       </Button>
     );
 
- React.useEffect(() => {
-  // Run only on client (avoid SSR issues)
-  if (typeof window === "undefined") return;
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const isLargeScreen = window.innerWidth >= 1024;
 
-  // ✅ Check for large screens only (≥ 1024px)
-  const isLargeScreen = window.innerWidth >= 1024;
+    if (isLargeScreen) {
+      if (showModal) disableLenis();
+      else enableLenis();
 
-  if (isLargeScreen) {
-    if (showModal) {
-      disableLenis(); // stop smooth scroll
-    } else {
-      enableLenis(); // resume when modal closes
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape" && showModal) onClose?.();
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        enableLenis();
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && showModal) onClose?.();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      enableLenis();
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }
-}, [showModal, onClose]);
-
+  }, [showModal, onClose]);
 
   const formContent = (
     <form onSubmit={handleSubmit} className={cn("space-y-5 rounded-lg", className)}>
@@ -155,9 +170,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="name"
             type="text"
             placeholder="Name"
-            required
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+            className={cn(
+              "border",
+              formErrors.name ? "border-red-500" : borderColor,
+              inputBg,
+              placeholderColor,
+              placeholderSize
+            )}
           />
+          {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
         </FormField>
 
         <FormField id="location">
@@ -166,19 +187,24 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="location"
             variant={variant}
             defaultValue=""
-            required
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+            className={cn(
+              "border",
+              formErrors.location ? "border-red-500" : borderColor,
+              inputBg,
+              placeholderColor,
+              placeholderSize
+            )}
           >
-            <option value="" className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"} disabled>
+            <option value="" disabled>
               {dropwontext}
             </option>
-
             {dropdown.map((item, index) => (
-              <option key={index} value={item} className={variant === "secondary" ? "text-[#848484] bg-white" : "text-[#848484]"}>
+              <option key={index} value={item} className="text-[#848484]">
                 {item}
               </option>
             ))}
           </Select>
+          {formErrors.location && <p className="text-red-500 text-xs mt-1">{formErrors.location}</p>}
         </FormField>
       </FormRow>
 
@@ -189,10 +215,19 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             international
             defaultCountry="IN"
             value={phone}
-            onChange={setPhone}
+            onChange={(value) => {
+              setPhone(value);
+              setFormErrors((prev) => ({ ...prev, phone: "" }));
+            }}
             placeholder="Phone"
-            className={cn("flex w-full border px-3 py-2 text-sm outline-none", borderColor, inputBg, placeholderColor)}
+            className={cn(
+              "flex w-full border px-3 py-2 text-sm outline-none",
+              formErrors.phone ? "border-red-500" : borderColor,
+              inputBg,
+              placeholderColor
+            )}
           />
+          {formErrors.phone && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
         </FormField>
 
         <FormField id="email">
@@ -201,9 +236,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="email"
             type="email"
             placeholder="Email"
-            required
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+            className={cn(
+              "border",
+              formErrors.email ? "border-red-500" : borderColor,
+              inputBg,
+              placeholderColor,
+              placeholderSize
+            )}
           />
+          {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
         </FormField>
       </FormRow>
 
@@ -213,25 +254,38 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           <Input
             id="company"
             name="company"
-            required
             type="text"
             placeholder="Company Name"
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+            className={cn(
+              "border",
+              formErrors.company ? "border-red-500" : borderColor,
+              inputBg,
+              placeholderColor,
+              placeholderSize
+            )}
           />
+          {formErrors.company && <p className="text-red-500 text-xs mt-1">{formErrors.company}</p>}
         </FormField>
+
         <FormField id="team-size">
           <Input
             id="team-size"
             name="team-size"
-            required
             type="number"
             placeholder="Team Size"
-            className={cn(borderColor, inputBg, placeholderColor, placeholderSize)}
+            className={cn(
+              "border",
+              formErrors["team-size"] ? "border-red-500" : borderColor,
+              inputBg,
+              placeholderColor,
+              placeholderSize
+            )}
           />
+          {formErrors["team-size"] && <p className="text-red-500 text-xs mt-1">{formErrors["team-size"]}</p>}
         </FormField>
       </FormRow>
 
-      {/* Description */}
+      {/* Description (optional) */}
       <FormField id="description" className="relative">
         <div className="relative">
           <textarea
@@ -269,7 +323,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">
-        <div className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${variant === "secondary"?"gap-12":"gap-4"}   md:gap-4 lg:gap-3`}>
+        <div
+          className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${
+            variant === "secondary" ? "gap-12" : "gap-4"
+          } md:gap-4 lg:gap-3`}
+        >
           <div className="flex items-center">
             <input
               id="consent"
@@ -284,7 +342,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
                 variant === "secondary" ? "border-white" : "border-[#E2E2E2]"
               )}
             />
-
             <label htmlFor="consent" className={cn("ml-3 block text-sm select-none", variant === "secondary" ? "text-white" : "text-gray-700")}>
               Consent to contact me via Call, SMS, Email, or WhatsApp
             </label>
@@ -307,7 +364,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-start md:items-center justify-center  bg-black/50 backdrop-blur-sm overflow-y-auto px-4 py-10 sm:px-6 sm:py-12"
+          className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/50 backdrop-blur-sm overflow-y-auto px-4 py-10 sm:px-6 sm:py-12"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
@@ -332,7 +389,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
                   Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
                 </p>
               </div>
-
               {formContent}
             </div>
           </motion.div>

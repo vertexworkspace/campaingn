@@ -98,7 +98,7 @@ export default function TestimonialSection() {
     >
       <path
         d="M11.3587 0.99995L1.41422 10.9444L11.3587 20.8889"
-        stroke="#D1D1D1"
+        stroke="#848484"
         strokeWidth="2"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -149,7 +149,7 @@ export default function TestimonialSection() {
               >
                 <path
                   d="M11.3587 0.99995L1.41422 10.9444L11.3587 20.8889"
-                  stroke="#D1D1D1"
+                  stroke="#848484"
                   strokeWidth="2"
                   strokeMiterlimit="10"
                   strokeLinecap="round"

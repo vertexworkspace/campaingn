@@ -10,10 +10,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinksCoworking = [
-  { href: "#overviewco", label: "Overview" },
-  { href: "#amenitieco", label: "Amenities" },
-  { href: "#pricingco", label: "Pricing" },
-  { href: "#locationco", label: "Location" },
+  { href: "#overview", label: "Overview" },
+  { href: "#amenitie", label: "Amenities" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#location", label: "Location" },
 ];
 
 const navLinksWorkSpace = [

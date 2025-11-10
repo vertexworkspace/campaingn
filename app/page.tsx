@@ -10,7 +10,7 @@ export default function Page() {
     if (window.history.length > 1) {
       router.back();
     } else {
-      router.replace("/coworking-space");
+      router.push("/coworking-space");
     }
   }, [router]);
 
