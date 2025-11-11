@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
     description: "Get a special offer on flexible office solutions at Vertex.",
-    images: ["https://vertex-megamind.vercel.app/icon.png"], // ✅ absolute URL
+    images: ["https://vertex-megamind.vercel.app/icon.png"], 
   },
   icons: {
     icon: [

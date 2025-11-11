@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 
 const navLinksCoworking = [
   { href: "#overview", label: "Overview" },
-  { href: "#amenitie", label: "Amenities" },
+  { href: "#amenities", label: "Amenities" },
   { href: "#pricing", label: "Pricing" },
   { href: "#locations", label: "Location" },
 ];
