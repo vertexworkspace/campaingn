@@ -1,6 +1,5 @@
 import SolutionsSection from "@/components/coworkingSpaces/SolutionsSection";
 import WorkspacesSection from "@/components/coworkingSpaces/WorkspacesSection";
-import Footer from "@/components/sections/Footer";
 import GetAQuoteSection from "@/components/sections/GetAQuoteSection";
 import HeroSection from "@/components/sections/HeroSection";
 import PrivateOffices from "@/components/sections/PrivateOffices";
@@ -51,7 +50,7 @@ const page = () => {
       <section >
         <GetAQuoteSection dorpdownText="Solution" />
       </section>
-      <Footer />
+    
     </main>
   );
 };
