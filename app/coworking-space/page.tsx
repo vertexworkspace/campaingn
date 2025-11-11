@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     title: "Vertex Coworking Space Mangalore | Flexible Shared Offices",
     description:
       "Discover flexible coworking solutions at Vertex Workspace in Mangalore. Modern, collaborative, and fully equipped for teams and individuals.",
-    url: "https://vertexworkspace.com/coworking-space",
+    url: "https://vertex-megamind.vercel.app/coworking-space",
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/icon.png",
+        url: "https://vertex-megamind.vercel.app/icon.png", // ✅ public path works now
         width: 1200,
         height: 630,
         alt: "Vertex Coworking Space Mangalore",
@@ -32,8 +32,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vertex Coworking Space Mangalore | Flexible Shared Offices",
-    description: "Join Vertex Coworking Space in Mangalore — modern, collaborative, and productivity-focused environments.",
-    images: ["/icon.png"],
+    description:
+      "Join Vertex Coworking Space in Mangalore — modern, collaborative, and productivity-focused environments.",
+    images: ["https://vertex-megamind.vercel.app/icon.png"],
   },
   icons: {
     icon: [
@@ -43,8 +44,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.png" }],
     shortcut: [{ url: "/icon.png" }],
   },
-  metadataBase: new URL("https://vertexworkspace.com"),
+  metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
+
 
 const page = () => {
   return (
