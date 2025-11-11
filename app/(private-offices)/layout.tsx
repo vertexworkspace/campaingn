@@ -1,13 +1,7 @@
-// app/page.tsx
-import HeroSection from "@/components/sections/HeroSection";
-import PrivateOfficeFeatures from "@/components/sections/PrivateOfficeFeatures";
-import WhyChooseVertex from "@/components/sections/WhyChooseVertex";
-import TestimonialSection from "@/components/sections/TestimonialSection";
-import QuoteBanner from "@/components/sections/QuoteBanner";
-import PrivateOffices from "@/components/sections/PrivateOffices";
-import GetAQuoteSection from "@/components/sections/GetAQuoteSection";
+import { ReactNode } from "react";
+import Script from "next/script";
+import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
-
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Private Offices in Mangalore | Vertex Workspace",
@@ -47,38 +41,36 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
-
-export default function Page() {
+export default function PrivateOfficesLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="flex flex-col min-h-screen bg-white ">
-      <section id="overview">
-        <HeroSection title=" Private Offices" title2="That Mean Business" description="Vertex Private Offices give you privacy, productivity, and prestige all under one roof."/>
-      </section>
+    <html lang="en">
+      <head>
+        {/* ✅ Google Tag Manager */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5QH6FHRK');
+          `}
+        </Script>
+      </head>
 
-      <section id="pricing">
-        <PrivateOfficeFeatures />
-      </section>
-
-      <section id="amenities">
-        <WhyChooseVertex />
-      </section>
-
-      <section>
-        <TestimonialSection />
-      </section>
-
-      <section>
-        <QuoteBanner />
-      </section>
-
-      <section id="locations" >
-        <PrivateOffices buttontext="Get a Quote" title="Our Private Offices" description="Empower your business with an office space in the most sought after locations across the city." />
-      </section>
-
-      <section >
-        <GetAQuoteSection  dorpdownText="Location"/>
-      </section>
-      <Footer />
-    </main>
+      <body className="min-h-screen flex flex-col">
+        {/* ✅ GTM noscript fallback */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5QH6FHRK"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
   );
 }
