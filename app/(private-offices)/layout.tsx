@@ -3,6 +3,7 @@ import Script from "next/script";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Private Offices in Mangalore | Vertex Workspace",
   description:
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
     title: "Private Offices in Mangalore | Vertex Workspace",
     description:
       "Discover premium private office spaces at Vertex Workspace, Mangalore. Flexible terms, professional environments, and top-tier amenities for teams and individuals.",
-    url: "https://vertex-megamind.vercel.app/private-offices", // ✅ correct page URL
+    url: "https://vertex-megamind.vercel.app/private-offices",
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "https://vertex-megamind.vercel.app/icon.png", // ✅ absolute public image path
+        url: "https://vertex-megamind.vercel.app/icon.png",
         width: 1200,
         height: 630,
         alt: "Vertex Private Offices Mangalore",
@@ -41,24 +42,30 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
+
 export default function PrivateOfficesLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google Tag Manager */}
-        <Script id="gtm-script" strategy="afterInteractive">
+        {/* ✅ Google Tag Manager (HEAD) */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
           {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            (function(w,d,s,l,i){
+              w[l]=w[l]||[];
+              w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+              var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),
+              dl=l!='dataLayer'?'&l='+l:'';
+              j.async=true;
+              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-5QH6FHRK');
           `}
         </Script>
       </head>
 
       <body className="min-h-screen flex flex-col">
-        {/* ✅ GTM noscript fallback */}
+        {/* ✅ Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-5QH6FHRK"
@@ -67,6 +74,8 @@ export default function PrivateOfficesLayout({ children }: { children: ReactNode
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+
+        {/* ✅ Your site layout */}
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
