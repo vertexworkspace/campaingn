@@ -28,7 +28,7 @@ export default function ThankYouPage() {
           details about our Private Office Solutions.
         </p>
 
-          <Link href="/coworking-space"><div className="mt-5 inline-flex items-center gap-2 text-[#0097DC]  font-bold text-lg lg:text-[24px]  cursor-pointer">
+          <Link href="/vertex-solutions"><div className="mt-5 inline-flex items-center gap-2 text-[#0097DC]  font-bold text-lg lg:text-[24px]  cursor-pointer">
         <ChevronLeft size={30} />
           Go Back
         </div></Link>

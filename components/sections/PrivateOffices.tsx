@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { Button } from "../ui/Button"; // adjust import path based on your project
 import officeImg from "../../public/images/2.png"; // replace with your actual image path
+import officeImage2 from "../../public/images/solution-section/5.webp"
+import officeImage3 from "../../public/images/solution-section/1.webp"
 import { ContactForm } from "../ContactForm";
 import { useState } from "react";
 import { StyledMap } from "../ui/StyledMap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-
 export default function PrivateOffices({ title, description,buttontext }: { title: string; description: string; buttontext: string}) {
   const [open, setOpen] = useState(false);
   const offices = [
@@ -21,12 +22,12 @@ export default function PrivateOffices({ title, description,buttontext }: { titl
     {
       title: "Vertex Treo",
       address: "Kambala Road, Mallikatte, Kadri, Mangaluru, Karnataka 575003",
-      image: officeImg,
+      image: officeImage2,
     },
     {
       title: "Vertex Five",
       address: "Mallikatte Rd, Mallikatte, Kadri, Mangaluru, Karnataka 575003",
-      image: officeImg,
+      image: officeImage3,
     },
   ];
 

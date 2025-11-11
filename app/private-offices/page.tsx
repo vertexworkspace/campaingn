@@ -10,20 +10,21 @@ import Footer from "@/components/sections/Footer";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Vertex Workspace Mangalore",
+  title: "Private Offices in Mangalore | Vertex Workspace",
   description:
-    "Discover flexible office solutions in Mangalore. Get a special offer on private offices, coworking, & virtual offices at Vertex. Book your tour today!",
+    "Upgrade your work experience with private offices at Vertex Workspace, Mangalore. Enjoy privacy, flexibility, and modern amenities designed for professionals and teams.",
   openGraph: {
-    title: "Special Offer on Office Space | Vertex Workspace Mangalore",
-    description: "Get a special offer on flexible office solutions at Vertex.",
-    url: "https://vertex-megamind.vercel.app/work-space", // ✅ use your real deployed domain
+    title: "Private Offices in Mangalore | Vertex Workspace",
+    description:
+      "Discover premium private office spaces at Vertex Workspace, Mangalore. Flexible terms, professional environments, and top-tier amenities for teams and individuals.",
+    url: "https://vertex-megamind.vercel.app/private-offices", // ✅ correct page URL
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "https://vertex-megamind.vercel.app/icon.png", // ✅ absolute URL (public path)
+        url: "https://vertex-megamind.vercel.app/icon.png", // ✅ absolute public image path
         width: 1200,
         height: 630,
-        alt: "Vertex Workspace Office Offer",
+        alt: "Vertex Private Offices Mangalore",
       },
     ],
     locale: "en_US",
@@ -31,9 +32,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Special Offer on Office Space | Vertex Workspace Mangalore",
-    description: "Get a special offer on flexible office solutions at Vertex.",
-    images: ["https://vertex-megamind.vercel.app/icon.png"], 
+    title: "Private Offices in Mangalore | Vertex Workspace",
+    description:
+      "Experience the ideal private office setup in Mangalore with Vertex Workspace — modern, fully furnished, and designed for focus and growth.",
+    images: ["https://vertex-megamind.vercel.app/icon.png"],
   },
   icons: {
     icon: [
@@ -45,6 +47,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
+
 export default function Page() {
   return (
     <main className="flex flex-col min-h-screen bg-white ">

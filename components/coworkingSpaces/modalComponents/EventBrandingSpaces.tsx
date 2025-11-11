@@ -130,9 +130,9 @@ const EventBrandingSpaces = () => {
 
         {/* Right Images */}
         <div className="lg:col-span-5 hidden lg:flex flex-col items-center sm:items-end gap-4 lg:gap-10">
-          <Image src="/dummy/3.webp" alt="Event 1" width={400} height={300} className="object-cover w-full sm:w-[90%] h-[250px] lg:h-[500px]" />
+          <Image src="/images/solution-section/modalImages/listen.webp" alt="Event 1" width={400} height={300} className="object-cover w-full sm:w-[90%] h-[250px] lg:h-[500px]" />
           <Image
-            src="/dummy/2.webp"
+            src="/images/solution-section/modalImages/presntation.webp"
             alt="Event 2"
             width={400}
             height={300}
@@ -146,7 +146,7 @@ const EventBrandingSpaces = () => {
         {/* Left Image */}
         <div className="col-span-5 hidden lg:block">
           <Image
-            src="/dummy/4.webp"
+            src="/images/solution-section/modalImages/delimo.webp"
             alt="Branding Space"
             width={500}
             height={400}

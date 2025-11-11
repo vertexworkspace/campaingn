@@ -15,16 +15,16 @@ export default function Page() {
     if (referrer.startsWith(currentDomain)) {
       const path = referrer.replace(currentDomain, ""); // extract path
 
-      if (path.startsWith("/work-space")) {
-        router.push("/work-space");
-      } else if (path.startsWith("/coworking-space")) {
-        router.push("/coworking-space");
+      if (path.startsWith("/private-offices")) {
+        router.push("/private-offices");
+      } else if (path.startsWith("/vertex-solutions")) {
+        router.push("/vertex-solutions");
       } else {
-        router.push("/coworking-space"); // default
+        router.push("/vertex-solutions"); // default
       }
     } else {
       // Came directly or from external site
-      router.push("/coworking-space");
+      router.push("/vertex-solutions");
     }
   }, [router]);
 

@@ -9,21 +9,21 @@ import TestimonialSection from "@/components/sections/TestimonialSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vertex Coworking Space Mangalore",
+  title: "Vertex Solutions | Coworking & Office Space in Mangalore",
   description:
-    "Find the perfect coworking space in Mangalore with Vertex. Flexible plans, modern amenities, and a vibrant community designed for productivity and growth.",
+    "Explore Vertex Solutions in Mangalore — premium coworking spaces and private offices designed for productivity, collaboration, and growth. Book your workspace today!",
   openGraph: {
-    title: "Vertex Coworking Space Mangalore | Flexible Shared Offices",
+    title: "Vertex Solutions | Coworking & Office Space in Mangalore",
     description:
-      "Discover flexible coworking solutions at Vertex Workspace in Mangalore. Modern, collaborative, and fully equipped for teams and individuals.",
-    url: "https://vertex-megamind.vercel.app/coworking-space",
+      "Discover flexible coworking plans, private cabins, and meeting spaces at Vertex Solutions, Mangalore. Modern amenities for startups, freelancers, and teams.",
+    url: "https://vertex-megamind.vercel.app/vertex-solutions",
     siteName: "Vertex Workspace",
     images: [
       {
         url: "https://vertex-megamind.vercel.app/icon.png",
         width: 1200,
         height: 630,
-        alt: "Vertex Coworking Space Mangalore",
+        alt: "Vertex Solutions Mangalore",
       },
     ],
     locale: "en_US",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vertex Coworking Space Mangalore | Flexible Shared Offices",
+    title: "Vertex Solutions | Coworking & Office Space in Mangalore",
     description:
-      "Join Vertex Coworking Space in Mangalore — modern, collaborative, and productivity-focused environments.",
+      "Flexible coworking and private office solutions in Mangalore by Vertex — designed to help professionals and teams thrive.",
     images: ["https://vertex-megamind.vercel.app/icon.png"],
   },
   icons: {
@@ -46,6 +46,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
+
 
 
 const page = () => {

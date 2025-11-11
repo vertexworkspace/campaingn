@@ -47,11 +47,11 @@ const solutions: SolutionData[] = [
   {
     title: "Coworking Spaces",
     titleText: "Work. Collaborate. Grow in a space built for productivity.",
-    image: "/images/solution-section/1.png",
+    image: "/images/solution-section/1.webp",
     subtitle: "Enjoy 24-hour access to your own dedicated workstation with all the amenities you need to focus on and thrive.",
     peiceTitle: "Monthly Pass",
 
-    modalImage: "/images/solution-section/modalImages/1.png",
+    modalImage: "/images/solution-section/1.webp",
     priceLabel: "₹6,000 + GST / per month",
     ctaLabel: "Book Now",
     features: [
@@ -63,9 +63,9 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Flexi Desks",
-    image: "/images/solution-section/2.png",
+    image: "/images/solution-section/flexi-desk.webp",
     titleText: "Flexible Workdays. One Pass Away.",
-    modalImage: "/images/solution-section/modalImages/2.png",
+    modalImage: "/images/solution-section/flexi-desk.webp",
     subtitle: "Flexible seating for dynamic schedules and changing needs.",
     priceLabel: "₹299 + GST / per day",
     peiceTitle: "Flexi Desk",
@@ -79,10 +79,10 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Virtual Offices",
-    image: "/images/solution-section/3.png",
+    image: "/images/solution-section/3.webp",
     peiceTitle: "Virtual Address",
     titleText: "Your Official Business Address, Without the Office.",
-    modalImage: "/images/solution-section/modalImages/4.png",
+    modalImage: "/images/solution-section/3.webp",
     subtitle: "Establish a professional presence with a prestigious mailing address with no physical space required.",
     priceLabel: "₹1,000 + GST / per month",
     ctaLabel: "Book Now",
@@ -95,10 +95,10 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Event Spaces",
-    image: "/images/solution-section/4.png",
+    image: "/images/solution-section/4.webp",
 
     titleText: "Professional Spaces for Every Occasion",
-    modalImage: "/images/solution-section/modalImages/3.png",
+    modalImage: "/images/solution-section/4.webp",
     peiceTitle: "Vertex Events",
     priceSubTitle: "(Available at Vertex One / Treo)",
     subtitle: "Host impactful meetings, workshops, or events in modern, fully equipped venues.",
@@ -113,10 +113,10 @@ const solutions: SolutionData[] = [
   },
   {
     title: "Meeting Rooms",
-    image: "/images/solution-section/5.png",
+    image: "/images/solution-section/5.webp",
     peiceTitle: "Flexi Desk",
     titleText: "Where Ideas Meet. Collaborate. Conquer.",
-    modalImage: "/images/solution-section/modalImages/5.png",
+    modalImage: "/images/solution-section/5.webp",
     subtitle: "Host seamless meetings in fully equipped, professional spaces designed to make every discussion productive.",
     priceLabel: "₹499 + GST / hour",
     ctaLabel: "Book Room",

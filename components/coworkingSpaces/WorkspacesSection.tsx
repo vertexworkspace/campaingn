@@ -8,22 +8,18 @@ export default function WorkspacesSection() {
     <section className="bg-[#F8F8F8] py-10 sm:py-16 px-4 sm:px-6 lg:px-12">
       <div className="px-4 sm:px-6 lg:px-20 xl:px-28 mx-auto grid overflow-hidden grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
         {/* 🖼️ Left Image Collage */}
-        <div className="relative hidden  bg-white col-span-12 lg:col-span-4 lg:flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
+        <div className="relative hidden   col-span-12 lg:col-span-4 lg:flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
           {/* Top-left Image */}
-          <div className="absolute top-2 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
-            <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />
+          <div className="absolute top-0 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
+            <Image src="/images/workspace/1.webp" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />
           </div>
 
           {/* Center Image (Perfectly Centered) */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[70%] sm:w-[65%] h-[140px] sm:h-[200px] md:h-[240px] lg:h-[260px] overflow-hidden ">
-              <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace cafe" width={300} height={300} className="object-cover w-full h-full" />
-            </div>
-          </div>
+         
 
           {/* Bottom-right Image */}
-          <div className="absolute bottom-2 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
-            <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
+          <div className="absolute bottom-0 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
+            <Image src="/images/workspace/3.webp" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
           </div>
         </div>
 
@@ -37,20 +33,16 @@ export default function WorkspacesSection() {
           </p>
           <div className="relative lg:hidden mb-8   col-span-12 lg:col-span-4 flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
           {/* Top-left Image */}
-          <div className="absolute top-2 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
-            <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />
+          <div className="absolute top-0 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
+            <Image src="/images/workspace/1.webp" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />
           </div>
 
           {/* Center Image (Perfectly Centered) */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[70%] sm:w-[65%] h-[140px] sm:h-[200px] md:h-[240px] lg:h-[260px] overflow-hidden ">
-              <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace cafe" width={300} height={300} className="object-cover w-full h-full" />
-            </div>
-          </div>
+        
 
           {/* Bottom-right Image */}
-          <div className="absolute bottom-2 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
-            <Image src="/stockImages/HeroBannerImage1.png" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
+          <div className="absolute bottom-0 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
+            <Image src="/images/workspace/3.webp" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
           </div>
         </div>
           {/* ✅ Features Grid */}

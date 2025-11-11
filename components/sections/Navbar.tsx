@@ -29,11 +29,11 @@ const Navbar = () => {
   const pathname = usePathname();
 
   // Determine which page and navLinks to use
-  const isCoworking = pathname.startsWith("/coworking-space");
-  const isWorkspace = pathname.startsWith("/work-space");
+  const isCoworking = pathname.startsWith("/vertex-solutions");
+  const isWorkspace = pathname.startsWith("/private-offices");
 
   const navLinks = isCoworking ? navLinksCoworking : navLinksWorkSpace;
-  const basePath = isCoworking ? "/coworking-space" : "/work-space";
+  const basePath = isCoworking ? "/vertex-solutions" : "/private-offices";
   const isThankYouPage = pathname.includes("/thank-you");
 
   // ✅ Smooth scroll handler (replaces react-scroll)
@@ -52,7 +52,7 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0 cursor-pointer">
-               <Link href={isCoworking ? "/coworking-space" : "/work-space"}><Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority /></Link>
+               <Link href={isCoworking ? "/vertex-solutions" : "/private-offices"}><Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority /></Link>
             </div>
 
             {/* Desktop Navigation */}

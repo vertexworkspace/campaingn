@@ -6,8 +6,9 @@ import { ContactForm } from "../ContactForm";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import heroImageUrl from "../../public/stockImages/HeroBannerImage1.png";
-import image2 from "../../public/images/solution-section/1.png";
+import heroImageUrl from "../../public/images/hero.webp";
+import image2 from "../../public/images/hero3.webp";
+import image3 from "../../public/images/solution-section/modalImages/1.webp"
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,7 +17,7 @@ import "swiper/css/pagination";
 
 export default function HeroSection({ title, title2, description }: { title: string; title2: string; description: string }) {
   const swiperRef = useRef<any>(null);
-  const slides = [heroImageUrl, image2, heroImageUrl,image2];
+  const slides = [heroImageUrl, image2, image3];
   const [current, setCurrent] = useState(0);
 
   const handleNext = () => {

@@ -38,7 +38,7 @@ export default function ThankYouPage() {
             details about our Private Office Solutions.
           </p>
 
-          <Link href="/work-space">
+          <Link href="/private-offices">
             {" "}
             <div className="mt-5 inline-flex items-center gap-2 text-[#0097DC]  font-bold text-lg lg:text-[24px]  cursor-pointer">
               <ChevronLeft size={30} />

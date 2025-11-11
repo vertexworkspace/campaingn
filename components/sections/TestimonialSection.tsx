@@ -31,7 +31,7 @@ export default function TestimonialSection() {
       text: "“Vertex Workspace has transformed how I work — quiet, clean, and full of energy. Highly recommended!”",
       name: "Sneha Kumar",
       role: "Creative Strategist",
-      image: "/images/testimonials/1.png",
+      image: "/images/testimonials/2.webp",
       logo: "/images/testimonials/svg/exito.svg",
     },
     {
@@ -39,7 +39,7 @@ export default function TestimonialSection() {
       text: "“Perfect environment for startups. Great amenities and a fantastic support team.”",
       name: "Rahul Menon",
       role: "Co-founder · Pixel Bay",
-      image: "/images/testimonials/1.png",
+      image: "/images/testimonials/2.webp",
       logo: "/images/testimonials/svg/exito.svg",
     },
   ];
@@ -209,7 +209,7 @@ export default function TestimonialSection() {
                           width={1000}
                           height={1000}
                           src={testimonial.image}
-                          className="object-contain w-full h-auto xl:h-[60vh] relative z-30"
+                          className="object-cover w-full h-[300px] lg:h-[550px] xl:h-[60vh] relative z-30"
                         />
                       </div>
                     </div>

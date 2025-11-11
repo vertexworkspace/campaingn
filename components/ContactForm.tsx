@@ -52,7 +52,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const router = useRouter();
 
   const googleScriptUrl =
-    pathname === "/work-space" ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
+    pathname === "/private-offices" ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
 
   const validateForm = (formData: FormData) => {
     const errors: Record<string, string> = {};
@@ -82,10 +82,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     setLoading(true);
    onClose?.();
 
-    if (pathname === "/work-space") {
-      router.push("/work-space/thank-you");
+    if (pathname === "/private-offices") {
+      router.push("/private-offices/thank-you");
     } else {
-      router.push("/coworking-space/thank-you");
+      router.push("/vertex-solutions/thank-you");
     }
 
     const consentChecked = formData.get("consent") === "on";
@@ -119,9 +119,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const inputBg = "bg-transparent";
   const placeholderSize = "text-sm";
 
-  const dropdown = pathname === "/work-space" ? locations : solution;
-  const buttontext = pathname === "/work-space" ? "Get a Quote" : "Book Now";
-  const dropwontext = pathname === "/work-space" ? "Location" : "Solution";
+  const dropdown = pathname === "/private-offices" ? locations : solution;
+  const buttontext = pathname === "/private-offices" ? "Get a Quote" : "Book Now";
+  const dropwontext = pathname === "/private-offices" ? "Location" : "Solution";
 
   const button =
     variant === "secondary" ? (
