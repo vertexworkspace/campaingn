@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
     description: "Get a special offer on flexible office solutions at Vertex.",
-    url: "https://vertexworkspace.com/work-space",
+    url: "https://vertex-megamind.vercel.app/work-space", // ✅ use your real deployed domain
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/icon.png",
+        url: "https://vertex-megamind.vercel.app/icon.png", // ✅ absolute URL (public path)
         width: 1200,
         height: 630,
         alt: "Vertex Workspace Office Offer",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
     description: "Get a special offer on flexible office solutions at Vertex.",
-    images: ["/icon.png"],
+    images: ["https://vertex-megamind.vercel.app/icon.png"], // ✅ absolute URL
   },
   icons: {
     icon: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.png" }],
     shortcut: [{ url: "/icon.png" }],
   },
-  metadataBase: new URL("https://vertexworkspace.com"),
+  metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
 export default function Page() {
   return (

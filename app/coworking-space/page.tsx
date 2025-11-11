@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "https://vertex-megamind.vercel.app/icon.png", // ✅ public path works now
+        url: "https://vertex-megamind.vercel.app/icon.png",
         width: 1200,
         height: 630,
         alt: "Vertex Coworking Space Mangalore",
