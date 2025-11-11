@@ -35,7 +35,7 @@ const FormField: React.FC<{
 interface ContactFormProps {
   className?: string;
   showModal?: boolean;
-  onClose?: () => void;
+  onClose: () => void;
   variant?: "primary" | "secondary";
   dorpdownText?: string;
 }
@@ -52,9 +52,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const router = useRouter();
 
   const googleScriptUrl =
-    pathname === "/work-space"
-      ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE
-      : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
+    pathname === "/work-space" ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
 
   const validateForm = (formData: FormData) => {
     const errors: Record<string, string> = {};
@@ -82,7 +80,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
     setFormErrors({});
     setLoading(true);
-
+    onClose();
     if (pathname === "/work-space") {
       router.push("/work-space/thank-you");
     } else {
@@ -170,13 +168,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="name"
             type="text"
             placeholder="Name"
-            className={cn(
-              "border",
-              formErrors.name ? "border-red-500" : borderColor,
-              inputBg,
-              placeholderColor,
-              placeholderSize
-            )}
+            className={cn("border", formErrors.name ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
           />
           {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
         </FormField>
@@ -187,13 +179,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="location"
             variant={variant}
             defaultValue=""
-            className={cn(
-              "border",
-              formErrors.location ? "border-red-500" : borderColor,
-              inputBg,
-              placeholderColor,
-              placeholderSize
-            )}
+            className={cn("border", formErrors.location ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
           >
             <option value="" disabled>
               {dropwontext}
@@ -236,13 +222,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="email"
             type="email"
             placeholder="Email"
-            className={cn(
-              "border",
-              formErrors.email ? "border-red-500" : borderColor,
-              inputBg,
-              placeholderColor,
-              placeholderSize
-            )}
+            className={cn("border", formErrors.email ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
           />
           {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
         </FormField>
@@ -256,13 +236,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="company"
             type="text"
             placeholder="Company Name"
-            className={cn(
-              "border",
-              formErrors.company ? "border-red-500" : borderColor,
-              inputBg,
-              placeholderColor,
-              placeholderSize
-            )}
+            className={cn("border", formErrors.company ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
           />
           {formErrors.company && <p className="text-red-500 text-xs mt-1">{formErrors.company}</p>}
         </FormField>
@@ -273,13 +247,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             name="team-size"
             type="number"
             placeholder="Team Size"
-            className={cn(
-              "border",
-              formErrors["team-size"] ? "border-red-500" : borderColor,
-              inputBg,
-              placeholderColor,
-              placeholderSize
-            )}
+            className={cn("border", formErrors["team-size"] ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
           />
           {formErrors["team-size"] && <p className="text-red-500 text-xs mt-1">{formErrors["team-size"]}</p>}
         </FormField>

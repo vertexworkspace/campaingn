@@ -214,9 +214,9 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
               <tr className="text-[#0097DC] font-bold text-xl lg:text-[24px]">
-                <th className="p-20"></th>
+                <th className={`p-20 ${ type === "virtual offices"?"lg:w-[25%]":""}`}></th>
                 {plans.map((plan, index) => (
-                  <th key={index} className="px-10 py-5 lg:pb-10  text-center">
+                  <th key={index} className={`${ type === "virtual offices"?"lg2:px-20":"lg2:px-10"} px-10 py-5 lg:pb-10  text-center`}>
                     {plan.name}
                   </th>
                 ))}
@@ -242,44 +242,44 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
                       switch (heading) {
                         case "Agreement Duration":
                           return (
-                            <td key={colIndex} className="p-4 text-secondary font-normal  text-center">
+                            <td key={colIndex} className="px-4 py-4 lg2:px-16 text-secondary font-normal  text-center">
                               {p.duration}
                             </td>
                           );
                         case "Nature of Payment":
                           return (
-                            <td key={colIndex} className="p-4 text-secondary font-normal  text-center">
+                            <td key={colIndex} className="px-4 py-4 lg2:px-16 text-secondary font-normal  text-center">
                               {p.payment}
                             </td>
                           );
                         case "Can be used for":
                           return (
-                            <td key={colIndex} className="p-4 text-secondary font-normal text-center">
+                            <td key={colIndex} className="px-4 py-4 lg2:px-16 text-secondary font-normal text-center">
                               {p.purpose}
                             </td>
                           );
                         case "Suited For":
                           return (
-                            <td key={colIndex} className="p-4 text-secondary font-normal text-center">
+                            <td key={colIndex} className="px-4 py-4 lg2:px-16 text-secondary font-normal text-center">
                               {p.suited}
                             </td>
                           );
                         case "Inclusive of":
                           return (
-                            <td key={colIndex} className="p-4 text-secondary font-normal text-center">
+                            <td key={colIndex} className="px-4 py-4 lg2:px-16 text-secondary font-normal text-center">
                               {p.inclusive}
                             </td>
                           );
                         case "Prices starting From":
                           return (
-                            <td key={colIndex} className="p-4  text-center">
+                            <td key={colIndex} className="px-4 py-4 lg2:px-16  text-center">
                               <div className="text-xl font-extrabold lg:text-[29px] text-[#0097DC]">{p.price}</div>
                               <div className="text-[#0097DC] font-extrabold text-sm lg:text-lg">{p.duration}</div>
                             </td>
                           );
                         default:
                           return (
-                            <td key={colIndex} className="p-4 text-center">
+                            <td key={colIndex} className="px-4 py-4 text-center">
                               -
                             </td>
                           );

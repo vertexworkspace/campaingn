@@ -52,7 +52,7 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0 cursor-pointer">
-              <Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority />
+               <Link href={isCoworking ? "/coworking-space" : "/work-space"}><Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority /></Link>
             </div>
 
             {/* Desktop Navigation */}
