@@ -29,7 +29,7 @@ export default function GetAQuoteSection({dorpdownText}:{dorpdownText:string}) {
         {/* RIGHT SIDE FORM */}
         <div className="bg-[#0097DC] text-black">
           <div className="bg-[#0097DC] text-black p-0">
-            <ContactForm dorpdownText={dorpdownText} variant="secondary" />
+            <ContactForm  dorpdownText={dorpdownText} variant="secondary" />
           </div>
         </div>
       </div>

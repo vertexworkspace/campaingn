@@ -35,7 +35,7 @@ const FormField: React.FC<{
 interface ContactFormProps {
   className?: string;
   showModal?: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   variant?: "primary" | "secondary";
   dorpdownText?: string;
 }
@@ -80,7 +80,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
     setFormErrors({});
     setLoading(true);
-    onClose();
+   onClose?.();
+
     if (pathname === "/work-space") {
       router.push("/work-space/thank-you");
     } else {
