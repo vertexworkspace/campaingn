@@ -25,7 +25,7 @@ export default function ThankYouPage() {
         <p className="mt-4 text-sm font-meduim lg:text-[24px] text-primary leading-relaxed">
           Our team will connect with you soon with more
           <br />
-          details about our Private Office Solutions.
+          details about our Vertex Solutions.
         </p>
 
           <Link href="/vertex-solutions"><div className="mt-5 inline-flex items-center gap-2 text-[#0097DC]  font-bold text-lg lg:text-[24px]  cursor-pointer">
