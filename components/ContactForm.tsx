@@ -349,7 +349,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             </button>
 
             <div className="bg-white p-7 lg:p-12 ">
-              <div>
+              
+             {pathname.includes("/private-offices")&& <div>
                 <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
                   Private Offices <br />
                   That Mean Business
@@ -357,7 +358,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
                 <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
                   Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
                 </p>
-              </div>
+              </div>}
+                 {pathname.includes("/vertex-solutions")&&<div>
+                <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
+                  Where Work <br />
+                  Meets Community
+                </h1>
+                <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
+                 Vertex offers flexible, inspiring work environments that fuel collaboration and growth.
+                </p>
+              </div>}
               {formContent}
             </div>
           </motion.div>

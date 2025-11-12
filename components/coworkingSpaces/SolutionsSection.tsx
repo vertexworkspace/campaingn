@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import heroImageUrl from "../../public/images/solution-section/1.png";
 import SolutionSectionModal from "./modalComponents/SolutionSectionModal";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type React from "react";
 import {
   Pc,
@@ -29,6 +29,7 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import SwiperDots from "../ui/SwiperDots";
 
 type SolutionData = {
   title: string;
@@ -132,6 +133,13 @@ const solutions: SolutionData[] = [
 export default function SolutionsSection() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<SolutionData | null>(null);
+  const [current, setCurrent] = useState(0);
+  const swiperRef = useRef<any>(null);
+
+  const handleDotClick = (i: number) => {
+    if (!swiperRef.current) return;
+    swiperRef.current.slideToLoop(i); // loop safe navigation
+  };
   return (
     <section className="pb-14 lg:py-16 bg-white px-6 lg:px-12">
       <div className="text-center mb-10 px-4 sm:px-6 lg:px-20 mx-auto ">
@@ -145,12 +153,14 @@ export default function SolutionsSection() {
       {/* Mobile: Swiper */}
       <div className="md:hidden px-4 sm:px-6 lg:px-20 mx-auto">
         <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
           spaceBetween={24}
           slidesPerView={1}
-          loop={true} // ✅ Enables looping
+          loop={true}
           autoplay={{
-            delay: 2000, // ✅ 3 seconds per slide
-            disableOnInteraction: false, // Keeps autoplay active after user swipes
+            delay: 2000,
+            disableOnInteraction: false,
           }}
           modules={[Autoplay]}
         >
@@ -196,6 +206,7 @@ export default function SolutionsSection() {
             </SwiperSlide>
           ))}
         </Swiper>
+        <SwiperDots total={solutions.length} current={current} onDotClick={handleDotClick} />
       </div>
 
       {/* Desktop/Tablet: Grid Layout */}

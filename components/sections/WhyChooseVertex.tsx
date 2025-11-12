@@ -7,10 +7,11 @@ import img2 from "../../public/images/why-choose-vertex/2.webp";
 import img3 from "../../public/images/why-choose-vertex/3.webp";
 import img4 from "../../public/images/hero.webp";
 import { AmenitiesModal } from "../AmenitiesModal";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import SwiperDots from "../ui/SwiperDots";
 
 const amenities = [
   {
@@ -41,6 +42,13 @@ const amenities = [
 
 export default function WhyChooseVertex() {
   const [isOpen, setIsOpen] = useState(false);
+   const [current, setCurrent] = useState(0);
+      const swiperRef = useRef<any>(null);
+    
+      const handleDotClick = (i: number) => {
+        if (!swiperRef.current) return;
+        swiperRef.current.slideToLoop(i); // loop safe navigation
+      };
 
   return (
     <section className="bg-[#F8F8F8] pt-8 pb-12 lg:pt-20 px-6 lg:px-12">
@@ -66,12 +74,16 @@ export default function WhyChooseVertex() {
 
         {/* Mobile Swiper */}
         <div className="lg:hidden">
-          <Swiper  spaceBetween={24} slidesPerView={1} loop={true} // ✅ Enables looping
-            autoplay={{
-              delay: 2000, // ✅ 3 seconds per slide
-              disableOnInteraction: false, // Keeps autoplay active after user swipes
-            }}
-            modules={[Autoplay]} >
+          <Swiper  onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
+          spaceBetween={24}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]} >
             {amenities.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="relative  overflow-hidden group h-[250px]">
@@ -85,6 +97,7 @@ export default function WhyChooseVertex() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <SwiperDots total={amenities.length} current={current} onDotClick={handleDotClick} />
         </div>
 
         {/* Desktop Grid Layout */}
