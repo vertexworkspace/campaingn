@@ -56,6 +56,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="MBxzS9dFloW6hLFYDnoMQwd2vVowLx2jB4iPSatfjZ4" />
+      </head>
       <body className={notoSans.className}>
         <SpeedInsights />
         <Analytics />
