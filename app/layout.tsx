@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/icon.png" }],
   },
   other: {
-    'google-site-verification': 'MBxzS9dFloW6hLFYDnoMQwd2vVowLx2jB4iPSatfjZ4', 
+    'google-site-verification': 'h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8', 
   },
   metadataBase: new URL("https://bookings.vertexworkspace.com/"),
 };
@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="google-site-verification" content="MBxzS9dFloW6hLFYDnoMQwd2vVowLx2jB4iPSatfjZ4" />
+    <meta name="google-site-verification" content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8" />
       </head>
       <body className={notoSans.className}>
         <SpeedInsights />
