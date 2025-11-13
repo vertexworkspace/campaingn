@@ -46,7 +46,10 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.png" }],
     shortcut: [{ url: "/icon.png" }],
   },
-  metadataBase: new URL("https://vertexworkspace.com"),
+  other: {
+    'google-site-verification': 'MBxzS9dFloW6hLFYDnoMQwd2vVowLx2jB4iPSatfjZ4', 
+  },
+  metadataBase: new URL("https://bookings.vertexworkspace.com/"),
 };
 
 export default function RootLayout({
