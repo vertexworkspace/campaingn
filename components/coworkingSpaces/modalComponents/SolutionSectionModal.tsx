@@ -60,7 +60,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
       enableLenis();
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose,open]);
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
