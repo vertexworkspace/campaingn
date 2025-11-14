@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "../ui/Button";
-import { ContactForm } from "../ContactForm";
+import { ContactForm } from "./ContactForm";
 import { useState } from "react";
 
 export default function QuoteBanner({ type = "primary" }: { type?: string }) {
@@ -34,10 +34,10 @@ export default function QuoteBanner({ type = "primary" }: { type?: string }) {
         {/* RIGHT BUTTON */}
         <div className="flex justify-center sm:justify-end w-full sm:w-auto">
           <Button
-          aria-label="Get a Quote"
-         
-          
-          onClick={() => setOpen(true)} className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-white transition">
+            aria-label="Get a Quote"
+            onClick={() => setOpen(true)}
+            className="bg-white text-[#0097DC]  font-semibold px-6 py-2  hover:bg-white transition"
+          >
             {cta}
           </Button>
         </div>

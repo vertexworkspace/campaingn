@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 import Script from "next/script";
 import { Metadata } from "next";
 
@@ -32,18 +32,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vertex Solutions | Coworking & Office Space in Mangalore",
-    description:
-      "Flexible coworking and private office solutions in Mangalore by Vertex — designed to help professionals and teams thrive.",
+    description: "Flexible coworking and private office solutions in Mangalore by Vertex — designed to help professionals and teams thrive.",
     images: ["/icon.png"],
   },
 
- icons: {
-    icon: "/favicon.ico",   // ← THIS is what Google uses
+  icons: {
+    icon: "/favicon.ico", // ← THIS is what Google uses
     apple: "/icon.png",
     shortcut: "/favicon.ico",
   },
 };
-
 
 export default function VertexSolutionsLayout({ children }: { children: ReactNode }) {
   return (

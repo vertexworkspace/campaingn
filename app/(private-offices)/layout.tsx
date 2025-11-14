@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Script from "next/script";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -37,13 +37,12 @@ export const metadata: Metadata = {
     images: ["/icon.png"],
   },
 
- icons: {
-    icon: "/favicon.ico",   // ← THIS is what Google uses
+  icons: {
+    icon: "/favicon.ico", // ← THIS is what Google uses
     apple: "/icon.png",
     shortcut: "/favicon.ico",
   },
 };
-
 
 export default function PrivateOfficesLayout({ children }: { children: ReactNode }) {
   return (

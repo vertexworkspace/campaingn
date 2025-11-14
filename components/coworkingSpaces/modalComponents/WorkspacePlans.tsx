@@ -1,12 +1,29 @@
 "use client";
 import { Button } from "@/components/ui/Button";
-import { Flat, FlatWhite, HandShakeWhite, Like, LikeWhite, Mail, MailWhite, Meeting, MeetingWhite, Pc, PcWhite, Router, RouterWhite, ShakeHand, WomenPc, WomenWhite } from "@/public/icons/icon";
+import {
+  Flat,
+  FlatWhite,
+  HandShakeWhite,
+  Like,
+  LikeWhite,
+  Mail,
+  MailWhite,
+  Meeting,
+  MeetingWhite,
+  Pc,
+  PcWhite,
+  Router,
+  RouterWhite,
+  ShakeHand,
+  WomenPc,
+  WomenWhite,
+} from "@/public/icons/icon";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import React, { useState } from "react";
 import { Autoplay } from "swiper/modules";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components/shared/ContactForm";
 
 // 🔹 Define plan types
 interface CoworkingPlan {
@@ -17,6 +34,8 @@ interface CoworkingPlan {
   validity: string;
   price: string;
   duration: string;
+  modalHeading: string;
+  modalDescription: string;
 }
 
 interface VirtualPlan {
@@ -28,13 +47,11 @@ interface VirtualPlan {
   inclusive: string;
   price: string;
   gst: string;
+  modalHeading: string;
+  modalDescription: string;
 }
 
-
-
-const renderIcon = (
-  icon: React.ReactNode | React.ComponentType<{ className?: string }>
-) => {
+const renderIcon = (icon: React.ReactNode | React.ComponentType<{ className?: string }>) => {
   if (React.isValidElement(icon)) {
     return icon;
   }
@@ -52,7 +69,8 @@ interface WorkspacePlansProps {
 
 const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
   const [open, setOpen] = useState(false);
-
+  const [modalHeading,setModalHeading] = useState("");
+  const [modalDescription,setModalDescription] = useState("");
 
   // 🔹 Coworking Spaces Data
   const coworkingFeatures = [
@@ -83,6 +101,9 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "Based on duration paid for",
       price: "₹500",
       duration: "+ GST per day",
+    modalHeading:"Permanent Desk Solution",
+    modalDescription:"Reliable workspace designed for uninterrupted productivity.",
+
     },
     {
       name: "Fixed Desk Access",
@@ -92,6 +113,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "30 days",
       price: "₹6,000",
       duration: "+ GST per month",
+        modalHeading:"Monthly Access Plan",
+    modalDescription:"A stable and convenient option for regular work routines.",
     },
     {
       name: "Quarter Flex Pass",
@@ -101,6 +124,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "3 months with 30 days of usage within the period",
       price: "₹9,000",
       duration: "+ GST for 3 months",
+        modalHeading:"Flexible Quarterly Plan",
+    modalDescription:"Ideal for professionals seeking adaptable work arrangements.",
     },
     {
       name: "Cabin Space Setup",
@@ -110,6 +135,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "Based on duration paid for",
       price: "₹6,500",
       duration: "+ GST per desk per month",
+        modalHeading:"Private Cabin Workspace",
+    modalDescription:"A premium environment crafted for focused and secure work.",
     },
   ];
 
@@ -143,6 +170,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       inclusive: "Mailing Address",
       price: "₹1,000",
       gst: "+ GST per day",
+       modalHeading:"Professional Virtual Address",
+    modalDescription:"Establish a credible business presence effortlessly.",
     },
     {
       name: "Dedicated Door Number",
@@ -153,6 +182,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       inclusive: "Dedicated door number for Company Registration, GST Registration, and Trade License",
       price: "₹5,000",
       gst: "+ GST per month",
+       modalHeading:"Registered Business Address",
+    modalDescription:"A formal address solution for official documentation.",
     },
   ];
 
@@ -174,27 +205,25 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f, i) => (
             <div key={i} className="px-6 py-12 flex flex-col items-center text-center bg-[#0097DC]  transition">
-             <div className="mb-4">{renderIcon(f.icon)}</div>
+              <div className="mb-4">{renderIcon(f.icon)}</div>
               <p className="text-lg text-white font-medium">{f.title}</p>
             </div>
           ))}
         </div>
       </div>
 
-
-       <div className="text-center lg:hidden mb-12">
-        <h2 className="text-2xl md:text-[40px] mt-10 lg:mt-0 text-primary font-semibold mb-8">
-          Workspaces Designed Around You
-        </h2>
+      <div className="text-center lg:hidden mb-12">
+        <h2 className="text-2xl md:text-[40px] mt-10 lg:mt-0 text-primary font-semibold mb-8">Workspaces Designed Around You</h2>
         <Swiper
-         spaceBetween={24}
-                 slidesPerView={1}
-                 loop={true} // ✅ Enables looping
-                 autoplay={{
-                   delay: 2000, // ✅ 3 seconds per slide
-                   disableOnInteraction: false, // Keeps autoplay active after user swipes
-                 }}
-                 modules={[Autoplay]}>
+          spaceBetween={24}
+          slidesPerView={1}
+          loop={true} // ✅ Enables looping
+          autoplay={{
+            delay: 2000, // ✅ 3 seconds per slide
+            disableOnInteraction: false, // Keeps autoplay active after user swipes
+          }}
+          modules={[Autoplay]}
+        >
           {features.map((f, i) => (
             <SwiperSlide key={i}>
               <div className="px-6 py-12 flex flex-col items-center text-center bg-[#0097DC] transition ">
@@ -214,9 +243,9 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
               <tr className="text-[#0097DC] font-bold text-xl lg:text-[24px]">
-                <th className={`p-20 ${ type === "virtual offices"?"lg:w-[25%]":""}`}></th>
+                <th className={`p-20 ${type === "virtual offices" ? "lg:w-[25%]" : ""}`}></th>
                 {plans.map((plan, index) => (
-                  <th key={index} className={`${ type === "virtual offices"?"lg2:px-20":"lg2:px-10"} px-10 py-5 lg:pb-10  text-center`}>
+                  <th key={index} className={`${type === "virtual offices" ? "lg2:px-20" : "lg2:px-10"} px-10 py-5 lg:pb-10  text-center`}>
                     {plan.name}
                   </th>
                 ))}
@@ -233,7 +262,9 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
                       : "font-semibold text-primary"
                   }
                 >
-                  <td className={heading === "Prices starting From" || heading === "Prices starting from" ? "px-4 py-7 lg:py-10" : "p-4"}>{heading}</td>
+                  <td className={heading === "Prices starting From" || heading === "Prices starting from" ? "px-4 py-7 lg:py-10" : "p-4"}>
+                    {heading}
+                  </td>
 
                   {/* Conditional rendering for both types */}
                   {(plans as any[]).map((plan, colIndex) => {
@@ -333,9 +364,13 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
               {/* Book Now Buttons */}
               <tr>
                 <td className="p-4 font-semibold"></td>
-                {plans.map((_, index) => (
+                {plans.map((item, index) => (
                   <td key={index} className="pt-8 lg:p-8 text-center">
-                    <Button   onClick={() => setOpen(true)} aria-label="Book Now" className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2">
+                    <Button
+                      onClick={() => {setOpen(true),setModalHeading(item.modalHeading),setModalDescription(item.modalDescription)}}
+                      aria-label="Book Now"
+                      className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
+                    >
                       Book Now
                     </Button>
                   </td>
@@ -345,7 +380,15 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
           </table>
         </div>
       </div>
-         {open && <ContactForm showModal onClose={() => setOpen(false)} />}
+      {open && (
+        <ContactForm
+        modalHeading={modalHeading}
+        modalDescription={modalDescription}
+          defaulltSolution={type === "virtual offices" ? "Virtual Offices" : "Coworking Spaces"}
+          showModal
+          onClose={() => setOpen(false)}
+        />
+      )}
     </section>
   );
 };

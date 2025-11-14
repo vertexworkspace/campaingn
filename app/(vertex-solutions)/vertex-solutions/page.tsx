@@ -1,21 +1,17 @@
 import SolutionsSection from "@/components/coworkingSpaces/SolutionsSection";
 import WorkspacesSection from "@/components/coworkingSpaces/WorkspacesSection";
-import GetAQuoteSection from "@/components/sections/GetAQuoteSection";
-import HeroSection from "@/components/sections/HeroSection";
-import PrivateOffices from "@/components/sections/PrivateOffices";
-import QuoteBanner from "@/components/sections/QuoteBanner";
-import TestimonialSection from "@/components/sections/TestimonialSection";
+import GetAQuoteSection from "@/components/shared/GetAQuoteSection";
+import HeroSection from "@/components/shared/HeroSection";
+import PrivateOffices from "@/components/shared/PrivateOffices";
+import QuoteBanner from "@/components/shared/QuoteBanner";
+import TestimonialSection from "@/components/shared/TestimonialSection";
 import { Metadata } from "next";
-
-
-
-
 
 const page = () => {
   return (
     <main className="flex flex-col min-h-screen bg-white ">
       {/* 👇 Each section has an ID that matches the "to" in Navbar navLinks */}
-      <section >
+      <section>
         <HeroSection
           title="Where Work"
           title2="Meets Community"
@@ -23,7 +19,7 @@ const page = () => {
         />
       </section>
 
-      <section id="overview" >
+      <section id="overview">
         <SolutionsSection />
       </section>
 
@@ -31,7 +27,7 @@ const page = () => {
         <WorkspacesSection />
       </section>
 
-      <section >
+      <section>
         <TestimonialSection />
       </section>
 
@@ -39,7 +35,7 @@ const page = () => {
         <QuoteBanner type="secondary" />
       </section>
 
-      <section id="locations" >
+      <section id="locations">
         <PrivateOffices
           buttontext="Book Now"
           title="Our Vertex Workspaces"
@@ -47,10 +43,9 @@ const page = () => {
         />
       </section>
 
-      <section >
+      <section>
         <GetAQuoteSection dorpdownText="Solution" />
       </section>
-    
     </main>
   );
 };

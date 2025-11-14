@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "../ui/Button";
 import { Clock, TrendingUp, HeartHandshake } from "lucide-react";
 import privetOffice from "../../public/images/privet-office.webp"; // replace with your actual image
-import { ContactForm } from "../ContactForm";
+import { ContactForm } from "../shared/ContactForm";
 import { useState } from "react";
 
 export default function PrivateOfficeFeatures() {
@@ -27,15 +27,15 @@ export default function PrivateOfficeFeatures() {
           </div>
 
           <div className="relative  lg:hidden w-full h-[350px] sm:h-[450px] lg:h-[500px]  overflow-hidden shadow-x">
-          <Image
-            src={privetOffice}
-            alt="Office workspace with team collaboration"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority
-          />
-        </div>
+            <Image
+              src={privetOffice}
+              alt="Office workspace with team collaboration"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </div>
 
           {/* Space Details */}
           <div className="mt-8">
@@ -134,10 +134,11 @@ export default function PrivateOfficeFeatures() {
 
           {/* Button */}
           <div className="pt-4">
-            <Button 
-            aria-label="Get a Quote"
-            
-            onClick={() => setOpen(true)} className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 ">
+            <Button
+              aria-label="Get a Quote"
+              onClick={() => setOpen(true)}
+              className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 "
+            >
               Get a Quote
             </Button>
           </div>

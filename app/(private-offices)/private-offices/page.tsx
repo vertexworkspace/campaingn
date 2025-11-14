@@ -1,14 +1,13 @@
 // app/page.tsx
-import HeroSection from "@/components/sections/HeroSection";
-import PrivateOfficeFeatures from "@/components/sections/PrivateOfficeFeatures";
-import WhyChooseVertex from "@/components/sections/WhyChooseVertex";
-import TestimonialSection from "@/components/sections/TestimonialSection";
-import QuoteBanner from "@/components/sections/QuoteBanner";
-import PrivateOffices from "@/components/sections/PrivateOffices";
-import GetAQuoteSection from "@/components/sections/GetAQuoteSection";
+import HeroSection from "@/components/shared/HeroSection";
+import PrivateOfficeFeatures from "@/components/privateOffices/PrivateOfficeFeatures";
+import WhyChooseVertex from "@/components/privateOffices/WhyChooseVertex";
+import TestimonialSection from "@/components/shared/TestimonialSection";
+import QuoteBanner from "@/components/shared/QuoteBanner";
+import PrivateOffices from "@/components/shared/PrivateOffices";
+import GetAQuoteSection from "@/components/shared/GetAQuoteSection";
 
 import { Metadata } from "next";
-
 
 export default function Page() {
   return (

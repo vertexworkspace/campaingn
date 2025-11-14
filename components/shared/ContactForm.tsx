@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
+import { Button } from "../ui/Button";
+import { Input } from "../ui/Input";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { Select } from "./ui/Select";
+import { Select } from "../ui/Select";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { disableLenis, enableLenis } from "@/components/SmoothScroll";
@@ -38,12 +38,15 @@ interface ContactFormProps {
   onClose?: () => void;
   variant?: "primary" | "secondary";
   dorpdownText?: string;
+  defaulltSolution?: string;
+  modalHeading?: string;
+  modalDescription?: string;
 }
 
 const locations = ["Mangaluru"];
 const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
 
-export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary", defaulltSolution ,modalHeading,modalDescription }) => {
   const [formErrors, setFormErrors] = React.useState<Record<string, string>>({});
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
@@ -52,7 +55,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
   const router = useRouter();
 
   const googleScriptUrl =
-    pathname === "/private-offices" ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
+    pathname === "/private-offices"
+      ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_WORK_SPACE
+      : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_COWORKING_SPACE;
 
   const validateForm = (formData: FormData) => {
     const errors: Record<string, string> = {};
@@ -80,8 +85,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
     setFormErrors({});
     setLoading(true);
-   onClose?.();
+    onClose?.();
 
+    // Redirect to thank you page
     if (pathname === "/private-offices") {
       router.push("/private-offices/thank-you");
     } else {
@@ -90,6 +96,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
 
     const consentChecked = formData.get("consent") === "on";
 
+    // FINAL FORM BODY (send to your API)
     const data = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
@@ -99,13 +106,24 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
       teamSize: formData.get("team-size") as string,
       description: description || "",
       consent: consentChecked ? "Yes" : "No",
+      formType: pathname.includes("private-offices") ? "Private Office" : "Solution",
+      bookingLink: window.location.href,
+      pathname: pathname,
     };
 
     try {
+      // 🟦 SEND TO GOOGLE SCRIPT (your existing)
       await fetch(googleScriptUrl!, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data as any),
+      });
+
+      // 🟩 SEND EMAIL (new)
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
     } catch (error) {
       console.error("❌ Submission failed:", error);
@@ -179,7 +197,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             id="location"
             name="location"
             variant={variant}
-            defaultValue=""
+            defaultValue={defaulltSolution || ""}
             className={cn("border", formErrors.location ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
           >
             <option value="" disabled>
@@ -349,30 +367,54 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
             </button>
 
             <div className="bg-white p-7 lg:p-12 ">
-              
-             {pathname.includes("/private-offices")&& <div>
-                <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
-                  Private Offices <br />
-                  That Mean Business
-                </h1>
-                <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
-                  Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
-                </p>
-              </div>}
-                 {pathname.includes("/vertex-solutions")&&<div>
-                <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
-                  Where Work <br />
-                  Meets Community
-                </h1>
-                <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
-                 Vertex offers flexible, inspiring work environments that fuel collaboration and growth.
-                </p>
-              </div>}
+              {pathname.includes("/private-offices") && (
+                <div>
+                  <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
+                    Private Offices <br />
+                    That Mean Business
+                  </h1>
+                  <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
+                    Vertex Private Offices give you privacy, productivity, and prestige all under one roof.
+                  </p>
+                </div>
+              )}
+{pathname.includes("/vertex-solutions") && (
+  <div>
+    <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
+      {modalHeading
+        ? modalHeading
+        : (
+          <>
+            Where Work <br />
+            Meets Community
+          </>
+        )}
+    </h1>
+
+    <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
+      {modalDescription
+        ? modalDescription
+        : "Vertex offers flexible, inspiring work environments that fuel collaboration and growth."}
+    </p>
+  </div>
+)}
               {formContent}
             </div>
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
+  );
+};
+
+
+const formatHeading = (text: string) => {
+  const words = text.split(" ");
+  if (words.length <= 2) return text; // not enough words to split
+  return (
+    <>
+      {words.slice(0, 2).join(" ")} <br />
+      {words.slice(2).join(" ")}
+    </>
   );
 };

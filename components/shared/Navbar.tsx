@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
 import vertexlogo from "../../public/vertexlogo.svg";
-import { ContactForm } from "../ContactForm";
+import { ContactForm } from "./ContactForm";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -52,7 +52,9 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0 cursor-pointer">
-               <Link href={isCoworking ? "/vertex-solutions" : "/private-offices"}><Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority /></Link>
+              <Link href={isCoworking ? "/vertex-solutions" : "/private-offices"}>
+                <Image src={vertexlogo} alt="Vertex Logo" width={150} height={32} priority />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -77,24 +79,14 @@ const Navbar = () => {
                 )
               )}
 
-              <Button
-                aria-label={isCoworking ? "Book Now" : "Get a Quote"}
-                onClick={() => setOpen(true)}
-                variant="primary"
-                size="default"
-              >
+              <Button aria-label={isCoworking ? "Book Now" : "Get a Quote"} onClick={() => setOpen(true)} variant="primary" size="default">
                 {isCoworking ? "Book Now" : "Get a Quote"}
               </Button>
             </nav>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden text-black">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle mobile menu"
-              >
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu">
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </div>
@@ -127,12 +119,7 @@ const Navbar = () => {
               )}
 
               <div className="pt-2">
-                <Button
-                  aria-label={isCoworking ? "Book Now" : "Get a Quote"}
-                  onClick={() => setOpen(true)}
-                  variant="primary"
-                  className="w-full"
-                >
+                <Button aria-label={isCoworking ? "Book Now" : "Get a Quote"} onClick={() => setOpen(true)} variant="primary" className="w-full">
                   {isCoworking ? "Book Now" : "Get a Quote"}
                 </Button>
               </div>

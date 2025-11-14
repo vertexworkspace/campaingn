@@ -5,7 +5,7 @@ import { X, Wifi, Users, MonitorCheck, Printer } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { Button } from "../../ui/Button";
-import { ContactForm } from "../../ContactForm";
+import { ContactForm } from "../../shared/ContactForm";
 import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 import WorkspacePlans from "./WorkspacePlans";
 import BanquetSpace from "./BanquetSpace";
@@ -39,6 +39,10 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
   };
 
   const [open, setOpen] = useState(false);
+  const [modalHeading, setModalHeading] = useState("");
+  const [modalDescription, setModalDescription] = useState("");
+
+  const [defaulltSolution, setDefaulltSolution] = useState("");
   React.useEffect(() => {
     if (isOpen) {
       disableLenis(); // ✅ stop smooth scroll globally
@@ -106,9 +110,8 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
     },
   ];
 
-
   type Pricing = { time: string; price: string; note?: string };
-  type Room = { title: string; seats: string; pricing: Pricing[] };
+  type Room = { title: string; seats: string; pricing: Pricing[]; modalTitle?: string; modalDescription?: string };
 
   const rooms: Room[] = [
     {
@@ -126,6 +129,8 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
           note: "Additional seats: ₹500 + GST per seat",
         },
       ],
+      modalTitle: "Professional Conference Room",
+      modalDescription: "Ideal for structured discussions and collaborative sessions.",
     },
     {
       title: "Meeting Room",
@@ -140,9 +145,24 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
           price: "₹2,000 + GST",
         },
       ],
+      modalTitle: "Compact Meeting Room",
+      modalDescription: "Perfect for small-scale meetings and client interactions.",
     },
   ];
 
+  const meetingRoomButtonHandler = (modalTitle: Room["modalTitle"], modalDescription: Room["modalDescription"]) => {
+    setModalHeading(modalTitle ?? "");
+    setModalDescription(modalDescription ?? "");
+    setOpen(true);
+    setDefaulltSolution("Meeting Rooms");
+  };
+
+  const flexiDeskButtonHandler = () => {
+    setModalHeading("");
+    setModalDescription("");
+    setOpen(true);
+    setDefaulltSolution("Flexi Desks");
+  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -238,7 +258,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                             <div>
                               <Button
                                 aria-label={ctaLabel}
-                                onClick={() => setOpen(true)}
+                                onClick={flexiDeskButtonHandler}
                                 className="w-full sm:w-auto bg-white text-[#0097DC] font-semibold px-6 py-2 hover:bg-blue-50 transition"
                               >
                                 {ctaLabel}
@@ -323,7 +343,7 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
                               <div className="flex justify-end">
                                 <Button
                                   aria-label="Book Now"
-                                  onClick={() => setOpen(true)}
+                                  onClick={() => meetingRoomButtonHandler(room.modalTitle, room.modalDescription)}
                                   className="self-stretch sm:self-start w-full sm:w-auto bg-white text-[#0094E0] font-semibold mt-4 px-6 py-2 hover:bg-blue-50 transition"
                                 >
                                   Book Now
@@ -341,7 +361,15 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
               </div>
             </div>
           </motion.div>
-          {open && <ContactForm showModal onClose={() => setOpen(false)} />}
+          {open && (
+            <ContactForm
+              defaulltSolution={defaulltSolution}
+              modalHeading={modalHeading}
+              modalDescription={modalDescription}
+              showModal
+              onClose={() => setOpen(false)}
+            />
+          )}
         </>
       )}
     </AnimatePresence>

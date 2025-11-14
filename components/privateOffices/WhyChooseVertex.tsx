@@ -6,7 +6,7 @@ import img1 from "../../public/images/why-choose-vertex/7.webp";
 import img2 from "../../public/images/why-choose-vertex/2.webp";
 import img3 from "../../public/images/why-choose-vertex/3.webp";
 import img4 from "../../public/images/hero.webp";
-import { AmenitiesModal } from "../AmenitiesModal";
+import { AmenitiesModal } from "./AmenitiesModal";
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

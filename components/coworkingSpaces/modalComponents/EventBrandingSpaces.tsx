@@ -2,12 +2,14 @@
 import Image from "next/image";
 import { Coffe, CoffeeMaker } from "@/public/icons/icon";
 import { Button } from "@/components/ui/Button";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components/shared/ContactForm";
 import { useState } from "react";
 
 const EventBrandingSpaces = () => {
   const [open, setOpen] = useState(false);
-  
+  const [modalHeading, setModalHeading] = useState("");
+  const [modalDescription, setModalDescription] = useState("");
+
   const eventDetails = [
     {
       icon: <Coffe />,
@@ -86,16 +88,10 @@ const EventBrandingSpaces = () => {
             ))}
           </ul>
 
-            <div className="lg:col-span-5 lg:hidden  mb-12  flex flex-col items-center sm:items-end gap-4">
-          <Image src="/dummy/3.webp" alt="Event 1" width={400} height={300} className="object-cover w-full  h-[250px] sm:h-[500px]" />
-          <Image
-            src="/dummy/2.webp"
-            alt="Event 2"
-            width={400}
-            height={300}
-            className="object-cover me-auto w-[100%] h-full h-[180px] "
-          />
-        </div>
+          <div className="lg:col-span-5 lg:hidden  mb-12  flex flex-col items-center sm:items-end gap-4">
+            <Image src="/dummy/3.webp" alt="Event 1" width={400} height={300} className="object-cover w-full  h-[250px] sm:h-[500px]" />
+            <Image src="/dummy/2.webp" alt="Event 2" width={400} height={300} className="object-cover me-auto w-[100%] h-full h-[180px] " />
+          </div>
 
           {/* Pricing Boxes */}
           <div className="space-y-4 mb-6">
@@ -121,16 +117,26 @@ const EventBrandingSpaces = () => {
             <br />
             ** Valet Parking available at additional cost
           </p>
-<div className="flex justify-center lg:block">
-          <Button   onClick={() => setOpen(true)} aria-label="Book Now" className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2">
-            Book Now
-          </Button>
-        </div>
+          <div className="flex justify-center lg:block">
+            <Button
+              onClick={() => {setOpen(true),setModalHeading("Multi-Purpose Event Rooms"),setModalDescription("Suitable for meetings, workshops, and focused gatherings.")}}
+              aria-label="Book Now"
+              className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
+            >
+              Book Now
+            </Button>
+          </div>
         </div>
 
         {/* Right Images */}
         <div className="lg:col-span-5 hidden lg:flex flex-col items-center sm:items-end gap-4 lg:gap-10">
-          <Image src="/images/solution-section/modalImages/listen.webp" alt="Event 1" width={400} height={300} className="object-cover w-full sm:w-[90%] h-[250px] lg:h-[500px]" />
+          <Image
+            src="/images/solution-section/modalImages/listen.webp"
+            alt="Event 1"
+            width={400}
+            height={300}
+            className="object-cover w-full sm:w-[90%] h-[250px] lg:h-[500px]"
+          />
           <Image
             src="/images/solution-section/modalImages/presntation.webp"
             alt="Event 2"
@@ -160,15 +166,15 @@ const EventBrandingSpaces = () => {
           <p className="text-sm sm:text-base md:text-lg text-secondary mb-8 lg:mb-6">
             Ideal for businesses looking to increase brand visibility within the workspace premises
           </p>
- <div className=" mb-10 lg:hidden">
-          <Image
-            src="/dummy/4.webp"
-            alt="Branding Space"
-            width={500}
-            height={400}
-            className="w-full object-cover h-[300px] sm:h-[500px] md:h-[700px]"
-          />
-        </div>
+          <div className=" mb-10 lg:hidden">
+            <Image
+              src="/dummy/4.webp"
+              alt="Branding Space"
+              width={500}
+              height={400}
+              className="w-full object-cover h-[300px] sm:h-[500px] md:h-[700px]"
+            />
+          </div>
           {/* Pricing Boxes */}
           <div className="space-y-4 mb-6">
             {brandingPlans.map((plan, i) => (
@@ -187,14 +193,18 @@ const EventBrandingSpaces = () => {
               </div>
             ))}
           </div>
-<div className="flex justify-center lg:block">
-          <Button   onClick={() => setOpen(true)} aria-label="Book Now" className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2">
-            Book Now
-          </Button>
-        </div>
+          <div className="flex justify-center lg:block">
+            <Button
+              onClick={() => {setOpen(true),setModalHeading("Business Branding Opportunities"),setModalDescription("Strategic placements designed to elevate brand visibility.")}}
+              aria-label="Book Now"
+              className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
+            >
+              Book Now
+            </Button>
+          </div>
         </div>
       </div>
-         {open && <ContactForm showModal onClose={() => setOpen(false)} />}
+      {open && <ContactForm modalHeading={modalHeading} modalDescription={modalDescription} defaulltSolution="Event Spaces" showModal onClose={() => setOpen(false)} />}
     </section>
   );
 };
