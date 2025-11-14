@@ -40,7 +40,7 @@ interface ContactFormProps {
   dorpdownText?: string;
 }
 
-const locations = ["Bangalore", "Chennai", "Hyderabad"];
+const locations = ["Mangaluru"];
 const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
 
 export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary" }) => {
