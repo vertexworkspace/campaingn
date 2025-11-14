@@ -37,13 +37,10 @@ export const metadata: Metadata = {
     images: ["/icon.png"],
   },
 
-  icons: {
-    icon: [
-      { url: "/icon.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: [{ url: "/icon.png" }],
-    shortcut: [{ url: "/icon.png" }],
+ icons: {
+    icon: "/favicon.ico",   // ← THIS is what Google uses
+    apple: "/icon.png",
+    shortcut: "/favicon.ico",
   },
 };
 
