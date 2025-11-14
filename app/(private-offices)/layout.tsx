@@ -5,18 +5,21 @@ import Footer from "@/components/sections/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bookings.vertexworkspace.com"),
+
   title: "Private Offices in Mangalore | Vertex Workspace",
   description:
     "Upgrade your work experience with private offices at Vertex Workspace, Mangalore. Enjoy privacy, flexibility, and modern amenities designed for professionals and teams.",
+
   openGraph: {
     title: "Private Offices in Mangalore | Vertex Workspace",
     description:
       "Discover premium private office spaces at Vertex Workspace, Mangalore. Flexible terms, professional environments, and top-tier amenities for teams and individuals.",
-    url: "https://vertex-megamind.vercel.app/private-offices",
+    url: "https://bookings.vertexworkspace.com/private-offices",
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "https://vertex-megamind.vercel.app/icon.png",
+        url: "/icon.png",
         width: 1200,
         height: 630,
         alt: "Vertex Private Offices Mangalore",
@@ -25,13 +28,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Private Offices in Mangalore | Vertex Workspace",
     description:
       "Experience the ideal private office setup in Mangalore with Vertex Workspace — modern, fully furnished, and designed for focus and growth.",
-    images: ["https://vertex-megamind.vercel.app/icon.png"],
+    images: ["/icon.png"],
   },
+
   icons: {
     icon: [
       { url: "/icon.png", sizes: "32x32", type: "image/png" },
@@ -40,8 +45,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.png" }],
     shortcut: [{ url: "/icon.png" }],
   },
-  metadataBase: new URL("https://vertex-megamind.vercel.app"),
 };
+
 
 export default function PrivateOfficesLayout({ children }: { children: ReactNode }) {
   return (

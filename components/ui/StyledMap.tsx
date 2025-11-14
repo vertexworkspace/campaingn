@@ -39,7 +39,7 @@ export const StyledMap = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
-  const center = useMemo(() => ({ lat: 12.887629295634595, lng: 74.83235609027464 }), []);
+  const center = useMemo(() => ({ lat: 12.883316814792966, lng: 74.83957944048608 }), []);
 
   if (!isLoaded) return <div className="flex items-center justify-center h-full bg-brand-gray">Loading Map...</div>;
 
