@@ -106,7 +106,7 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
 
     },
     {
-      name: "Fixed Desk Access",
+      name: "Monthly Pass",
       access: "24-hour Setup",
       type: "Dedicated workstation",
       suited: "Professionals seeking consistency and routine",
