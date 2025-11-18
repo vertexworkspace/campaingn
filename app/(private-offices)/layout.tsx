@@ -37,13 +37,6 @@ export const metadata: Metadata = {
     images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
-   icons: {
-    icon: "/favicon.ico?v=10",
-    shortcut: "/favicon.ico?v=10",
-    apple: "/apple-touch-icon.png?v=10",
-  },
-
-  manifest: "/manifest.json",
 };
 
 

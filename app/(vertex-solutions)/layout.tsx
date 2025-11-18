@@ -35,15 +35,7 @@ export const metadata: Metadata = {
     description:
       "Flexible coworking and private office solutions in Mangalore by Vertex — designed to help professionals and teams thrive.",
     images: ["https://bookings.vertexworkspace.com/form-og.png"],
-  },
-
-  icons: {
-    icon: "/favicon.ico?v=10",
-    shortcut: "/favicon.ico?v=10",
-    apple: "/apple-touch-icon.png?v=10",
-  },
-
-  manifest: "/manifest.json",
+  }
 };
 
 
