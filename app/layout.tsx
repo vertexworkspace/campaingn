@@ -59,6 +59,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
     <meta name="google-site-verification" content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={notoSans.className}>
         <SpeedInsights />

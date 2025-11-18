@@ -39,7 +39,8 @@ export const StyledMap = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
-  const center = useMemo(() => ({ lat: 12.883316814792966, lng: 74.83957944048608 }), []);
+
+  const center = useMemo(() => ({ lat: 12.88330668168908, lng: 74.8395799441832 }), []);
 
   if (!isLoaded) return <div className="flex items-center justify-center h-full bg-brand-gray">Loading Map...</div>;
 
@@ -57,7 +58,7 @@ export const StyledMap = () => {
       {/* The Marker's only job is to be the red pin. No label prop. */}
       <Marker position={center}  onClick={() => {
     window.open(
-      `https://www.google.com/maps?q=${center.lat},${center.lng}`,
+      `https://maps.app.goo.gl/J5FbtbpZzkSkCZif6`,
       "_blank"
     );
   }} />

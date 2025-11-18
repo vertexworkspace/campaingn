@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description:
       "Experience the ideal private office setup in Mangalore with Vertex Workspace — modern, fully furnished, and designed for focus and growth.",
     images: ["https://bookings.vertexworkspace.com/form-og.png"],
-  },
+  }
 
 };
 
