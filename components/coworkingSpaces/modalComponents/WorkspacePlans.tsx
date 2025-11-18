@@ -17,7 +17,7 @@ import {
   ShakeHand,
   WomenPc,
   WomenWhite,
-} from "@/public/icons/icon";
+} from "@/components/lib/icons/icon";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -69,8 +69,8 @@ interface WorkspacePlansProps {
 
 const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
   const [open, setOpen] = useState(false);
-  const [modalHeading,setModalHeading] = useState("");
-  const [modalDescription,setModalDescription] = useState("");
+  const [modalHeading, setModalHeading] = useState("");
+  const [modalDescription, setModalDescription] = useState("");
 
   // 🔹 Coworking Spaces Data
   const coworkingFeatures = [
@@ -101,9 +101,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "Based on duration paid for",
       price: "₹500",
       duration: "+ GST per day",
-    modalHeading:"Permanent Desk Solution",
-    modalDescription:"Reliable workspace designed for uninterrupted productivity.",
-
+      modalHeading: "Permanent Desk Solution",
+      modalDescription: "Reliable workspace designed for uninterrupted productivity.",
     },
     {
       name: "Monthly Pass",
@@ -113,8 +112,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "30 days",
       price: "₹6,000",
       duration: "+ GST per month",
-        modalHeading:"Monthly Access Plan",
-    modalDescription:"A stable and convenient option for regular work routines.",
+      modalHeading: "Monthly Access Plan",
+      modalDescription: "A stable and convenient option for regular work routines.",
     },
     {
       name: "Quarter Flex Pass",
@@ -124,8 +123,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "3 months with 30 days of usage within the period",
       price: "₹9,000",
       duration: "+ GST for 3 months",
-        modalHeading:"Flexible Quarterly Plan",
-    modalDescription:"Ideal for professionals seeking adaptable work arrangements.",
+      modalHeading: "Flexible Quarterly Plan",
+      modalDescription: "Ideal for professionals seeking adaptable work arrangements.",
     },
     {
       name: "Cabin Space Setup",
@@ -135,8 +134,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       validity: "Based on duration paid for",
       price: "₹6,500",
       duration: "+ GST per desk per month",
-        modalHeading:"Private Cabin Workspace",
-    modalDescription:"A premium environment crafted for focused and secure work.",
+      modalHeading: "Private Cabin Workspace",
+      modalDescription: "A premium environment crafted for focused and secure work.",
     },
   ];
 
@@ -170,8 +169,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       inclusive: "Mailing Address",
       price: "₹1,000",
       gst: "+ GST per day",
-       modalHeading:"Professional Virtual Address",
-    modalDescription:"Establish a credible business presence effortlessly.",
+      modalHeading: "Professional Virtual Address",
+      modalDescription: "Establish a credible business presence effortlessly.",
     },
     {
       name: "Dedicated Door Number",
@@ -182,8 +181,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       inclusive: "Dedicated door number for Company Registration, GST Registration, and Trade License",
       price: "₹5,000",
       gst: "+ GST per month",
-       modalHeading:"Registered Business Address",
-    modalDescription:"A formal address solution for official documentation.",
+      modalHeading: "Registered Business Address",
+      modalDescription: "A formal address solution for official documentation.",
     },
   ];
 
@@ -367,7 +366,9 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
                 {plans.map((item, index) => (
                   <td key={index} className="pt-8 lg:p-8 text-center">
                     <Button
-                      onClick={() => {setOpen(true),setModalHeading(item.modalHeading),setModalDescription(item.modalDescription)}}
+                      onClick={() => {
+                        setOpen(true), setModalHeading(item.modalHeading), setModalDescription(item.modalDescription);
+                      }}
                       aria-label="Book Now"
                       className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
                     >
@@ -382,8 +383,8 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       </div>
       {open && (
         <ContactForm
-        modalHeading={modalHeading}
-        modalDescription={modalDescription}
+          modalHeading={modalHeading}
+          modalDescription={modalDescription}
           defaulltSolution={type === "virtual offices" ? "Virtual Offices" : "Coworking Spaces"}
           showModal
           onClose={() => setOpen(false)}

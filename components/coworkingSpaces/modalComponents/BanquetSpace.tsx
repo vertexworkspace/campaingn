@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import EventBrandingSpaces from "./EventBrandingSpaces";
 import { Button } from "@/components/ui/Button";
-import { WorkSpaceSeat, WorkSpaceCloack, WorkSpaceProjector, WorkSpaceShakeHand, Coffe, CoffeeMaker } from "../../../public/icons/icon";
+import { WorkSpaceSeat, WorkSpaceCloack, WorkSpaceProjector, WorkSpaceShakeHand, Coffe, CoffeeMaker } from "../../lib/icons/icon";
 import { ContactForm } from "@/components/shared/ContactForm";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -11,8 +11,6 @@ import { Autoplay } from "swiper/modules";
 
 const BanquetSpace = () => {
   const [open, setOpen] = useState(false);
-
-
 
   const features = [
     {
@@ -156,7 +154,6 @@ const BanquetSpace = () => {
           <div className="flex lg:block justify-center">
             <Button
               onClick={() => setOpen(true)}
-
               aria-label="Get a Quote"
               className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
             >
@@ -169,7 +166,15 @@ const BanquetSpace = () => {
       <div className="mt-10 sm:mt-16">
         <EventBrandingSpaces />
       </div>
-      {open && <ContactForm modalHeading="Full-Scale Banquet Venue" modalDescription="A refined setting for formal and private events." defaulltSolution="Event Spaces" showModal onClose={() => setOpen(false)} />}
+      {open && (
+        <ContactForm
+          modalHeading="Full-Scale Banquet Venue"
+          modalDescription="A refined setting for formal and private events."
+          defaulltSolution="Event Spaces"
+          showModal
+          onClose={() => setOpen(false)}
+        />
+      )}
     </section>
   );
 };

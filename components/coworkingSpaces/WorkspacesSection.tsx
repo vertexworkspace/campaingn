@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Building2, Users, Coffee, ShieldCheck } from "lucide-react";
-import { Coffe, Developer, Hand, Syestem } from "@/public/icons/icon";
+import { Coffe, Developer, Hand, Syestem } from "@/components/lib/icons/icon";
 
 export default function WorkspacesSection() {
   return (
@@ -15,7 +15,6 @@ export default function WorkspacesSection() {
           </div>
 
           {/* Center Image (Perfectly Centered) */}
-         
 
           {/* Bottom-right Image */}
           <div className="absolute bottom-0 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
@@ -32,19 +31,18 @@ export default function WorkspacesSection() {
             community spaces, every detail enhances how you work and connect.
           </p>
           <div className="relative lg:hidden mb-8   col-span-12 lg:col-span-4 flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
-          {/* Top-left Image */}
-          <div className="absolute top-0 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
-            <Image src="/images/workspace/1.webp" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />
-          </div>
+            {/* Top-left Image */}
+            <div className="absolute top-0 sm:top-3 z-10 left-0 w-[68%] sm:w-[70%] h-[120px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden ">
+              <Image src="/images/workspace/1.webp" alt="Workspace main" width={600} height={400} className="object-cover w-full h-full" />
+            </div>
 
-          {/* Center Image (Perfectly Centered) */}
-        
+            {/* Center Image (Perfectly Centered) */}
 
-          {/* Bottom-right Image */}
-          <div className="absolute bottom-0 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
-            <Image src="/images/workspace/3.webp" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
+            {/* Bottom-right Image */}
+            <div className="absolute bottom-0 sm:bottom-3 right-0 w-[56%] sm:w-[55%] z-10 h-[140px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] overflow-hidden ">
+              <Image src="/images/workspace/3.webp" alt="Workspace kitchen" width={300} height={300} className="object-cover w-full h-full" />
+            </div>
           </div>
-        </div>
           {/* ✅ Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             <div className="flex items-start gap-3">

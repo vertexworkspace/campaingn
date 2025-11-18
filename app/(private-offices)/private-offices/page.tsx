@@ -7,12 +7,12 @@ import QuoteBanner from "@/components/shared/QuoteBanner";
 import PrivateOffices from "@/components/shared/PrivateOffices";
 import GetAQuoteSection from "@/components/shared/GetAQuoteSection";
 
-import { Metadata } from "next";
+
 
 export default function Page() {
   return (
     <main className="flex flex-col min-h-screen bg-white ">
-      <section id="overview">
+      <section >
         <HeroSection
           title=" Private Offices"
           title2="That Mean Business"
@@ -20,7 +20,7 @@ export default function Page() {
         />
       </section>
 
-      <section id="pricing">
+      <section id="overview" >
         <PrivateOfficeFeatures />
       </section>
 

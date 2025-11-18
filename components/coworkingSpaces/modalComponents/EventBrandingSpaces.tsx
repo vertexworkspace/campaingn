@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Coffe, CoffeeMaker } from "@/public/icons/icon";
+import { Coffe, CoffeeMaker } from "@/components/lib/icons/icon";
 import { Button } from "@/components/ui/Button";
 import { ContactForm } from "@/components/shared/ContactForm";
 import { useState } from "react";
@@ -119,7 +119,11 @@ const EventBrandingSpaces = () => {
           </p>
           <div className="flex justify-center lg:block">
             <Button
-              onClick={() => {setOpen(true),setModalHeading("Multi-Purpose Event Rooms"),setModalDescription("Suitable for meetings, workshops, and focused gatherings.")}}
+              onClick={() => {
+                setOpen(true),
+                  setModalHeading("Multi-Purpose Event Rooms"),
+                  setModalDescription("Suitable for meetings, workshops, and focused gatherings.");
+              }}
               aria-label="Book Now"
               className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
             >
@@ -195,7 +199,11 @@ const EventBrandingSpaces = () => {
           </div>
           <div className="flex justify-center lg:block">
             <Button
-              onClick={() => {setOpen(true),setModalHeading("Business Branding Opportunities"),setModalDescription("Strategic placements designed to elevate brand visibility.")}}
+              onClick={() => {
+                setOpen(true),
+                  setModalHeading("Business Branding Opportunities"),
+                  setModalDescription("Strategic placements designed to elevate brand visibility.");
+              }}
               aria-label="Book Now"
               className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
             >
@@ -204,7 +212,15 @@ const EventBrandingSpaces = () => {
           </div>
         </div>
       </div>
-      {open && <ContactForm modalHeading={modalHeading} modalDescription={modalDescription} defaulltSolution="Event Spaces" showModal onClose={() => setOpen(false)} />}
+      {open && (
+        <ContactForm
+          modalHeading={modalHeading}
+          modalDescription={modalDescription}
+          defaulltSolution="Event Spaces"
+          showModal
+          onClose={() => setOpen(false)}
+        />
+      )}
     </section>
   );
 };

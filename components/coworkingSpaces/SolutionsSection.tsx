@@ -24,7 +24,7 @@ import {
   Developer,
   Hand,
   Syestem,
-} from "@/public/icons/icon";
+} from "@/components/lib/icons/icon";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
