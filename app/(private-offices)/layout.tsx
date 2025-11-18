@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/form-og.png",
-        width: 2000,
-        height: 1000,
+        url: "https://bookings.vertexworkspace.com/form-og.png",
+        width: 1200,
+        height: 630,
         alt: "Vertex Private Offices Mangalore",
       },
     ],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Private Offices in Mangalore | Vertex Workspace",
     description:
       "Experience the ideal private office setup in Mangalore with Vertex Workspace — modern, fully furnished, and designed for focus and growth.",
-    images: ["/icon.png"],
+    images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
   icons: {
