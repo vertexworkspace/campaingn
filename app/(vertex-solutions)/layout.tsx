@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/form-og.png",
+        url: "https://bookings.vertexworkspace.com/form-og.png",
         width: 1200,
         height: 630,
         alt: "Vertex Solutions Mangalore",
@@ -32,16 +32,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vertex Solutions | Coworking & Office Space in Mangalore",
-    description: "Flexible coworking and private office solutions in Mangalore by Vertex — designed to help professionals and teams thrive.",
-    images: ["/icon.png"],
+    description:
+      "Flexible coworking and private office solutions in Mangalore by Vertex — designed to help professionals and teams thrive.",
+    images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
   icons: {
-    icon: "/favicon.ico", // ← THIS is what Google uses
-    apple: "/icon.png",
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
+
+  manifest: "/manifest.json",
 };
+
 
 export default function VertexSolutionsLayout({ children }: { children: ReactNode }) {
   return (

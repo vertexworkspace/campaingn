@@ -38,11 +38,14 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.ico", // ← THIS is what Google uses
-    apple: "/icon.png",
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
+
+  manifest: "/manifest.json",
 };
+
 
 export default function PrivateOfficesLayout({ children }: { children: ReactNode }) {
   return (

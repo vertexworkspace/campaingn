@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     siteName: "Vertex Workspace",
     images: [
       {
-        url: "/icon.png",
+        url: "https://bookings.vertexworkspace.com/form-og.png",
         width: 1200,
         height: 630,
-        alt: "Vertex Private Offices Mangalore",
+        alt: "Vertex Workspace Mangalore",
       },
     ],
     locale: "en_US",
@@ -40,18 +40,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
     description: "Get a special offer on flexible office solutions at Vertex.",
-    images: ["/icon.png"],
+    images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
-   icons: {
-    icon: "/favicon.ico",   // ← THIS is what Google uses
-    apple: "/icon.png",
+  icons: {
+    icon: "/favicon.ico", 
+    apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
+
+  manifest: "/manifest.json",
+
   other: {
-    'google-site-verification': 'h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8', 
+    "google-site-verification": "h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8",
   },
 };
+
 
 
 export default function RootLayout({
