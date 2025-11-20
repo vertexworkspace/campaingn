@@ -15,34 +15,9 @@ interface Testimonial {
 }
 
 // 🧠 Component
-export default function TestimonialSection() {
+export default function TestimonialSection({testimonials}:{testimonials:Testimonial[]}) {
   // ✅ Testimonials data
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      text: "“My experience with the Vertex workspace is 5 stars. Good parking space, professional meeting space, and 5-star staff. Thank you.”",
-      name: "Mithun Raj",
-      role: "Director · Productions",
-      image: "/images/testimonials/1.png",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-    {
-      id: 2,
-      text: "“Vertex Workspace has transformed how I work — quiet, clean, and full of energy. Highly recommended!”",
-      name: "Sneha Kumar",
-      role: "Creative Strategist",
-      image: "/images/testimonials/2.webp",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-    {
-      id: 3,
-      text: "“Perfect environment for startups. Great amenities and a fantastic support team.”",
-      name: "Rahul Menon",
-      role: "Co-founder · Pixel Bay",
-      image: "/images/testimonials/2.webp",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-  ];
+ 
 
   // ✅ State
   const [current, setCurrent] = useState<number>(0);
@@ -134,7 +109,7 @@ export default function TestimonialSection() {
       <div className="relative px-12 sm:px-6 lg:px-32 mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
         <div className="w-full relative">
           {/* Navigation Buttons (Static) */}
-          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg2:top-72 lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
+          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg:top-[340px] lg2:top-[310px] lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
             <button
               onClick={prevSlide}
               aria-label="Previous testimonial"
@@ -236,13 +211,13 @@ export default function TestimonialSection() {
               </div>
 
               {/* Logo */}
-              <Image
+              {/* <Image
                 src={testimonials[current].logo}
                 alt={`${testimonials[current].name} logo`}
                 width={110}
                 height={100}
                 className="object-contain"
-              />
+              /> */}
             </div>
           </div>
         </div>

@@ -6,7 +6,48 @@ import PrivateOffices from "@/components/shared/PrivateOffices";
 import QuoteBanner from "@/components/shared/QuoteBanner";
 import TestimonialSection from "@/components/shared/TestimonialSection";
 import { Metadata } from "next";
-
+ const testimonials = [
+    {
+      id: 1,
+      text: "Simply Fantastic and a great work space for the corporates with all their needs available under one roof.",
+      name: "Raja Raj",
+      role: "Director · Productions",
+      image: "/images/testimonials/1.png",
+      logo: "/images/testimonials/svg/exito.svg",
+    },
+    {
+      id: 2,
+      text: "Convenient location, clean office and very helpful staff make this an ideal office experience.",
+      name: "Anand Krishnan",
+      role: "Creative Strategist",
+      image: "/images/testimonials/2.webp",
+      logo: "/images/testimonials/svg/exito.svg",
+    },
+    {
+      id: 3,
+      text: "Very good workspace with all facilities and great support from staff.",
+      name: "Sujeesh M",
+      role: "Co-founder · Pixel Bay",
+      image: "/images/testimonials/2.webp",
+      logo: "/images/testimonials/svg/exito.svg",
+    },
+     {
+      id: 2,
+      text: "I’ve used their workspaces during multiple stays in Mangalore great locations, 24/7 access, and very helpful staff keep me coming back.",
+      name: "Derick Dsouza",
+      role: "Creative Strategist",
+      image: "/images/testimonials/2.webp",
+      logo: "/images/testimonials/svg/exito.svg",
+    },
+    {
+      id: 3,
+      text: "My experience with Vertex workspace is 5 star. Good parking space, professional meeting space and 5 star staffs. Thank you.",
+      name: "Mithun Raj",
+      role: "Co-founder · Pixel Bay",
+      image: "/images/testimonials/2.webp",
+      logo: "/images/testimonials/svg/exito.svg",
+    },
+  ];
 const page = () => {
   return (
     <main className="flex flex-col min-h-screen bg-white ">
@@ -28,7 +69,7 @@ const page = () => {
       </section>
 
       <section>
-        <TestimonialSection />
+        <TestimonialSection testimonials={testimonials}/>
       </section>
 
       <section id="pricing">
