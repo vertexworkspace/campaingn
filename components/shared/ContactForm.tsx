@@ -88,11 +88,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     onClose?.();
 
     // Redirect to thank you page
-    if (pathname === "/private-offices") {
-      router.push("/private-offices/thank-you");
-    } else {
-      router.push("/vertex-solutions/thank-you");
-    }
+    // if (pathname === "/private-offices") {
+    //   router.push("/private-offices/thank-you");
+    // } else {
+    //   router.push("/vertex-solutions/thank-you");
+    // }
 
     const consentChecked = formData.get("consent") === "on";
 
@@ -119,12 +119,44 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         body: new URLSearchParams(data as any),
       });
 
+console.log("testing");
+
+      // 🟧 SEND TO DATABASE API
+const response= await fetch(process.env.NEXT_PUBLIC_DB_API_URL!, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    fname: data.name,
+    mname: "",
+    lname: "",
+    gender: "",
+    residing: "",
+    email: data.email,
+    phone: data.phone,
+    city: "",
+    state: "",
+    street: "",
+    zipcode: "",
+    country: "",
+    source: "Website Form",
+    solution: data.formType,
+    company_name: data.company,
+    team_size: data.teamSize,
+    description: data.description,
+    location: data.location,
+  }),
+});
+
+
+console.log(response,"res");
+
+
       // 🟩 SEND EMAIL (new)
-      await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      // await fetch("/api/send-email", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(data),
+      // });
     } catch (error) {
       console.error("❌ Submission failed:", error);
     } finally {
