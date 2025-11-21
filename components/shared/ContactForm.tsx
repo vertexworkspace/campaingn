@@ -148,6 +148,7 @@ const response= await fetch(process.env.NEXT_PUBLIC_DB_API_URL!, {
 });
 
 
+
 console.log(response,"res");
 
 
