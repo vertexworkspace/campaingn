@@ -125,6 +125,20 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       pathname: pathname,
     };
 
+    let project_type = "";
+    let finalLocation = "";
+
+    if (pathname.includes("/vertex-solutions")) {
+      project_type = data.location;
+      finalLocation = "";
+    } else if (pathname.includes("/private-offices")) {
+      finalLocation = data.location;
+      project_type = "";
+    } else {
+      project_type = "";
+      finalLocation = "";
+    }
+
     try {
       // 🟦 SEND TO GOOGLE SCRIPT (your existing)
       await fetch(googleScriptUrl!, {
@@ -151,11 +165,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           zipcode: "",
           country: "",
           source: source,
-          solution: data.formType,
+          solution: project_type,
           company_name: data.company,
           team_size: data.teamSize,
           description: data.description,
-          location: data.location,
+
+          location: finalLocation,
         }),
       });
 
