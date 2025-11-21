@@ -46,7 +46,15 @@ interface ContactFormProps {
 const locations = ["Mangaluru"];
 const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
 
-export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal = false, onClose, variant = "primary", defaulltSolution ,modalHeading,modalDescription }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({
+  className,
+  showModal = false,
+  onClose,
+  variant = "primary",
+  defaulltSolution,
+  modalHeading,
+  modalDescription,
+}) => {
   const [formErrors, setFormErrors] = React.useState<Record<string, string>>({});
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
@@ -72,6 +80,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     return errors;
   };
 
+  const source = pathname.includes("/vertex-solutions")
+    ? "Vertex Solution Form"
+    : pathname.includes("/private-offices")
+    ? "Private Office Form"
+    : "Website Form";
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
@@ -88,11 +102,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
     onClose?.();
 
     // Redirect to thank you page
-    // if (pathname === "/private-offices") {
-    //   router.push("/private-offices/thank-you");
-    // } else {
-    //   router.push("/vertex-solutions/thank-you");
-    // }
+    if (pathname === "/private-offices") {
+      router.push("/private-offices/thank-you");
+    } else {
+      router.push("/vertex-solutions/thank-you");
+    }
 
     const consentChecked = formData.get("consent") === "on";
 
@@ -119,45 +133,40 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className, showModal =
         body: new URLSearchParams(data as any),
       });
 
-console.log("testing");
-
       // 🟧 SEND TO DATABASE API
-const response= await fetch(process.env.NEXT_PUBLIC_DB_API_URL!, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    fname: data.name,
-    mname: "",
-    lname: "",
-    gender: "",
-    residing: "",
-    email: data.email,
-    phone: data.phone,
-    city: "",
-    state: "",
-    street: "",
-    zipcode: "",
-    country: "",
-    source: "Website Form",
-    solution: data.formType,
-    company_name: data.company,
-    team_size: data.teamSize,
-    description: data.description,
-    location: data.location,
-  }),
-});
+      const response = await fetch("/api/send-db", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fname: data.name,
+          mname: "",
+          lname: "",
+          gender: "",
+          residing: "",
+          email: data.email,
+          phone: data.phone,
+          city: "",
+          state: "",
+          street: "",
+          zipcode: "",
+          country: "",
+          source: source,
+          solution: data.formType,
+          company_name: data.company,
+          team_size: data.teamSize,
+          description: data.description,
+          location: data.location,
+        }),
+      });
 
-
-
-console.log(response,"res");
-
+      const result = await response.json();
 
       // 🟩 SEND EMAIL (new)
-      // await fetch("/api/send-email", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(data),
-      // });
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
     } catch (error) {
       console.error("❌ Submission failed:", error);
     } finally {
@@ -411,26 +420,24 @@ console.log(response,"res");
                   </p>
                 </div>
               )}
-{pathname.includes("/vertex-solutions") && (
-  <div>
-    <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
-      {modalHeading
-        ? modalHeading
-        : (
-          <>
-            Where Work <br />
-            Meets Community
-          </>
-        )}
-    </h1>
+              {pathname.includes("/vertex-solutions") && (
+                <div>
+                  <h1 className="text-3xl lg:text-[36px] font-semibold leading-tight text-primary">
+                    {modalHeading ? (
+                      modalHeading
+                    ) : (
+                      <>
+                        Where Work <br />
+                        Meets Community
+                      </>
+                    )}
+                  </h1>
 
-    <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
-      {modalDescription
-        ? modalDescription
-        : "Vertex offers flexible, inspiring work environments that fuel collaboration and growth."}
-    </p>
-  </div>
-)}
+                  <p className="my-2 mb-4 text-base sm:text-lg lg:text-[20px] text-primary">
+                    {modalDescription ? modalDescription : "Vertex offers flexible, inspiring work environments that fuel collaboration and growth."}
+                  </p>
+                </div>
+              )}
               {formContent}
             </div>
           </motion.div>
@@ -439,7 +446,6 @@ console.log(response,"res");
     </AnimatePresence>
   );
 };
-
 
 const formatHeading = (text: string) => {
   const words = text.split(" ");
