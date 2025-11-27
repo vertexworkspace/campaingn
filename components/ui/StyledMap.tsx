@@ -39,8 +39,55 @@ export const StyledMap = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
+  const locations = useMemo(
+    () => [
+      {
+        id: 'vertex-lounge',
+        position: { lat: 12.88330668168908, lng: 74.8395799441832 },
+        label: 'Vertex Lounge,\nManaged Marketplace',
+        url: 'https://maps.app.goo.gl/J5FbtbpZzkSkCZif6',
+      },
+      {
+        id: 'vertex-hsr',
+        position: { lat: 12.876360872110967, lng: 74.90571116456891 },
+        label: '',
+        url: 'https://maps.app.goo.gl/U7gWy4RcQCPQzChQ9',
+      },
+      {
+        id: 'ashoka-business-center',
+        position: { lat: 12.89629733522708, lng: 74.84203633701524 },
+        label: 'Ashoka business center',
+        url: 'https://maps.app.goo.gl/F96Kkq16fj1TmS1ZA',
+      },
+      {
+        id: 'ajanta-business-center',
+        position: { lat: 12.892079263230086, lng: 74.84127673886275 },
+        label: 'Ajanta business center',
+        url: 'https://maps.app.goo.gl/RgGRjd6T3qDeYkcu8',
+      },
+      {
+        id: 'vertex-treo',
+        position: { lat: 12.879036666092235, lng: 74.85045687443261 },
+        label: 'VERTEX TREO',
+        url: 'https://maps.app.goo.gl/dA9pJvmaJFwRxGG6A',
+      },
+      {
+        id: 'vertex-quad',
+        position: { lat: 12.908256699363733, lng: 74.83640934071036 },
+        label: 'vertex quad',
+        url: 'https://maps.app.goo.gl/NUSHGVkHo9ppfqxx8',
+      },
+      {
+        id: 'vertex-five',
+        position: { lat: 12.878904966202214, lng: 74.85095970817984 },
+        label: 'Vertex Five',
+        url: 'https://maps.app.goo.gl/G7DrqUCSqYgPNLRC7',
+      },
+    ],
+    [],
+  );
 
-  const center = useMemo(() => ({ lat: 12.88330668168908, lng: 74.8395799441832 }), []);
+  const center = useMemo(() => locations[0]?.position ?? { lat: 0, lng: 0 }, [locations]);
 
   if (!isLoaded) return <div className="flex items-center justify-center h-full bg-brand-gray">Loading Map...</div>;
 
@@ -55,30 +102,63 @@ export const StyledMap = () => {
         zoomControl: true,
       }}
     >
-      {/* The Marker's only job is to be the red pin. No label prop. */}
-      <Marker position={center}  onClick={() => {
-    window.open(
-      `https://maps.app.goo.gl/J5FbtbpZzkSkCZif6`,
-      "_blank"
-    );
-  }} />
-
-      {/* This is the OverlayView component. It places our custom div 
-        on the map at the exact same coordinates as the marker.
-      */}
-      <OverlayView
-        position={center}
-        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-        getPixelPositionOffset={getPixelPositionOffset}
-      >
-        <div className="p-2" style={{ transform: 'translateX(-80px) translateY(-95px)' }}>
-    
-           <p className="text-secondary w-[150px] border border-gray-400 bg-white flex justify-center  font-normal text-[12px] whitespace-nowrap bg-brand-dark  py-2 ">
-           Vertex Lounge,<br />
-           Managed marketspace
-          </p>
-        </div>
-      </OverlayView>
+      {locations.map((location, index) => {
+        // Get only locations with labels and find the index among them
+        const locationsWithLabels = locations.filter(loc => loc.label);
+        const labelIndex = locationsWithLabels.findIndex(loc => loc.id === location.id);
+        
+        // Alternate label position: even index = left, odd index = right
+        const isLeft = labelIndex % 2 === 0;
+        
+        return (
+          <div key={location.id}>
+            {/* Marker */}
+            <Marker
+              position={location.position}
+              onClick={() => window.open(location.url, '_blank')}
+            />
+            {/* Label positioned above marker */}
+            {location.label && (
+              <OverlayView
+                position={location.position}
+                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                getPixelPositionOffset={(width, height) => ({
+                  x: isLeft ? -(width + 20) : 20, // Left or right offset
+                  y: -(height + 40), // Position above the marker
+                })}
+              >
+                <div className="relative inline-block">
+                  {/* Speech bubble */}
+                  <div className="relative bg-white rounded-lg px-3 py-2.5 shadow-lg">
+                    <p className="text-black text-sm font-normal text-center leading-tight whitespace-nowrap">
+                      {location.label.split('\n').map((line, idx) => (
+                        <span key={`${location.id}-line-${idx}`}>
+                          {line}
+                          {idx < location.label.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                  {/* Speech bubble tail - always centered, pointing down to marker */}
+                  <div 
+                    className="absolute"
+                    style={{
+                      bottom: '-8px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 0,
+                      borderTop: '10px solid white',
+                      borderLeft: '6px solid transparent',
+                      borderRight: '6px solid transparent',
+                    }}
+                  />
+                </div>
+              </OverlayView>
+            )}
+          </div>
+        );
+      })}
     </GoogleMap>
   );
 };
