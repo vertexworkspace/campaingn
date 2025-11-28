@@ -118,7 +118,7 @@ export default function WhyChooseVertex() {
             {amenities.slice(1, 3).map((item) => (
               <div key={item.id} className="relative  overflow-hidden group h-auto">
                 <Image src={item.image} alt={item.title} className="object-cover w-full h-full" />
-                <div className="absolute bottom-0 w-full max-h-[40%] bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/80 to-transparent"></div>
 
                 <div className="absolute inset-0 flex items-end transition-colors duration-300">
                   <p className="text-white font-semibold text-3xl xl:text-[38px] p-4">{item.title} <br />{item.title2}</p>
