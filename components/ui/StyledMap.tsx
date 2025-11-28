@@ -48,12 +48,6 @@ export const StyledMap = () => {
         url: 'https://maps.app.goo.gl/J5FbtbpZzkSkCZif6',
       },
       {
-        id: 'vertex-hsr',
-        position: { lat: 12.876360872110967, lng: 74.90571116456891 },
-        label: '',
-        url: 'https://maps.app.goo.gl/U7gWy4RcQCPQzChQ9',
-      },
-      {
         id: 'ashoka-business-center',
         position: { lat: 12.89629733522708, lng: 74.84203633701524 },
         label: 'Ashoka business center',
