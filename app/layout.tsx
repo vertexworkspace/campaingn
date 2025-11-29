@@ -46,10 +46,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", type: "image/png" },
     ],
     apple: [
-      { url: "/logo.svg" },
+      { url: "/favicon-32x32.png" },
     ],
   },
 
@@ -67,6 +67,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="google-site-verification" content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8" />
+        <link rel="icon" href="/favicon.ico" type="image/png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
       </head>
       <body className={notoSans.className}>
         <SpeedInsights />
