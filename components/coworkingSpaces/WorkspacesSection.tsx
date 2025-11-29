@@ -6,7 +6,7 @@ import { Coffe, Developer, Hand, Syestem } from "@/components/lib/icons/icon";
 export default function WorkspacesSection() {
   return (
     <section className="bg-[#F8F8F8] py-10 sm:py-16 px-4 sm:px-6 lg:px-12">
-      <div className="px-4 sm:px-6 lg:px-20 xl:px-28 mx-auto grid overflow-hidden grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+      <div className="px-4 sm:px-6 lg:px-20 xl:px-28 mx-auto lg:grid overflow-hidden grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
         {/* 🖼️ Left Image Collage */}
         <div className="relative hidden   col-span-12 lg:col-span-4 lg:flex justify-center items-center overflow-hidden min-h-[260px] sm:min-h-[420px] lg:min-h-[500px] xl:min-h-[600px]">
           {/* Top-left Image */}
