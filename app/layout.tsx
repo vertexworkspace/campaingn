@@ -43,6 +43,16 @@ export const metadata: Metadata = {
     images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/logo.svg" },
+    ],
+  },
+
   other: {
     "google-site-verification": "h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8",
   },
