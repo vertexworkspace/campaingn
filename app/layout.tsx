@@ -46,10 +46,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/favicon-32x32.png", type: "image/png" },
+      { url: "/favicon-48x48.png", type: "image/png" },
     ],
     apple: [
-      { url: "/favicon-32x32.png" },
+      { url: "/favicon-48x48.png" },
     ],
   },
 
@@ -71,8 +71,8 @@ export default function RootLayout({
         <link
           rel="icon"
           type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
+          sizes="48x48"
+          href="/favicon-48x48.png"
         />
       </head>
       <body className={notoSans.className}>
