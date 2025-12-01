@@ -47,7 +47,7 @@ export default function PrivateOffices({ title, description, buttontext }: { tit
         <p className="mt-2 text-secondary font-normal text-base sm:text-lg">{description}</p>
 
         {/* Map */}
-        <div className="mt-8 mb-12 w-full h-[400px]  overflow-hidden">
+        <div className="mt-8 mb-12 w-full h-[550px] md:h-[550px]  overflow-hidden">
           <StyledMap />
         </div>
 
