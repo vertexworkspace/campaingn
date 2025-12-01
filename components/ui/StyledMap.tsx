@@ -129,8 +129,8 @@ export const StyledMap = () => {
         position: { lat: 12.908256699363733, lng: 74.83640934071036 },
         label: "vertex quad",
         url: "https://maps.app.goo.gl/NUSHGVkHo9ppfqxx8",
-        offsetX: -50,
-        offsetY: -85,
+        offsetX: 20,
+        offsetY: -35,
         pointer: "down",
       },
       {
