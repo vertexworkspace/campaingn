@@ -87,6 +87,15 @@ export const StyledMap = () => {
   /* ------------ LOCATION LIST WITH CUSTOM POINTER DIRECTIONS ------------ */
   const locations = useMemo(
     () => [
+         {
+        id: "ajanta-business-center",
+        position: { lat: 12.892079263230086, lng: 74.84127673886275 },
+        label: "Ajanta business center",
+        url: "https://maps.app.goo.gl/RgGRjd6T3qDeYkcu8",
+        offsetX: 15,
+        offsetY: -40,
+        pointer: "left", // ▶
+      },
        {
         id: "ashoka-business-center",
         position: { lat: 12.89629733522708, lng: 74.84203633701524 },
@@ -106,15 +115,7 @@ export const StyledMap = () => {
         pointer: "down", // ▼
       },
      
-      {
-        id: "ajanta-business-center",
-        position: { lat: 12.892079263230086, lng: 74.84127673886275 },
-        label: "Ajanta business center",
-        url: "https://maps.app.goo.gl/RgGRjd6T3qDeYkcu8",
-        offsetX: 15,
-        offsetY: -40,
-        pointer: "left", // ▶
-      },
+   
       {
         id: "vertex-treo",
         position: { lat: 12.879036666092235, lng: 74.85045687443261 },
@@ -191,7 +192,7 @@ lng: locations[0].position.lng + 0.0030, // shift view slightly RIGHT
     <GoogleMap
       mapContainerClassName="w-full h-full "
       center={center}
-      zoom={14}
+      zoom={14.1}
       options={{
        
         disableDefaultUI: true,

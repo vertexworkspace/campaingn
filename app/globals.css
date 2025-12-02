@@ -69,7 +69,9 @@ html {
   display: none !important;             /* Chrome, Safari, Opera */
 }
 
-
+.gmnoprint{
+  display: none !important;
+}
 
 
 
