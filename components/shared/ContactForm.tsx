@@ -83,8 +83,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const source = pathname.includes("/vertex-solutions")
     ? "Vertex Solution Form"
     : pathname.includes("/private-offices")
-    ? "Private Office Form"
-    : "Website Form";
+      ? "Private Office Form"
+      : "Website Form";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -250,22 +250,32 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         </FormField>
 
         <FormField id="location">
-          <Select
-            id="location"
-            name="location"
-            variant={variant}
-            defaultValue={defaulltSolution || ""}
-            className={cn("border", formErrors.location ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
-          >
-            <option value="" disabled>
-              {dropwontext}
-            </option>
-            {dropdown.map((item, index) => (
-              <option key={index} value={item} className="text-[#848484]">
-                {item}
+          {pathname === "/private-offices" ? (
+            <Input
+              id="location"
+              name="location"
+              type="text"
+              placeholder="Location"
+              className={cn("border", formErrors.location ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
+            />
+          ) : (
+            <Select
+              id="location"
+              name="location"
+              variant={variant}
+              defaultValue={defaulltSolution || ""}
+              className={cn("border", formErrors.location ? "border-red-500" : borderColor, inputBg, placeholderColor, placeholderSize)}
+            >
+              <option value="" disabled>
+                {dropwontext}
               </option>
-            ))}
-          </Select>
+              {dropdown.map((item, index) => (
+                <option key={index} value={item} className="text-[#848484]">
+                  {item}
+                </option>
+              ))}
+            </Select>
+          )}
           {formErrors.location && <p className="text-red-500 text-xs mt-1">{formErrors.location}</p>}
         </FormField>
       </FormRow>
@@ -357,8 +367,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 ? "text-red-300"
                 : "text-white/70"
               : description.length >= 120
-              ? "text-red-500"
-              : "text-gray-400"
+                ? "text-red-500"
+                : "text-gray-400"
           )}
         >
           {description.length}/125
@@ -368,9 +378,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">
         <div
-          className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${
-            variant === "secondary" ? "gap-12" : "gap-4"
-          } md:gap-4 lg:gap-3`}
+          className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${variant === "secondary" ? "gap-12" : "gap-4"
+            } md:gap-4 lg:gap-3`}
         >
           <div className="flex items-center">
             <input
