@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
-import SmoothScroll from "@/components/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
+import SmoothScroll from "@/components/SmoothScroll";
 
+// Load Google Font correctly
 const notoSans = Noto_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -21,7 +22,8 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
-    description: "Get a special offer on flexible office solutions at Vertex.",
+    description:
+      "Get a special offer on flexible office solutions at Vertex Workspace.",
     url: "https://bookings.vertexworkspace.com",
     siteName: "Vertex Workspace",
     images: [
@@ -39,7 +41,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
-    description: "Get a special offer on flexible office solutions at Vertex.",
+    description:
+      "Get a special offer on flexible office solutions at Vertex Workspace.",
     images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
@@ -48,9 +51,7 @@ export const metadata: Metadata = {
       { url: "/favicon.ico" },
       { url: "/favicon-48x48.png", type: "image/png" },
     ],
-    apple: [
-      { url: "/favicon-48x48.png" },
-    ],
+    apple: [{ url: "/favicon-48x48.png" }],
   },
 
   other: {
@@ -60,13 +61,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" className={notoSans.variable}>
       <head>
-        <meta name="google-site-verification" content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8" />
+        <meta
+          name="google-site-verification"
+          content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8"
+        />
         <link rel="icon" href="/favicon.ico" type="image/png" />
         <link
           rel="icon"
@@ -75,10 +79,14 @@ export default function RootLayout({
           href="/favicon-48x48.png"
         />
       </head>
-      <body className={notoSans.className}>
+
+      <body className={`${notoSans.className} min-h-screen`}>
+        {/* Global Vercel tools */}
         <SpeedInsights />
         <Analytics />
-        <SmoothScroll> {children} </SmoothScroll>
+
+        {/* Wrap entire app with SmoothScroll */}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
