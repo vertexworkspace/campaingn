@@ -108,10 +108,10 @@ export const StyledMap = () => {
       {
         id: "vertex-lounge",
         position: { lat: 12.88330668168908, lng: 74.8395799441832 },
-        label: "Vertex Lounge,\nManaged Marketplace",
+        label: "Vertex One", 
         url: "https://maps.app.goo.gl/J5FbtbpZzkSkCZif6",
-        offsetX: -85,
-        offsetY: -100,
+        offsetX: -48,
+        offsetY: -80,
         pointer: "down", // ▼
       },
      
