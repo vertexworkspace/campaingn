@@ -90,7 +90,7 @@ export const StyledMap = () => {
          {
         id: "ajanta-business-center",
         position: { lat: 12.892079263230086, lng: 74.84127673886275 },
-        label: "Ajanta business center",
+        label: "Ajanta Business Center",
         url: "https://maps.app.goo.gl/RgGRjd6T3qDeYkcu8",
         offsetX: 15,
         offsetY: -40,
@@ -99,7 +99,7 @@ export const StyledMap = () => {
        {
         id: "ashoka-business-center",
         position: { lat: 12.89629733522708, lng: 74.84203633701524 },
-        label: "Ashoka business center",
+        label: "Ashoka Business Center",
         url: "https://maps.app.goo.gl/F96Kkq16fj1TmS1ZA",
         offsetX: -85,
         offsetY: -80,
@@ -119,7 +119,7 @@ export const StyledMap = () => {
       {
         id: "vertex-treo",
         position: { lat: 12.879036666092235, lng: 74.85045687443261 },
-        label: "VERTEX TREO",
+        label: "Vertex Treo",
         url: "https://maps.app.goo.gl/dA9pJvmaJFwRxGG6A",
         offsetX: -55,
         offsetY: -80,
@@ -128,7 +128,7 @@ export const StyledMap = () => {
       {
         id: "vertex-quad",
         position: { lat: 12.908256699363733, lng: 74.83640934071036 },
-        label: "vertex quad",
+        label: "Vertex Quad",
         url: "https://maps.app.goo.gl/NUSHGVkHo9ppfqxx8",
         offsetX: 20,
         offsetY: -35,
