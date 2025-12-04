@@ -7,48 +7,17 @@ import QuoteBanner from "@/components/shared/QuoteBanner";
 import PrivateOffices from "@/components/shared/PrivateOffices";
 import GetAQuoteSection from "@/components/shared/GetAQuoteSection";
 
- const testimonials = [
-    {
-      id: 1,
-      text: "Clean, spacious coworking space with good WiFi and a small cafeteria. Limited four-wheeler parking, but overall a great place.",
-      name: "Harsha Dinesh",
-      role: "Director · Productions",
-      image: "/images/testimonials/1.png",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-    {
-      id: 2,
-      text: "Great ambiance, clean space, good pantry, and a reliable 4-seater cabin. Helpful staff and great value for money.",
-      name: "Pranith Devadiga",
-      role: "Creative Strategist",
-      image: "/images/testimonials/2.webp",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-    {
-      id: 3,
-      text: "I’ve worked here for months vibrant, comfortable, well-lit space with great amenities and fast internet. Friendly, supportive staff.",
-      name: "Sowrabh Shetty",
-      role: "Co-founder · Pixel Bay",
-      image: "/images/testimonials/2.webp",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-    {
-      id: 2,
-      text: "Vertex One offers flexible, well-equipped office spaces with fast WiFi and great amenities in a convenient Mangaluru location. Highly recommended.",
-      name: "Pranith Devadiga", 
-      role: "Creative Strategist",
-      image: "/images/testimonials/2.webp",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-    {
-      id: 3,
-      text: "Very nice place to have an office setup , clean and tidy. Multiple meeting rooms, parking facility Also spacious cafe with indoor games facility to hangout",
-      name: "Mithesh shetty",
-      role: "Co-founder · Pixel Bay",
-      image: "/images/testimonials/2.webp",
-      logo: "/images/testimonials/svg/exito.svg",
-    },
-  ];
+const testimonials = [
+  {
+    id: 1,
+    text: "Our experience at Vertex Workspace has been excellent. We honestly enjoy working here. The place has a modern, clean vibe, and it even gives a bit of a Bangalore tech-park feel, which the team loves. What we appreciate the most is the support from the Vertex team. Whenever XTMX needs anything, Vertex responds quickly and makes sure things get sorted without any hassle. The facilities are well-maintained, and the way the team interacts with us truly makes us feel comfortable and looked after. Overall, our experience with Vertex Workspace has been wonderful, and we're pleased with the service you provide. Thank you for always being so helpful and welcoming.",
+    name: "Akhilesh K",
+    role: "Operational Head & Partner",
+    company: "XTRANSMATRIX CONSULTING SERVICES PVT LTD",
+    image: "/images/testimonials/1.png",
+    logo: "https://ik.imagekit.io/lrxrnuqog/Logos/XTMX_Logo.png",
+  },
+];
 
 export default function Page() {
   return (
@@ -70,7 +39,7 @@ export default function Page() {
       </section>
 
       <section>
-        <TestimonialSection testimonials={testimonials}/>
+        <TestimonialSection testimonials={testimonials} />
       </section>
 
       <section>

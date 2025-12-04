@@ -10,6 +10,9 @@ import { useRef, useState } from "react";
 import { StyledMap } from "../ui/StyledMap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import heroImageUrl from "../../public/images/hero.webp";
+import image2 from "../../public/images/hero3.webp";
+import image3 from "../../public/images/solution-section/modalImages/1.webp";
 import { Autoplay } from "swiper/modules";
 import SwiperDots from "../ui/SwiperDots";
 export default function PrivateOffices({ title, description, buttontext }: { title: string; description: string; buttontext: string }) {
@@ -24,17 +27,37 @@ export default function PrivateOffices({ title, description, buttontext }: { tit
   const offices = [
     {
       title: "Vertex One",
-      address: "Gateway Building, MG Rd, Ballalbagh, Mangaluru, Karnataka 575003",
+      address: "MG Rd, Ballalbagh, Mangalore, Karnataka 575003",
       image: officeImg,
     },
     {
       title: "Vertex Treo",
-      address: "Kambala Road, Mallikatte, Kadri, Mangaluru, Karnataka 575003",
+      address: "Kadri kambla road, Mangalore, Karnataka 575003",
       image: officeImage2,
     },
     {
       title: "Vertex Five",
-      address: "Mallikatte Rd, Mallikatte, Kadri, Mangaluru, Karnataka 575003",
+      address: "Kadri, Mangalore, Karnataka 575003",
+      image: officeImage3,
+    },
+    {
+      title: "Ajanta Business Centre",
+      address: "Bejai - Kapikad Road, Kapikad, Mangalore",
+      image: heroImageUrl,
+    },
+    {
+      title: "Ashoka Business Centre",
+      address: "Bejai - Kapikad Road, Kapikad, Mangalore",
+      image: image2,
+    },
+    {
+      title: "Vertex Square",
+      address: "MG Road, Mangalore",
+      image: image3,
+    },
+    {
+      title: "Vertex Quad",
+      address: "Kottara, Mangalore",
       image: officeImage3,
     },
   ];
@@ -51,36 +74,49 @@ export default function PrivateOffices({ title, description, buttontext }: { tit
           <StyledMap />
         </div>
 
-        {/* Office Cards */}
-        <div className="md:hidden">
+        {/* Office Cards Carousel */}
+        <div>
           <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
             spaceBetween={24}
             slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
             loop={true}
             autoplay={{
-              delay: 2000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             modules={[Autoplay]}
+            className="pb-0!"
           >
             {offices.map((office, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-white overflow-hidden transition">
-                  <div className="relative w-full h-52">
+              <SwiperSlide key={index} className="!h-auto">
+                <div className="bg-white overflow-hidden transition flex flex-col h-[420px]">
+                  <div className="relative w-full h-52 shrink-0">
                     <Image src={office.image} alt={office.title} fill className="object-cover" />
                   </div>
-                  <div className="p-6 text-left">
-                    <h3 className="text-2xl lg:text-3xl font-semibold text-primary">{office.title}</h3>
-                    <p className="text-secondary mt-1text-base sm:text-lg leading-relaxed">{office.address}</p>
-                    <div className="mt-6">
+                  <div className="flex flex-col flex-1 p-6 text-left">
+                    <div className="flex-1">
+                      <h3 className="text-2xl lg:text-3xl font-semibold text-primary line-clamp-2">{office.title}</h3>
+                      <p className="text-secondary mt-1 text-base sm:text-lg leading-relaxed line-clamp-3">{office.address}</p>
+                    </div>
+                    <div className="mt-auto pt-6">
                       <Button
                         aria-label="Get a Quote"
                         onClick={() => setOpen(true)}
-                        className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2 "
+                        className="bg-[#0097DC] hover:bg-[#007bb5] text-white font-semibold px-6 py-2"
                       >
-                      {buttontext}
+                        {buttontext}
                       </Button>
                     </div>
                   </div>
@@ -89,36 +125,6 @@ export default function PrivateOffices({ title, description, buttontext }: { tit
             ))}
           </Swiper>
           <SwiperDots total={offices.length} current={current} onDotClick={handleDotClick} />
-        </div>
-
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 xl:gap-20">
-          {offices.map((office, index) => (
-            <div key={index} className="bg-white overflow-hidden transition flex flex-col h-full">
-              {/* 🖼️ Image */}
-              <div className="relative w-full h-52">
-                <Image src={office.image} alt={office.title} fill className="object-cover" />
-              </div>
-
-              {/* 📄 Content section */}
-              <div className="flex flex-col flex-1 p-6 text-left">
-                <div>
-                  <h3 className="text-3xl font-semibold text-primary">{office.title}</h3>
-                  <p className="text-secondary mt-1 text-lg leading-relaxed">{office.address}</p>
-                </div>
-
-                {/* 🧭 Button pinned at the bottom */}
-                <div className="mt-auto pt-6 flex ">
-                  <Button
-                    aria-label="Get a Quote"
-                    onClick={() => setOpen(true)}
-                    className="bg-[#0097DC] hover:bg-[#0097DC]/80 text-white font-semibold px-6 py-2"
-                  >
-                    {buttontext}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
         {open && <ContactForm showModal onClose={() => setOpen(false)} />}
       </div>

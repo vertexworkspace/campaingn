@@ -15,9 +15,9 @@ interface Testimonial {
 }
 
 // 🧠 Component
-export default function TestimonialSection({testimonials}:{testimonials:Testimonial[]}) {
+export default function TestimonialSection({ testimonials }: { testimonials: Testimonial[] }) {
   // ✅ Testimonials data
- 
+
 
   // ✅ State
   const [current, setCurrent] = useState<number>(0);
@@ -54,62 +54,62 @@ export default function TestimonialSection({testimonials}:{testimonials:Testimon
 
   return (
     <section className="bg-white overflow-hidden  pt-6 pb-0 md:py-16 lg:py-20 relative">
-        {/* Mobile Navigation Buttons */}
-<div className="lg:hidden">
-  {/* Left Button */}
-  <button
+      {/* Mobile Navigation Buttons */}
+      <div className="lg:hidden">
+        {/* Left Button */}
+        <button
 
-  
-    onClick={prevSlide}
-    aria-label="Previous testimonial"
-    className="absolute left-4 top-[50%] -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 cursor-pointer transition"
-  >
-    <svg
-      width="13"
-      height="22"
-      viewBox="0 0 13 22"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M11.3587 0.99995L1.41422 10.9444L11.3587 20.8889"
-        stroke="#848484"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-      />
-    </svg>
-  </button>
 
-  {/* Right Button */}
-  <button
-    onClick={nextSlide}
-    aria-label="Next testimonial"
-    className="absolute right-0 top-[50%] -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 cursor-pointer transition"
-  >
-    <svg
-      width="13"
-      height="22"
-      viewBox="0 0 13 22"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M0.999998 20.889L10.9445 10.9445L0.999998 1"
-        stroke="#848484"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-      />
-    </svg>
-  </button>
-</div>
+          onClick={prevSlide}
+          aria-label="Previous testimonial"
+          className="absolute left-4 top-[50%] -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 cursor-pointer transition"
+        >
+          <svg
+            width="13"
+            height="22"
+            viewBox="0 0 13 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.3587 0.99995L1.41422 10.9444L11.3587 20.8889"
+              stroke="#848484"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+
+        {/* Right Button */}
+        <button
+          onClick={nextSlide}
+          aria-label="Next testimonial"
+          className="absolute right-0 top-[50%] -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 cursor-pointer transition"
+        >
+          <svg
+            width="13"
+            height="22"
+            viewBox="0 0 13 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.999998 20.889L10.9445 10.9445L0.999998 1"
+              stroke="#848484"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+      </div>
 
       {/* ===================== MAIN SECTION ===================== */}
       <div className="relative px-12 sm:px-6 lg:px-32 mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
         <div className="w-full relative">
           {/* Navigation Buttons (Static) */}
-          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg:top-[340px] lg2:top-[310px] lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
+          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg:top-[440px] lg2:top-[410px] lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
             <button
               onClick={prevSlide}
               aria-label="Previous testimonial"
@@ -171,7 +171,10 @@ export default function TestimonialSection({testimonials}:{testimonials:Testimon
                     {/* LEFT — Text Content */}
                     <div className="relative z-20 flex flex-col items-start justify-start mt-4 lg:mt-8 space-y-6 w-full lg:w-1/2 text-center lg:text-left  lg2:pt-10">
 
-                      <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-3xl font-semibold text-primary max-w-2xl mx-auto lg:mx-0">
+                      <p className={`font-semibold text-primary max-w-2xl mx-auto lg:mx-0 ${testimonial.text.length > 200
+                        ? 'text-[14px] sm:text-[16px] md:text-[18px]'
+                        : 'text-[16px] sm:text-[18px] md:text-[20px] lg:text-3xl'
+                        }`}>
                         {testimonial.text}
                       </p>
                     </div>
@@ -205,7 +208,7 @@ export default function TestimonialSection({testimonials}:{testimonials:Testimon
                 <h4 className="text-lg sm:text-3xl font-semibold text-white">
                   {testimonials[current].name}
                 </h4>
-               
+
               </div>
 
               {/* Logo */}
