@@ -69,7 +69,7 @@ const page = () => {
       </section>
 
       <section>
-        <TestimonialSection testimonials={testimonials}/>
+        <TestimonialSection testimonials={testimonials} solutions={true}/>
       </section>
 
       <section id="pricing">

@@ -15,7 +15,7 @@ interface Testimonial {
 }
 
 // 🧠 Component
-export default function TestimonialSection({ testimonials }: { testimonials: Testimonial[] }) {
+export default function TestimonialSection({ testimonials,solutions=false }: { testimonials: Testimonial[],solutions?: boolean }) {
   // ✅ Testimonials data
 
 
@@ -85,7 +85,7 @@ export default function TestimonialSection({ testimonials }: { testimonials: Tes
         <button
           onClick={nextSlide}
           aria-label="Next testimonial"
-          className="absolute right-0 top-[50%] -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 cursor-pointer transition"
+          className="absolute right-0  top-[50%] -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 cursor-pointer transition"
         >
           <svg
             width="13"
@@ -109,7 +109,7 @@ export default function TestimonialSection({ testimonials }: { testimonials: Tes
       <div className="relative px-12 sm:px-6 lg:px-32 mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
         <div className="w-full relative">
           {/* Navigation Buttons (Static) */}
-          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg:top-[440px] lg2:top-[410px] lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
+          <div className="absolute hidden w-full left-0 top-[300px] lg:left-auto lg:top-[480px] lg2:top-[360px] lg:relative z-20 lg:flex  items-center justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
             <button
               onClick={prevSlide}
               aria-label="Previous testimonial"
@@ -172,8 +172,8 @@ export default function TestimonialSection({ testimonials }: { testimonials: Tes
                     <div className="relative z-20 flex flex-col items-start justify-start mt-4 lg:mt-8 space-y-6 w-full lg:w-1/2 text-center lg:text-left  lg2:pt-10">
 
                       <p className={`font-semibold text-primary max-w-2xl mx-auto lg:mx-0 ${testimonial.text.length > 200
-                        ? 'text-[14px] sm:text-[16px] md:text-[18px]'
-                        : 'text-[16px] sm:text-[18px] md:text-[20px] lg:text-3xl'
+                        ? 'text-[14px] sm:text-[16px] md:text-[16px]'
+                        : `text-[16px] sm:text-[18px] md:text-[20px] ${solutions ? ' lg:text-3xl' : 'lg:text-xl'}`
                         }`}>
                         {testimonial.text}
                       </p>
@@ -208,15 +208,15 @@ export default function TestimonialSection({ testimonials }: { testimonials: Tes
                 <h4 className="text-lg sm:text-3xl font-semibold text-white">
                   {testimonials[current].name}
                 </h4>
-
+{testimonials[current].role}
               </div>
 
               {/* Logo */}
               {/* <Image
                 src={testimonials[current].logo}
                 alt={`${testimonials[current].name} logo`}
-                width={110}
-                height={100}
+                width={200}
+                height={200}
                 className="object-contain"
               /> */}
             </div>

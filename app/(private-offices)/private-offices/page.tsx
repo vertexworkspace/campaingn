@@ -10,12 +10,30 @@ import GetAQuoteSection from "@/components/shared/GetAQuoteSection";
 const testimonials = [
   {
     id: 1,
-    text: "Our experience at Vertex Workspace has been excellent. We honestly enjoy working here. The place has a modern, clean vibe, and it even gives a bit of a Bangalore tech-park feel, which the team loves. What we appreciate the most is the support from the Vertex team. Whenever XTMX needs anything, Vertex responds quickly and makes sure things get sorted without any hassle. The facilities are well-maintained, and the way the team interacts with us truly makes us feel comfortable and looked after. Overall, our experience with Vertex Workspace has been wonderful, and we're pleased with the service you provide. Thank you for always being so helpful and welcoming.",
+    text: "It’s been about 1.5 months approx since we moved the XTMX second office into Vertex Five, and the experience has been really positive so far. The workspace has a clean and premium feel, which makes it very comfortable for our team. The staff, especially Ashish and Vasanth, have been incredibly supportive and quick to help with anything we need. Their professionalism and friendly approach truly make a difference. Overall, we appreciate the smooth experience and the consistent support from the Vertex Five team.",
+    name: "Shashank LK",
+    role: "Head of Technology & Partner",
+    company: "XTRANSMATRIX CONSULTING SERVICES PVT LTD",
+    image: "/images/testimonials/1.png",
+    logo: "/images/testimonials/logo/XTMX_Logo.webp",
+  },
+   {
+    id: 5,
+    text: "We are having an excellent time over here. All our needs are being met with no issues. Looking forward to an amazing time in the upcoming year as well.",
+    name: "Munazza ",
+    role: "Hub coordinator ",
+    company: "Kairalitrails",
+    image: "/images/testimonials/1.png",
+    logo: "/images/testimonials/logo/kairali.png",
+  },
+   {
+    id: 4,
+    text: "Our experience at Vertex Workspace has been excellent. We honestly enjoy working here. The place has a modern, clean vibe, and it even gives a bit of a Bangalore tech-park feel, which the team loves. What we appreciate the most is the support from the Vertex team. Whenever XTMX needs anything, Vertex responds quickly and makes sure things get sorted without any hassle. The facilities are well-maintained, and the way the team interacts with us truly makes us feel comfortable and looked after.Overall, our experience with Vertex Workspace has been wonderful, and we’re pleased with the service you provide. Thank you for always being so helpful and welcoming.",
     name: "Akhilesh K",
     role: "Operational Head & Partner",
     company: "XTRANSMATRIX CONSULTING SERVICES PVT LTD",
     image: "/images/testimonials/1.png",
-    logo: "https://ik.imagekit.io/lrxrnuqog/Logos/XTMX_Logo.png",
+    logo: "/images/testimonials/logo/XTMX_Logo.webp",
   },
 ];
 
