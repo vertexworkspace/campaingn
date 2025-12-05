@@ -216,13 +216,13 @@ export default function TestimonialSection({ testimonials,solutions=false }: { t
               </div>
 
               {/* Logo */}
-      {!solutions &&  <div className="relative">
+      {!solutions &&  <div className="relative min-h-[80px] flex items-center justify-center">
   <Image
     src={testimonials[current].logo}
     alt={`${testimonials[current].name} logo`}
     height={150}
     width={150}
-    className="object-contain"
+    className="object-cover"
   />
 </div>}
 
