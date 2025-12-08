@@ -152,6 +152,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          category: "lead",
+          project_enquired: "Vertex",
           fname: data.name,
           mname: "",
           lname: "",
@@ -169,7 +171,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           company_name: data.company,
           team_size: data.teamSize,
           description: data.description,
-
+enquiry_for: "commercial",
           location: finalLocation,
         }),
       });
