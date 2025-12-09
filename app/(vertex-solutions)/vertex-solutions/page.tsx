@@ -47,6 +47,15 @@ import { Metadata } from "next";
       image: "/images/testimonials/2.webp",
       logo: "/images/testimonials/svg/exito.svg",
     },
+
+       {
+      id:44,
+      text: "My experience at Vertex Workspace has been positive, with well-maintained premises, good facilities, and a supportive team. The environment is generally conducive to productivity; however, there are occasional noise disturbances when other company teams sit near our cabin, and the sound is still audible even with the door closed. We believe addressing this would further enhance the workspace experience. We appreciate the team’s responsiveness and continued support.",
+      name: " Karunakar rama moger",
+      role: "Co-founder · Pixel Bay",
+      image: "/images/testimonials/2.webp",
+      logo: "/images/testimonials/svg/exito.svg",
+    },
   ];
 const page = () => {
   return (
