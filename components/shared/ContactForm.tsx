@@ -171,7 +171,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           company_name: data.company,
           team_size: data.teamSize,
           description: data.description,
-enquiry_for: "commercial",
           location: finalLocation,
         }),
       });
