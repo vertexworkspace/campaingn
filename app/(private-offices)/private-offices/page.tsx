@@ -17,7 +17,7 @@ const testimonials = [
     image: "/images/testimonials/1.png",
     logo: "/images/testimonials/logo/XTMX_Logo.webp",
   },
-   {
+  {
     id: 5,
     text: "We are having an excellent time over here. All our needs are being met with no issues. Looking forward to an amazing time in the upcoming year as well.",
     name: "Munazza ",
@@ -26,7 +26,7 @@ const testimonials = [
     image: "/images/testimonials/1.png",
     logo: "/images/testimonials/logo/kairali.png",
   },
-   {
+  {
     id: 4,
     text: "Our experience at Vertex Workspace has been excellent. We honestly enjoy working here. The place has a modern, clean vibe, and it even gives a bit of a Bangalore tech-park feel, which the team loves. What we appreciate the most is the support from the Vertex team. Whenever XTMX needs anything, Vertex responds quickly and makes sure things get sorted without any hassle. The facilities are well-maintained, and the way the team interacts with us truly makes us feel comfortable and looked after.Overall, our experience with Vertex Workspace has been wonderful, and we’re pleased with the service you provide. Thank you for always being so helpful and welcoming.",
     name: "Akhilesh K",
@@ -35,12 +35,33 @@ const testimonials = [
     image: "/images/testimonials/1.png",
     logo: "/images/testimonials/logo/XTMX_Logo.webp",
   },
+
+
+ {
+    id: 11,
+    text: "We’re happy to share our experience with Vertex Workspace. The premises are well-maintained, and the overall environment has been consistently professional and conducive to productivity. Your team has always been responsive and supportive whenever assistance was needed, which we truly appreciate.\n Thank you for providing a smooth and positive working atmosphere. We value the partnership and look forward to continuing our association.",
+    name: "Nimra Fathima",
+    role: "HR Specialist",
+    company: "NPOWA SOLUTIONS",
+    image: "/images/testimonials/1.png",
+    logo: "/images/testimonials/logo/npowalogo.webp",
+  },
+
+  {
+    id: 7,
+    text: "Our experience with Vertex Workspace has been excellent. The place is clean, modern, and helps us work better. The team is friendly and always ready to help. The facilities and overall environment have made our daily work easier.",
+    name: "Dhanya Suvarna",
+    role: "Associate HR",
+    company: "EOX Vantage",
+    image: "/images/testimonials/1.png",
+    logo: "/images/testimonials/logo/eoxLogo.webp",
+  },
 ];
 
 export default function Page() {
   return (
     <main className="flex flex-col min-h-screen bg-white ">
-      <section >
+      <section>
         <HeroSection
           title=" Private Offices"
           title2="That Mean Business"
@@ -48,7 +69,7 @@ export default function Page() {
         />
       </section>
 
-      <section id="overview" >
+      <section id="overview">
         <PrivateOfficeFeatures />
       </section>
 

@@ -169,14 +169,21 @@ export default function TestimonialSection({ testimonials,solutions=false }: { t
                     className="relative z-10 flex flex-col lg:flex-row justify-between lg:gap-10"
                   >
                     {/* LEFT — Text Content */}
-                    <div className="relative z-20 flex flex-col items-start justify-start mt-4 lg:mt-8 space-y-6 w-full lg:w-1/2 text-center lg:text-left  lg2:pt-10">
+                    <div className="relative z-20 flex flex-col items-start justify-start mt-4 lg:mt-8 space-y-3 w-full lg:w-1/2 text-center lg:text-left  lg2:pt-10">
 
-                      <p className={`font-semibold text-primary max-w-2xl mx-auto lg:mx-0 ${testimonial.text.length > 200
-                        ? 'text-[14px] sm:text-[16px] md:text-[16px]'
-                        : `text-[16px] sm:text-[18px] md:text-[20px] ${solutions ? ' lg:text-3xl' : 'lg:text-xl'}`
-                        }`}>
-                        {testimonial.text}
-                      </p>
+                   {testimonial.text.split('\n').map((line, index) => (
+  <p
+    key={index}
+    // We add 'mt-4' to every line except the first one to create spacing
+    className={`font-semibold text-primary max-w-2xl mx-auto lg:mx-0  ${
+      testimonial.text.length > 200
+        ? 'text-[14px] sm:text-[16px] md:text-[16px]'
+        : `text-[16px] sm:text-[18px] md:text-[20px] ${solutions ? ' lg:text-3xl' : 'lg:text-xl'}`
+    }`}
+  >
+    {line}
+  </p>
+))}
                     </div>
 
                     {/* RIGHT — Image */}
