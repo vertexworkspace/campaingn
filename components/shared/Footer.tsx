@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../../public/vertex-white.svg"
 
 
@@ -27,6 +28,16 @@ export default function Footer() {
 
         {/* ===== Divider ===== */}
         <div className="w-full h-px bg-gray-700 mt-3" />
+
+        {/* ===== Privacy Policy Link ===== */}
+        <div className="flex items-center justify-center">
+          <Link 
+            href="/privacy-policy" 
+            className="text-xs text-gray-400 hover:text-gray-300 transition-colors underline"
+          >
+            Privacy Policy
+          </Link>
+        </div>
 
         {/* ===== Copyright ===== */}
         <p className="text-xs text-gray-500">© MGM Ventures {new Date().getFullYear()}</p>
