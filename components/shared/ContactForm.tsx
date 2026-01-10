@@ -46,7 +46,7 @@ interface ContactFormProps {
 const locations = ["Mangaluru"];
 const solution = ["Coworking Spaces", "Flexi Desks", "Virtual Offices", "Event Spaces", "Meeting Rooms"];
 
-export const ContactForm: React.FC<ContactFormProps> = ({
+const ContactFormContent: React.FC<ContactFormProps> = ({
   className,
   showModal = false,
   onClose,
@@ -59,7 +59,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  
+
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams(); // Hook to get URL parameters
@@ -183,7 +183,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           location: finalLocation,
           // New fields for Webhook:
           page_url: window.location.href,
-          queryParams: paramsObj, 
+          queryParams: paramsObj,
         }),
       });
 
@@ -481,6 +481,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         </motion.div>
       )}
     </AnimatePresence>
+  );
+};
+
+export const ContactForm: React.FC<ContactFormProps> = (props) => {
+  return (
+    <React.Suspense fallback={null}>
+      <ContactFormContent {...props} />
+    </React.Suspense>
   );
 };
 
