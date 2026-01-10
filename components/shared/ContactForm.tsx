@@ -7,7 +7,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Select } from "../ui/Select";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Added useSearchParams
 import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -59,8 +59,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const [phone, setPhone] = React.useState<string | undefined>(undefined);
   const [description, setDescription] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams(); // Hook to get URL parameters
 
   const googleScriptUrl =
     pathname === "/private-offices"
@@ -147,7 +149,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         body: new URLSearchParams(data as any),
       });
 
-      // 🟧 SEND TO DATABASE API
+      // 🟧 SEND TO DATABASE API + WEBHOOK
+      // Capture query params for webhook
+      const paramsObj: Record<string, string> = {};
+      searchParams.forEach((value, key) => {
+        paramsObj[key] = value;
+      });
+
       const response = await fetch("/api/send-db", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -173,6 +181,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           description: data.description,
           enquiry_for: "commercial",
           location: finalLocation,
+          // New fields for Webhook:
+          page_url: window.location.href,
+          queryParams: paramsObj, 
         }),
       });
 
