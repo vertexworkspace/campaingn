@@ -6,7 +6,18 @@ export async function POST(req: Request) {
 
     const dbUrl = process.env.NEXT_PUBLIC_DB_API_URL;
     // Hardcoded Accelr Webhook URL as per your request
-    const accelrWebhookUrl = process.env.NEXT_PUBLIC_ACCELR_WEBHOOK_URL;
+    const accelrWebhookUrl = process.env.ACCELR_WEBHOOK_URL;
+
+
+
+    
+  if (!accelrWebhookUrl) {
+    console.error("❌ ACCELR_WEBHOOK_URL is missing");
+    return NextResponse.json(
+      { success: false, message: "Webhook not configured" },
+      { status: 500 }
+    );
+  }
 
     // ---------------------------------------------------------
     // 1. Send to Existing DB API (Original Functionality)
