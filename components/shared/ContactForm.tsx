@@ -180,7 +180,9 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
           team_size: data.teamSize,
           description: data.description,
           enquiry_for: "commercial",
+          enquiry_for_type: data.formType,
           location: finalLocation,
+          campaign: searchParams.get("campaign") || "",
           // New fields for Webhook:
           page_url: window.location.href,
           queryParams: paramsObj,
@@ -309,7 +311,7 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
               "flex w-full border px-3 py-2 text-sm outline-none",
               formErrors.phone ? "border-red-500" : borderColor,
               inputBg,
-              placeholderColor
+              placeholderColor,
             )}
           />
           {formErrors.phone && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
@@ -381,7 +383,7 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
                 : "text-white/70"
               : description.length >= 120
                 ? "text-red-500"
-                : "text-gray-400"
+                : "text-gray-400",
           )}
         >
           {description.length}/125
@@ -391,8 +393,9 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
       {/* Consent + Button */}
       <div className="space-y-4 pt-2">
         <div
-          className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${variant === "secondary" ? "gap-12" : "gap-4"
-            } md:gap-4 lg:gap-3`}
+          className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${
+            variant === "secondary" ? "gap-12" : "gap-4"
+          } md:gap-4 lg:gap-3`}
         >
           <div className="flex items-center">
             <input
@@ -405,7 +408,7 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
                 "transition-all duration-200 focus:outline-none focus:ring-0 focus:ring-offset-0",
                 "checked:bg-[#0097DC] checked:bg-no-repeat checked:bg-center checked:bg-[length:12px_12px]",
                 "checked:bg-[url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiIvPjwvc3ZnPg==')]",
-                variant === "secondary" ? "border-white" : "border-[#E2E2E2]"
+                variant === "secondary" ? "border-white" : "border-[#E2E2E2]",
               )}
             />
             <label htmlFor="consent" className={cn("ml-3 block text-sm select-none", variant === "secondary" ? "text-white" : "text-gray-700")}>
