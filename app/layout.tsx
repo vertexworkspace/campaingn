@@ -5,6 +5,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import SmoothScroll from "@/components/SmoothScroll";
+import WhatsappChatWidget from "@/components/shared/WhatsappWidget";
 
 // Load Google Font correctly
 const notoSans = Noto_Sans({
@@ -87,6 +88,7 @@ export default function RootLayout({
 
         {/* Wrap entire app with SmoothScroll */}
         <SmoothScroll>{children}</SmoothScroll>
+        <WhatsappChatWidget />
       </body>
     </html>
   );

@@ -210,7 +210,7 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
   const placeholderSize = "text-sm";
 
   const dropdown = pathname === "/private-offices" ? locations : solution;
-  const buttontext = pathname === "/private-offices" ? "Get a Quote" : "Book Now";
+  const buttontext = pathname === "/private-offices" ? "Submit" : "Submit";
   const dropwontext = pathname === "/private-offices" ? "Location" : "Solution";
 
   const button =
