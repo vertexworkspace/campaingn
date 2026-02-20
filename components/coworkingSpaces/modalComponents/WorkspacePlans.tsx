@@ -180,7 +180,7 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
       suited: "Perfect for businesses requiring a legitimate, registered address under a recognized commercial property",
       inclusive: "Dedicated door number for Company Registration, GST Registration, and Trade License",
       price: "₹5,000 (Exc GST)",
-      gst: "+ GST per mon1th",
+      gst: "+ GST per month",
       modalHeading: "Registered Business Address",
       modalDescription: "A formal address solution for official documentation.",
     },
