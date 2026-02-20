@@ -129,7 +129,7 @@ const BanquetSpace = () => {
                 <p className="text-sm sm:text-lg text-secondary">(4-hour slot)</p>
               </div>
               <div className="text-left sm:text-right">
-                <p className="text-[22px] sm:text-[29px] font-extrabold text-[#0097DC]">₹1,000</p>
+                <p className="text-[22px] sm:text-[29px] font-extrabold text-[#0097DC]">₹10,000</p>
                 <p className="text-[#0097DC] text-sm sm:text-lg font-extrabold">+ GST</p>
               </div>
             </div>
