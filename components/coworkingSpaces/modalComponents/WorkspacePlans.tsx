@@ -162,7 +162,7 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
   const virtualPlans: VirtualPlan[] = [
     {
       name: "Virtual Address (Mailing Purpose Only)",
-      duration: "12 months",
+      duration: "1 months",
       payment: "Advance payment for the selected duration",
       purpose: "Mailing and communication purposes",
       suited: "Ideal for startups and professionals who need an official mailing address without a physical office setup",
@@ -174,7 +174,7 @@ const WorkspacePlans: React.FC<WorkspacePlansProps> = ({ type }) => {
     },
     {
       name: "Dedicated Door Number",
-      duration: "12 months",
+      duration: " months",
       payment: "Advance payment for the selected duration",
       purpose: "Legal Address",
       suited: "Perfect for businesses requiring a legitimate, registered address under a recognized commercial property",
