@@ -88,7 +88,7 @@ export default function RootLayout({
 
         {/* Wrap entire app with SmoothScroll */}
         <SmoothScroll>{children}</SmoothScroll>
-        <WhatsappChatWidget />
+        {/* <WhatsappChatWidget />*/}
       </body>
     </html>
   );
