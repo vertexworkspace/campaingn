@@ -414,7 +414,7 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
           </div>
 
           <div className={cn("w-full md:hidden order-2 text-center text-sm font-medium", variant === "secondary" ? "text-white/90" : "text-gray-600")}>
-            Call us directly at <a href="tel:+917090933900" className={cn("hover:underline font-semibold", variant === "secondary" ? "text-white" : "text-primary")}>+91 7090933900</a>
+            Call us directly at <a href="tel:+919611730555" className={cn("hover:underline font-semibold", variant === "secondary" ? "text-white" : "text-primary")}>+91 9611730555</a>
           </div>
 
           <div className="w-full md:w-auto order-3 md:order-2">
@@ -422,7 +422,7 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
           </div>
         </div>
         <div className={cn("hidden md:block  mt-4 text-sm font-medium", variant === "secondary" ? "text-white/90" : "text-gray-600")}>
-          Call us directly at <a href="tel:+917090933900" className={cn("hover:underline font-semibold", variant === "secondary" ? "text-white" : "text-primary")}>+91 7090933900</a>
+          Call us directly at <a href="tel:+919611730555" className={cn("hover:underline font-semibold", variant === "secondary" ? "text-white" : "text-primary")}>+91 9611730555</a>
         </div>
       </div>
     </form>
