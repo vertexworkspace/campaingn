@@ -4,8 +4,9 @@ import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import SmoothScroll from "@/components/SmoothScroll";
+// import SmoothScroll from "@/components/SmoothScroll";
 import WhatsappChatWidget from "@/components/shared/WhatsappWidget";
+import Script from "next/script";
 
 // Load Google Font correctly
 const notoSans = Noto_Sans({
@@ -23,8 +24,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
-    description:
-      "Get a special offer on flexible office solutions at Vertex Workspace.",
+    description: "Get a special offer on flexible office solutions at Vertex Workspace.",
     url: "https://bookings.vertexworkspace.com",
     siteName: "Vertex Workspace",
     images: [
@@ -42,16 +42,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Special Offer on Office Space | Vertex Workspace Mangalore",
-    description:
-      "Get a special offer on flexible office solutions at Vertex Workspace.",
+    description: "Get a special offer on flexible office solutions at Vertex Workspace.",
     images: ["https://bookings.vertexworkspace.com/form-og.png"],
   },
 
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-48x48.png", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.ico" }, { url: "/favicon-48x48.png", type: "image/png" }],
     apple: [{ url: "/favicon-48x48.png" }],
   },
 
@@ -60,34 +56,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={notoSans.variable}>
       <head>
-        <meta
-          name="google-site-verification"
-          content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8"
-        />
+        <meta name="google-site-verification" content="h2ekrOsXN3twy61IUDi7df8v8uUbQtOqdu0kO1xZ3e8" />
         <link rel="icon" href="/favicon.ico" type="image/png" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="48x48"
-          href="/favicon-48x48.png"
-        />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
       </head>
 
       <body className={`${notoSans.className} min-h-screen`}>
         {/* Global Vercel tools */}
         <SpeedInsights />
         <Analytics />
-
+        <Script src="/smoothScroll/smoothScroll.js" />
         {/* Wrap entire app with SmoothScroll */}
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
         {/* <WhatsappChatWidget />*/}
       </body>
     </html>

@@ -8,7 +8,7 @@ import "react-phone-number-input/style.css";
 import { Select } from "../ui/Select";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Added useSearchParams
-import { disableLenis, enableLenis } from "@/components/SmoothScroll";
+// import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(" ");
 
@@ -229,25 +229,22 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
       </Button>
     );
 
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-    const isLargeScreen = window.innerWidth >= 1024;
+ React.useEffect(() => {
+  // Lock scroll when modal is open
+  document.body.style.overflow = showModal ? "hidden" : "auto";
 
-    if (isLargeScreen) {
-      if (showModal) disableLenis();
-      else enableLenis();
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape" && showModal) onClose?.();
+  };
 
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === "Escape" && showModal) onClose?.();
-      };
+  window.addEventListener("keydown", handleKeyDown);
 
-      window.addEventListener("keydown", handleKeyDown);
-      return () => {
-        enableLenis();
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    }
-  }, [showModal, onClose]);
+  return () => {
+    // Always restore scroll
+    document.body.style.overflow = "auto";
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, [showModal, onClose]);
 
   const formContent = (
     <form onSubmit={handleSubmit} className={cn("space-y-5 rounded-lg", className)}>
@@ -391,13 +388,13 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
       </FormField>
 
       {/* Consent + Button */}
-      <div className="space-y-4 pt-2">
+      <div className="pt-2">
         <div
           className={`flex w-full justify-between flex-wrap items-center flex-col md:flex-row ${
-            variant === "secondary" ? "gap-12" : "gap-4"
-          } md:gap-4 lg:gap-3`}
+            variant === "secondary" ? "gap-4 md:gap-12" : "gap-4"
+          } lg:gap-3`}
         >
-          <div className="flex items-center">
+          <div className="flex items-center w-full md:w-auto order-1">
             <input
               id="consent"
               name="consent"
@@ -416,7 +413,16 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
             </label>
           </div>
 
-          {button}
+          <div className={cn("w-full md:hidden order-2 text-center text-sm font-medium", variant === "secondary" ? "text-white/90" : "text-gray-600")}>
+            Call us directly at <a href="tel:+917090933900" className={cn("hover:underline font-semibold", variant === "secondary" ? "text-white" : "text-primary")}>+91 7090933900</a>
+          </div>
+
+          <div className="w-full md:w-auto order-3 md:order-2">
+            {button}
+          </div>
+        </div>
+        <div className={cn("hidden md:block  mt-4 text-sm font-medium", variant === "secondary" ? "text-white/90" : "text-gray-600")}>
+          Call us directly at <a href="tel:+917090933900" className={cn("hover:underline font-semibold", variant === "secondary" ? "text-white" : "text-primary")}>+91 7090933900</a>
         </div>
       </div>
     </form>

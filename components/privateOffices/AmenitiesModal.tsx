@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
-import { disableLenis, enableLenis } from "@/components/SmoothScroll";
+// import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 
 interface AmenitiesModalProps {
   isOpen: boolean;
@@ -65,24 +65,17 @@ const amenitiesRight = [
 ];
 
 export const AmenitiesModal: React.FC<AmenitiesModalProps> = ({ isOpen, onClose }) => {
-React.useEffect(() => {
-    if (isOpen) {
-      disableLenis(); // ✅ stop smooth scroll globally
-    } else {
-      enableLenis(); // ✅ resume when modal closes
-    }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) onClose();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      enableLenis();
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+  React.useEffect(() => {
+      if (isOpen) document.body.style.overflow = "hidden";
+      else document.body.style.overflow = "auto";
+  
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape" && isOpen) onClose();
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [isOpen, onClose]);
   return (
     <AnimatePresence>
       {isOpen && (
