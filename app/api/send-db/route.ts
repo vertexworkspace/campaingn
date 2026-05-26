@@ -50,13 +50,22 @@ export async function POST(req: Request) {
       const firstName = nameParts[0] || "";
       const lastName = nameParts.slice(1).join(" ") || ""; // Joins the rest as last name
 
+      // Determine the dynamic source for Accelr
+      let accelrSource = body.source;
+      if (body.page_url?.includes("/vertex-solutions") || body.source === "Vertex Solution Form") {
+        accelrSource = body.solution || body.source;
+      } else if (body.page_url?.includes("/private-offices") || body.source === "Private Office Form") {
+        accelrSource = "Private Office";
+      }
+      
+
       // Construct payload dynamically merging static fields with captured query params
       const accelrPayload = {
         first_name: firstName,
         last_name: lastName,
         email: body.email,
         phone: body.phone,
-        source: body.source,
+        source: accelrSource,
         page_url: body.page_url, // Passed from frontend
         company_name: body.company_name,
         team_size: body.team_size,
