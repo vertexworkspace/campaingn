@@ -40,6 +40,7 @@ export async function POST(req: Request) {
       console.error("❌ DB API failed:", dbError);
     }
 
+    
     // ---------------------------------------------------------
     // 2. Send to Accelr Webhook (New Functionality)
     // ---------------------------------------------------------
@@ -57,7 +58,7 @@ export async function POST(req: Request) {
       } else if (body.page_url?.includes("/private-offices") || body.source === "Private Office Form") {
         accelrSource = "Private Office";
       }
-      
+
 
       // Construct payload dynamically merging static fields with captured query params
       const accelrPayload = {
