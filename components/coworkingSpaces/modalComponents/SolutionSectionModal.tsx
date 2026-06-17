@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { Button } from "../../ui/Button";
 import { ContactForm } from "../../shared/ContactForm";
-import { disableLenis, enableLenis } from "@/components/SmoothScroll";
+// import { disableLenis, enableLenis } from "@/components/SmoothScroll";
 import WorkspacePlans from "./WorkspacePlans";
 import BanquetSpace from "./BanquetSpace";
 
@@ -43,24 +43,17 @@ export default function SolutionSectionModal({ isOpen, onClose, data }: Solution
   const [modalDescription, setModalDescription] = useState("");
 
   const [defaulltSolution, setDefaulltSolution] = useState("");
+  
   React.useEffect(() => {
-    if (isOpen) {
-      disableLenis(); // ✅ stop smooth scroll globally
-    } else {
-      enableLenis(); // ✅ resume when modal closes
-    }
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isOpen) onClose();
     };
-
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      enableLenis();
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose,open]);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
   const title = data?.title ?? "Work. Collaborate.";
   const titleText = data?.titleText;
