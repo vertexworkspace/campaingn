@@ -142,6 +142,31 @@ const ContactFormContent: React.FC<ContactFormProps> = ({
     }
 
     try {
+      // Send to Accelr Lead Capture
+      try {
+        await fetch("https://app.accelr.app/api/leads/capture", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            trackingKey: "cmqvybfem000cpg66u7whityr",
+            data: {
+              name: data.name,
+              email: data.email,
+              phone: data.phone,
+              location: data.location,
+              company: data.company,
+              teamSize: data.teamSize,
+              description: data.description,
+              consent: data.consent,
+              formType: data.formType,
+            },
+            pageUrl: window.location.href,
+          }),
+        });
+      } catch (accelrError) {
+        console.error("Failed to capture lead on Accelr:", accelrError);
+      }
+
       // 🟦 SEND TO GOOGLE SCRIPT (your existing)
       await fetch(googleScriptUrl!, {
         method: "POST",
